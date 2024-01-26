@@ -1,0 +1,49 @@
+ 
+****************************************
+Report : constraint
+        -all_violators
+Design : fifo1_sram
+Version: Q-2019.12-SP3
+Date   : Thu Jan 25 19:12:56 2024
+****************************************
+
+
+   max_transition
+
+                             Required        Actual
+   Net                      Transition     Transition        Slack
+   -----------------------------------------------------------------
+   rdata[0]                     0.50           0.89          -0.39  (VIOLATED)
+       PORT :  rdata[0]         0.50           0.89          -0.39  (VIOLATED)
+   rdata[1]                     0.50           0.89          -0.39  (VIOLATED)
+       PORT :  rdata[1]         0.50           0.89          -0.39  (VIOLATED)
+   rdata[2]                     0.50           0.89          -0.39  (VIOLATED)
+       PORT :  rdata[2]         0.50           0.89          -0.39  (VIOLATED)
+   rdata[3]                     0.50           0.89          -0.39  (VIOLATED)
+       PORT :  rdata[3]         0.50           0.89          -0.39  (VIOLATED)
+   rdata[4]                     0.50           0.89          -0.39  (VIOLATED)
+       PORT :  rdata[4]         0.50           0.89          -0.39  (VIOLATED)
+   rdata[5]                     0.50           0.89          -0.39  (VIOLATED)
+       PORT :  rdata[5]         0.50           0.89          -0.39  (VIOLATED)
+   rdata[6]                     0.50           0.89          -0.39  (VIOLATED)
+       PORT :  rdata[6]         0.50           0.89          -0.39  (VIOLATED)
+   rdata[7]                     0.50           0.89          -0.39  (VIOLATED)
+       PORT :  rdata[7]         0.50           0.89          -0.39  (VIOLATED)
+   rempty                       0.50           0.89          -0.39  (VIOLATED)
+       PORT :  rempty           0.50           0.89          -0.39  (VIOLATED)
+   wfull                        0.50           0.89          -0.39  (VIOLATED)
+       PORT :  wfull            0.50           0.89          -0.39  (VIOLATED)
+
+   -----------------------------------------------------------------
+   Total                      10                 -3.94  
+
+   max_leakage_power
+
+                             Required        Actual
+   Design                   Leakage Power  Leakage Power     Slack
+   -----------------------------------------------------------------
+   fifo1_sram                   0.00       1112583680.00  -1112583680.00
+                                                                    (VIOLATED)
+
+
+1

@@ -1,0 +1,6 @@
+# Do this beforehand in order to get the licenses correct.
+# export CDS_LIC_FILE=5280@license.cecs.pdx.edu
+# source /pkgs/cadence/09-2015/local/bin/s_cadence.bash
+
+# Make sure to exprt top=simple_adder
+# lec -tclmode -dofile ../scripts/lec_rtl2dc.tcl

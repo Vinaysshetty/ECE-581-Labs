@@ -1,0 +1,851 @@
+setting auto_restore_mw_cel_lib_setup true
+Initializing gui preferences from file  /u/vinays/.synopsys_dv_prefs.tcl
+dc_shell> set top_design fifo1_sramb
+fifo1_sramb
+dc_shell> source ../scripts/dc.tcl
+set lib_dir /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib
+/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib
+# Decoder ring for the libraries
+# You will need to follow another example or look in the library directories to understand.
+# lib_types is used for the dc/dct linking variables and ICC2 NDM lcoations.
+# /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm
+# /          $lib_dir                   /lib/ $lib_type /db_nldm
+# link_library, Target_library use the sub_lib_types and corner variables. 
+# For sub_lib_types and corner:
+# Example:
+#     saed32hvt_ss0p75v125c.db
+#     |sub_lib  corner    .db
+# The current flow tries to find all sub_lib and all corners in all the search paths.  Any match will be put in the library list.
+# Wild cards can be used, but be careful.  Multiple matches can occur in ways you don't want.
+# For the target library, the same method is used as the link library except only HVT and RVT lib_types are used.
+# ICC2 NDM choosing also uses the sub_lib_types so that only the required libraries and extras are not loaded.
+# fifo1
+#set top_design fifo1
+set add_ios 1
+1
+set pad_design 1
+1
+set design_size { 580 580  } 
+ 580 580  
+set design_io_border 310
+310
+set dc_floorplanning 1
+1
+set enable_dft 0
+0
+set innovus_enable_manual_macro_placement 0
+0
+set rtl_list [list ../rtl/$top_design.sv ]
+../rtl/fifo1_sramb.sv
+set slow_corner "ss0p95v125c_2p25v ss0p95v125c ss0p75v125c_i0p75v"
+ss0p95v125c_2p25v ss0p95v125c ss0p75v125c_i0p75v
+set fast_corner "ff0p95vn40c ff1p16vn40c_2p75v ff1p16vn40c"
+ff0p95vn40c ff1p16vn40c_2p75v ff1p16vn40c
+set synth_corners $slow_corner
+ss0p95v125c_2p25v ss0p95v125c ss0p75v125c_i0p75v
+set synth_corners_target "ss0p95v125c" 
+ss0p95v125c
+#set synth_corners_target "ss0p95v125c" 
+set synth_corners_slow $slow_corner
+ss0p95v125c_2p25v ss0p95v125c ss0p75v125c_i0p75v
+set synth_corners_fast $fast_corner
+ff0p95vn40c ff1p16vn40c_2p75v ff1p16vn40c
+set slow_metal Cmax_125
+Cmax_125
+set fast_metal Cmax_125
+Cmax_125
+set lib_types "$lib_dir/io_std/db_nldm $lib_dir/sram_lp/db_nldm $lib_dir/pll/db_nldm"
+/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/io_std/db_nldm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/sram_lp/db_nldm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/pll/db_nldm
+set ndm_types "$lib_dir/stdcell_hvt/ndm $lib_dir/stdcell_hvt/ndm $lib_dir/sram_lp/ndm $lib_dir/io_std/ndm  $lib_dir/pll/ndm"
+/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/ndm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/ndm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/sram_lp/ndm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/io_std/ndm  /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/pll/ndm
+set lib_types_target "$lib_dir/stdcell_hvt/db_nldm"
+/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm
+# Get just the main standard cells, srams and IOs
+set sub_lib_type "saed32?vt_ saed32sramlp_ saed32io_wb_ saed32pll_"
+saed32?vt_ saed32sramlp_ saed32io_wb_ saed32pll_
+set sub_lib_type_target "saed32hvt_"
+saed32hvt_
+set lef_types [list $lib_dir/stdcell_hvt/lef  $lib_dir/stdcell_hvt/lef $lib_dir/stdcell_lvt/lef $lib_dir/sram_lp/lef/ $lib_dir/io_std/lef $lib_dir/pll/lef ]
+/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/lef /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/lef /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/lef /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/sram_lp/lef/ /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/io_std/lef /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/pll/lef
+set sub_lef_type "saed32nm_?vt_*.lef saed32_sramlp_*.lef saed32io_std_wb saed32_PLL.lef"
+saed32nm_?vt_*.lef saed32_sramlp_*.lef saed32io_std_wb saed32_PLL.lef
+set mwlib_types [list $lib_dir/stdcell_hvt/milkyway $lib_dir/stdcell_hvt/milkyway $lib_dir/stdcell_lvt/milkyway  $lib_dir/io_std/milkyway $lib_dir/sram_lp/milkyway $lib_dir/pll/milkyway  ]
+/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/milkyway /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/milkyway /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/milkyway /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/io_std/milkyway /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/sram_lp/milkyway /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/pll/milkyway
+set sub_mwlib_type "saed32nm_?vt_* SRAM32NM saed32io_wb_* SAED32_PLL_FR*"
+saed32nm_?vt_* SRAM32NM saed32io_wb_* SAED32_PLL_FR*
+#set topdir /u/$env(USER)/PSU_RTL2GDS
+set topdir [ lindex [ regexp -inline "(.*)\(syn\|pt\|apr\)" [pwd] ] 1 ]
+/u/vinays/ECE581-2024/lab2-Vinaysshetty/
+set FCL 0
+0
+set split_constraints 0
+0
+Warning: No designs to list. (UID-275)
+== ANALYZE autoread all files ==
+
+Starting ANALYZE autoread mode...
+Warning: Defining design library 'WORK' at directory '/u/vinays/ECE581-2024/lab2-Vinaysshetty/syn/work/WORK_autoread'. (AUTOREAD-107)
+Information: Adding '/u/vinays/ECE581-2024/lab2-Vinaysshetty/syn/rtl/fifo1_sramb.sv'.  (AUTOREAD-100)
+Information: Scanning file { fifo1_sramb.sv }. (AUTOREAD-303)
+Compiling source file /u/vinays/ECE581-2024/lab2-Vinaysshetty/syn/rtl/fifo1_sramb.sv
+Presto compilation completed successfully.
+Autoread command completed successfully.
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/io_std/db_nldm/saed32io_wb_ss0p95v125c_2p25v.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/sram_lp/db_nldm/saed32sramlp_ss0p75v125c_i0p75v.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/pll/db_nldm/saed32pll_ss0p95v125c_2p25v.db'
+Loading db file '/pkgs/synopsys/2020/design_compiler/syn/Q-2019.12-SP3/libraries/syn/dw_foundation.sldb'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ss0p95v125c.db'
+Loading db file '/pkgs/synopsys/2020/design_compiler/syn/Q-2019.12-SP3/libraries/syn/gtech.db'
+Loading db file '/pkgs/synopsys/2020/design_compiler/syn/Q-2019.12-SP3/libraries/syn/standard.sldb'
+  Loading link library 'saed32io_wb_ss0p95v125c_2p25v'
+  Loading link library 'saed32sramlp_ss0p75v125c_i0p75v'
+  Loading link library 'saed32pll_ss0p95v125c_2p25v'
+  Loading link library 'saed32hvt_ss0p95v125c'
+  Loading link library 'gtech'
+Running PRESTO HDLC
+
+Inferred memory devices in process
+        in routine fifo1_sramb line 19 in file
+                '/u/vinays/ECE581-2024/lab2-Vinaysshetty/syn/rtl/fifo1_sramb.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|      wdata_reg      | Flip-flop |   8   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (fifo1_sramb)
+Elaborated 1 design.
+Current design is now 'fifo1_sramb'.
+Information: Building the design 'sync_r2w'. (HDL-193)
+
+Inferred memory devices in process
+        in routine sync_r2w line 145 in file
+                '/u/vinays/ECE581-2024/lab2-Vinaysshetty/syn/rtl/fifo1_sramb.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|    wq2_rptr_reg     | Flip-flop |  11   |  Y  | N  | Y  | N  | N  | N  | N  |
+|    wq1_rptr_reg     | Flip-flop |  11   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (sync_r2w)
+Information: Building the design 'sync_w2r'. (HDL-193)
+
+Inferred memory devices in process
+        in routine sync_w2r line 156 in file
+                '/u/vinays/ECE581-2024/lab2-Vinaysshetty/syn/rtl/fifo1_sramb.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|    rq2_wptr_reg     | Flip-flop |  11   |  Y  | N  | Y  | N  | N  | N  | N  |
+|    rq1_wptr_reg     | Flip-flop |  11   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (sync_w2r)
+Information: Building the design 'fifomem' instantiated from design 'fifo1_sramb' with
+        the parameters "8,10". (HDL-193)
+Warning:  /u/vinays/ECE581-2024/lab2-Vinaysshetty/syn/rtl/fifo1_sramb.sv:71: DEFAULT branch of CASE statement cannot be reached. (ELAB-311)
+Warning:  /u/vinays/ECE581-2024/lab2-Vinaysshetty/syn/rtl/fifo1_sramb.sv:86: DEFAULT branch of CASE statement cannot be reached. (ELAB-311)
+
+Statistics for case statements in always block at line 69 in file
+        '/u/vinays/ECE581-2024/lab2-Vinaysshetty/syn/rtl/fifo1_sramb.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            71            |    auto/auto     |
+===============================================
+
+Statistics for case statements in always block at line 84 in file
+        '/u/vinays/ECE581-2024/lab2-Vinaysshetty/syn/rtl/fifo1_sramb.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            86            |    auto/auto     |
+===============================================
+Presto compilation completed successfully. (fifomem_DATASIZE8_ADDRSIZE10)
+Information: Building the design 'rptr_empty' instantiated from design 'fifo1_sramb' with
+        the parameters "10". (HDL-193)
+
+Inferred memory devices in process
+        in routine rptr_empty_ADDRSIZE10 line 175 in file
+                '/u/vinays/ECE581-2024/lab2-Vinaysshetty/syn/rtl/fifo1_sramb.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|      rbin_reg       | Flip-flop |  11   |  Y  | N  | Y  | N  | N  | N  | N  |
+|      rptr_reg       | Flip-flop |  11   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+        in routine rptr_empty_ADDRSIZE10 line 186 in file
+                '/u/vinays/ECE581-2024/lab2-Vinaysshetty/syn/rtl/fifo1_sramb.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|     rempty_reg      | Flip-flop |   1   |  N  | N  | N  | Y  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (rptr_empty_ADDRSIZE10)
+Information: Building the design 'wptr_full' instantiated from design 'fifo1_sramb' with
+        the parameters "10". (HDL-193)
+
+Inferred memory devices in process
+        in routine wptr_full_ADDRSIZE10 line 203 in file
+                '/u/vinays/ECE581-2024/lab2-Vinaysshetty/syn/rtl/fifo1_sramb.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|      wbin_reg       | Flip-flop |  11   |  Y  | N  | Y  | N  | N  | N  | N  |
+|      wptr_reg       | Flip-flop |  11   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+        in routine wptr_full_ADDRSIZE10 line 218 in file
+                '/u/vinays/ECE581-2024/lab2-Vinaysshetty/syn/rtl/fifo1_sramb.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|      wfull_reg      | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (wptr_full_ADDRSIZE10)
+#####################################################
+proc insert_io { port side} {
+  set this_io io_${side}_${port}
+  if {  $side == "t"   } {
+   if { [get_attribute [get_ports $port ] direction ] == "in" } {
+    create_cell $this_io saed32io_wb_ss0p95v125c_2p25v/I1025_NS
+   } else {
+    create_cell $this_io saed32io_wb_ss0p95v125c_2p25v/D8I1025_NS
+   }
+  }
+  if { $side == "b"  } {
+   if { [get_attribute [get_ports $port ] direction ] == "in" } {
+    create_cell $this_io saed32io_wb_ss0p95v125c_2p25v/I1025_NS
+   } else {
+    create_cell $this_io saed32io_wb_ss0p95v125c_2p25v/D8I1025_NS
+   }
+  }
+  if {  $side == "r"  } {
+   if { [get_attribute [get_ports $port ] direction ] == "in" } {
+    create_cell $this_io saed32io_wb_ss0p95v125c_2p25v/I1025_NS
+   } else {
+    create_cell $this_io saed32io_wb_ss0p95v125c_2p25v/D8I1025_NS
+   }
+  }
+  if { $side == "l"  } {
+   if { [get_attribute [get_ports $port ] direction ] == "in" } {
+    create_cell $this_io saed32io_wb_ss0p95v125c_2p25v/I1025_NS
+   } else {
+    create_cell $this_io saed32io_wb_ss0p95v125c_2p25v/D8I1025_NS
+   }
+  }
+  set pins [ get_pins -of_obj [ get_net $port ] ]
+  foreach_in i $pins { disconnect_net [get_net $port ] $i }
+  set port_net [get_nets -quiet $port ]
+
+  # If only a port is created, the related net is not created and connected to the port.  Do that here.
+  if { [sizeof_collection $port_net ] == 0 } { 
+      create_net $port 
+      connect_net $port [get_ports $port ]
+  }
+
+  connect_net [get_net $port ]  $this_io/PADIO
+  create_net ${this_io}_net
+  foreach_in i $pins { connect_net ${this_io}_net $i }
+  #DIN is input to IO_PAD
+  #DOUT is output of IO_PAD
+  #EN is the IO_PAD enable to output
+  if { [get_attribute [get_ports $port ] direction ] == "in" } {
+     #connect_net [get_nets  *Logic0* ] ${this_io}/EN 
+     connect_net [get_nets  *Logic1* ] ${this_io}/R_EN 
+     connect_net ${this_io}_net ${this_io}/DOUT
+  } else {
+     connect_net [get_nets  *Logic1* ] $this_io/EN 
+     #connect_net [get_nets  *Logic0* ] $this_io/R_EN 
+     connect_net ${this_io}_net $this_io/DIN
+  }
+}
+####################################################
+Error: could not open script file "../../fifo1_sramb.add_ios.tcl" (CMD-015)
+Warning: The specified replacement character (_) is conflicting with the specified allowed or restricted character.   (UCN-4)
+if { [info exists synopsys_program_name ] && ($synopsys_program_name == "icc2_shell") } {
+    puts " Creating ICC2 MCMM "
+    create_mode func
+    create_corner slow
+    create_scenario -mode func -corner slow -name func_slow
+    current_scenario func_slow
+    set_operating_conditions ss0p75v125c
+    read_parasitic_tech -tlup $tlu_dir/saed32nm_1p9m_Cmax.tluplus -layermap $tlu_dir/saed32nm_tf_itf_tluplus.map -name Cmax
+    read_parasitic_tech -tlup $tlu_dir/saed32nm_1p9m_Cmin.tluplus -layermap $tlu_dir/saed32nm_tf_itf_tluplus.map -name Cmin
+    set_parasitic_parameters -early_spec Cmax -early_temperature 125
+    set_parasitic_parameters -late_spec Cmax -late_temperature 125
+    #set_parasitic_parameters -early_spec 1p9m_Cmax -early_temperature 125 -corner default
+    #set_parasitic_parameters -late_spec 1p9m_Cmax -late_temperature 125 -corner default
+
+    #set_scenario_status  default -active false
+    set_scenario_status func_slow -active true -hold true -setup true
+}
+set wclk_period 1.5
+1.5
+set rclk_period 1.5
+1.5
+set wclk2x_period [ expr $wclk_period / 2 ]
+0.75
+create_clock -name "wclk" -period $wclk_period  wclk
+1
+create_clock -name "rclk" -period $rclk_period rclk
+1
+#Add the new clock.  Make it 1/2 the wclk period since it is called wclk2x
+create_clock -name "wclk2x" -period $wclk2x_period wclk2x
+1
+set_false_path -from [get_clocks wclk ] -to [get_clocks rclk]
+1
+set_false_path -from [get_clocks rclk ] -to [ get_clocks wclk]
+1
+# Add input/output delays in relation to related clocks
+# Can tell the related clock by doing report_timing -group INPUTS  or -group OUTPUTS after using group_path
+# External delay should be some percentage of clock period.
+# Tune/relax if violating; most concerned about internal paths.
+# I like set_driving_cell to a std cell from the library.  set_drive works to.
+set_clock_transition 0.2{rclk wclk wclk2x}
+Error: value '0.2{rclk' for option 'transition' not of type 'float' (CMD-009)
+Error: extra positional option 'wclk2x}' (CMD-012)
+set_clock_latency 0.1 {rclk wclk wclk2x}
+1
+set_clock_uncertainty 0.4 {rclk wclk wclk2x}
+1
+# set_load
+set_input_delay 0.2 -max -clock wclk -add_delay [get_ports wdata*]
+1
+set_input_delay 0.2 -min -clock wclk -add_delay [get_ports wdata*]
+1
+set_input_delay 0.2 -max -clock wclk -add_delay [get_ports winc]
+1
+set_input_delay 0.2 -min -clock wclk -add_delay [get_ports winc]
+1
+set_input_delay 0.2 -max -clock rclk -add_delay [get_ports rinc]
+1
+set_input_delay 0.2 -min -clock rclk -add_delay [get_ports rinc]
+1
+set_output_delay 0.8 -max -clock rclk -add_delay [get_ports rdata*]
+1
+set_output_delay 0.8 -min -clock rclk -add_delay [get_ports rdata*]
+1
+set_output_delay 0.8 -max -clock rclk -add_delay [get_ports rempty]
+1
+set_output_delay 0.8 -min -clock rclk -add_delay [get_ports rempty]
+1
+set_output_delay 0.8 -max -clock wclk -add_delay [get_ports wfull]
+1
+set_output_delay 0.8 -min -clock wclk -add_delay [get_ports wfull]
+1
+set_drive 0.02 [get_ports wdata*]
+1
+set_drive 0.02 [get_ports winc]
+1
+set_drive 0.02 [get_ports rinc]
+1
+set_load 0.1 [get_ports rdata*]
+1
+set_load 0.1 [get_ports rempty]
+1
+set_load 0.1 [get_ports wfull]
+1
+#set_max_area 0.0
+#set_input_delay 0.00001 -max -clock rclk -add_delay {winc}
+#set_input_delay 0.00001 -max -clock wclk -add_delay {winc}
+#set_input_delay 0.00001 -max -clock rclk -add_delay [all_inputs]
+#set_input_delay 0.00001 -max -clock wclk -add_delay [all_inputs]
+#set_input_delay 0.00001 -min -clock rclk -add_delay [all_inputs]
+#set_input_delay 0.00001 -min -clock wclk -add_delay [all_inputs]
+#set_output_delay 0.00001 -min -clock wclk -add_delay [all_outputs]
+#set_output_delay 0.00001 -min -clock rclk -add_delay [all_outputs]
+#set_output_delay 0.00001 -max -clock wclk -add_delay [all_outputs]
+#set_output_delay 0.00001 -max -clock rclk -add_delay [all_outputs]
+#set_drive 0.00001 [all_inputs]
+#set_load 0.000001 [all_outputs]
+#group_path -name INTERNAL -from [all_clocks] -to [all_clocks ]
+group_path -name INPUTS -from [ get_ports -filter "direction==in&&full_name!~*clk*" ]
+1
+group_path -name OUTPUTS -to [ get_ports -filter "direction==out" ]
+1
+Current design is 'fifo1_sramb'.
+Information: Performing power optimization. (PWR-850)
+Alib files are up-to-date.
+Information: Choosing a test methodology will restrict the optimization of sequential cells. (UIO-12)
+Information: Evaluating DesignWare library utilization. (UISN-27)
+
+============================================================================
+| DesignWare Building Block Library  |         Version         | Available |
+============================================================================
+| Basic DW Building Blocks           | Q-2019.12-DWBB_201912.3 |     *     |
+| Licensed DW Building Blocks        | Q-2019.12-DWBB_201912.3 |     *     |
+============================================================================
+
+Information: Sequential output inversion is enabled.  SVF file must be used for formal verification. (OPT-1208)
+
+Information: There are 65 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
+
+  Simplifying Design 'fifo1_sramb'
+
+Loaded alib file './alib-52/saed32hvt_ss0p95v125c.db.alib'
+Information: State dependent leakage is now switched from on to off.
+
+  Beginning Pass 1 Mapping
+  ------------------------
+  Processing 'fifomem_DATASIZE8_ADDRSIZE10'
+  Processing 'wptr_full_ADDRSIZE10'
+Information: Added key list 'DesignWare' to design 'wptr_full_ADDRSIZE10'. (DDB-72)
+Information: In design 'wptr_full_ADDRSIZE10', the register 'wptr_reg_10_' is removed because it is merged to 'wbin_reg_10_'. (OPT-1215)
+ Implement Synthetic for 'wptr_full_ADDRSIZE10'.
+  Processing 'rptr_empty_ADDRSIZE10'
+Information: Added key list 'DesignWare' to design 'rptr_empty_ADDRSIZE10'. (DDB-72)
+Information: In design 'rptr_empty_ADDRSIZE10', the register 'rptr_reg_10_' is removed because it is merged to 'rbin_reg_10_'. (OPT-1215)
+ Implement Synthetic for 'rptr_empty_ADDRSIZE10'.
+  Processing 'fifo1_sramb'
+  Processing 'sync_w2r'
+  Processing 'sync_r2w'
+
+  Updating timing information
+Information: Updating design information... (UID-85)
+Information: The library cell 'PMT3_HVT' in the library 'saed32hvt_ss0p95v125c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'PMT2_HVT' in the library 'saed32hvt_ss0p95v125c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'PMT1_HVT' in the library 'saed32hvt_ss0p95v125c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'NMT3_HVT' in the library 'saed32hvt_ss0p95v125c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'NMT2_HVT' in the library 'saed32hvt_ss0p95v125c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'NMT1_HVT' in the library 'saed32hvt_ss0p95v125c' is not characterized for internal power. (PWR-536)
+Information: The target library(s) contains cell(s), other than black boxes, that are not characterized for internal power. (PWR-24)
+Information: Automatic shift-register identification is enabled for scan. Not all registers will be scan-replaced. (OPT-467)
+
+Threshold voltage group cell usage:
+>> saed32cell_hvt 100.00%
+
+  Beginning Mapping Optimizations  (Ultra High effort)
+  -------------------------------
+  Mapping Optimization (Phase 1)
+  Mapping Optimization (Phase 2)
+  Mapping Optimization (Phase 3)
+  Mapping Optimization (Phase 4)
+  Mapping Optimization (Phase 5)
+  Mapping Optimization (Phase 6)
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:45  211512.8      0.28       1.6      25.1                           32336218.0000
+    0:00:45  211504.6      0.29       1.6      25.1                           32285736.0000
+
+Threshold voltage group cell usage:
+>> saed32cell_hvt 100.00%
+
+  Beginning Constant Register Removal
+  -----------------------------------
+
+Threshold voltage group cell usage:
+>> saed32cell_hvt 100.00%
+
+  Beginning Global Optimizations
+  ------------------------------
+  Numerical Synthesis (Phase 1)
+  Numerical Synthesis (Phase 2)
+  Global Optimization (Phase 1)
+  Global Optimization (Phase 2)
+  Global Optimization (Phase 3)
+  Global Optimization (Phase 4)
+  Global Optimization (Phase 5)
+  Global Optimization (Phase 6)
+  Global Optimization (Phase 7)
+  Global Optimization (Phase 8)
+  Global Optimization (Phase 9)
+  Global Optimization (Phase 10)
+  Global Optimization (Phase 11)
+  Global Optimization (Phase 12)
+  Global Optimization (Phase 13)
+  Global Optimization (Phase 14)
+  Global Optimization (Phase 15)
+  Global Optimization (Phase 16)
+  Global Optimization (Phase 17)
+  Global Optimization (Phase 18)
+  Global Optimization (Phase 19)
+  Global Optimization (Phase 20)
+  Global Optimization (Phase 21)
+  Global Optimization (Phase 22)
+  Global Optimization (Phase 23)
+  Global Optimization (Phase 24)
+  Global Optimization (Phase 25)
+  Global Optimization (Phase 26)
+  Global Optimization (Phase 27)
+  Global Optimization (Phase 28)
+  Global Optimization (Phase 29)
+  Global Optimization (Phase 30)
+
+Threshold voltage group cell usage:
+>> saed32cell_hvt 100.00%
+
+  Beginning Isolate Ports
+  -----------------------
+
+Threshold voltage group cell usage:
+>> saed32cell_hvt 100.00%
+
+  Beginning Delay Optimization
+  ----------------------------
+    0:00:45  211414.7      0.35       2.5      22.3                           26636514.0000
+    0:00:53  211426.6      0.35       1.6      23.1                           26587350.0000
+    0:00:53  211426.6      0.35       1.6      23.1                           26587350.0000
+    0:00:54  211425.6      0.35       1.6      23.1                           26491234.0000
+
+Threshold voltage group cell usage:
+>> saed32cell_hvt 100.00%
+    0:00:54  211425.6      0.35       1.6      23.1                           26491234.0000
+    0:00:54  211415.7      0.32       1.6      23.1                           26419064.0000
+
+  Beginning WLM Backend Optimization
+  --------------------------------------
+    0:00:54  211392.8      0.29       1.6      23.1                           25587462.0000
+    0:00:54  211392.8      0.29       1.6      23.1                           25587462.0000
+    0:00:54  211392.8      0.29       1.6      23.1                           25587462.0000
+    0:00:54  211397.1      0.29       1.5      23.1                           25614558.0000
+    0:00:54  211397.1      0.29       1.5      23.1                           25614558.0000
+    0:00:56  211398.9      0.25       1.4      23.1                           25636248.0000
+    0:00:56  211398.9      0.25       1.4      23.1                           25636248.0000
+    0:00:56  211399.2      0.23       1.4      23.1                           25735908.0000
+    0:00:56  211399.2      0.23       1.4      23.1                           25735908.0000
+    0:00:58  211415.7      0.22       1.3      23.1                           26092190.0000
+    0:00:58  211415.7      0.22       1.3      23.1                           26092190.0000
+    0:01:05  211424.8      0.26       1.3      23.1                           26325638.0000
+    0:01:05  211424.8      0.26       1.3      23.1                           26325638.0000
+    0:01:08  211503.9      0.25       1.4      23.1                           27565726.0000
+    0:01:08  211503.9      0.25       1.4      23.1                           27565726.0000
+    0:01:14  211496.5      0.21       1.3      23.1                           27487468.0000
+    0:01:14  211496.5      0.21       1.3      23.1                           27487468.0000
+    0:01:20  211580.9      0.19       1.2      23.1                           28811914.0000
+    0:01:20  211580.9      0.19       1.2      23.1                           28811914.0000
+    0:01:25  211576.5      0.17       1.1      23.1                           28675780.0000
+    0:01:25  211576.5      0.17       1.1      23.1                           28675780.0000
+    0:01:41  211600.2      0.18       1.2      23.1                           29125244.0000
+
+
+  Beginning Design Rule Fixing  (max_capacitance)
+  ----------------------------
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:01:41  211600.2      0.18       1.2      23.1                           29125244.0000
+  Global Optimization (Phase 31)
+  Global Optimization (Phase 32)
+  Global Optimization (Phase 33)
+    0:01:42  211635.3      0.13       1.6      22.3 rptr_empty/rempty_reg/D   30930102.0000
+    0:01:43  211647.2      0.13       1.6      22.3 wptr_full/wfull_reg/D     30988502.0000
+    0:01:44  211650.8      0.13       1.6      22.3                           31110908.0000
+    0:01:53  211610.3      0.17       1.3      28.7                           28707348.0000
+
+Threshold voltage group cell usage:
+>> saed32cell_hvt 100.00%
+
+
+  Beginning Leakage Power Optimization  (max_leakage_power 0)
+  ------------------------------------
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:01:53  211610.3      0.17       1.3      28.7                           28707348.0000
+  Global Optimization (Phase 34)
+  Global Optimization (Phase 35)
+  Global Optimization (Phase 36)
+  Global Optimization (Phase 37)
+  Global Optimization (Phase 38)
+  Global Optimization (Phase 39)
+  Global Optimization (Phase 40)
+  Global Optimization (Phase 41)
+  Global Optimization (Phase 42)
+  Global Optimization (Phase 43)
+  Global Optimization (Phase 44)
+  Global Optimization (Phase 45)
+  Global Optimization (Phase 46)
+  Global Optimization (Phase 47)
+    0:01:55  211541.7      0.17       1.1      23.1                           26032094.0000
+    0:01:57  211547.1      0.15       1.1      23.1                           26252886.0000
+    0:01:57  211547.1      0.15       1.1      23.1                           26252886.0000
+    0:01:57  211546.3      0.15       1.1      23.1                           26083294.0000
+    0:01:57  211546.3      0.15       1.1      23.1                           26083294.0000
+    0:01:58  211546.3      0.15       1.1      23.1                           26083294.0000
+    0:01:58  211546.3      0.15       1.1      23.1                           26083294.0000
+    0:01:58  211545.3      0.15       1.1      23.1                           26064694.0000
+    0:01:58  211545.3      0.15       1.1      23.1                           26064694.0000
+    0:02:00  211545.3      0.15       1.1      23.1                           26064694.0000
+    0:02:00  211545.3      0.15       1.1      23.1                           26064694.0000
+    0:02:05  211540.2      0.15       1.1      23.1                           26073858.0000
+    0:02:05  211540.2      0.15       1.1      23.1                           26073858.0000
+    0:02:26  211599.7      0.15       1.0      23.1                           27777830.0000
+    0:02:26  211599.7      0.15       1.0      23.1                           27777830.0000
+    0:02:33  211616.2      0.15       1.0      23.1                           28113200.0000
+    0:02:33  211616.2      0.15       1.0      23.1                           28113200.0000
+    0:02:35  211615.2      0.13       1.0      23.1                           28053950.0000
+    0:02:35  211615.2      0.13       1.0      23.1                           28053950.0000
+    0:02:41  211625.3      0.16       1.1      23.1                           28180254.0000
+    0:02:41  211625.3      0.16       1.1      23.1                           28180254.0000
+    0:02:57  211625.1      0.18       1.1      23.1                           28082738.0000
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:02:57  211625.1      0.18       1.1      23.1                           28082738.0000
+    0:02:57  211600.7      0.18       1.1      23.1                           26758138.0000
+    0:02:58  211594.3      0.18       1.0      23.1                           26760416.0000
+    0:02:58  211594.3      0.18       1.0      23.1                           26760416.0000
+    0:02:58  211599.2      0.17       1.0      23.1                           26893610.0000
+    0:02:59  211606.8      0.14       1.0      23.1 wptr_full/wfull_reg/D     26996574.0000
+    0:03:00  211615.2      0.12       0.9      23.1 rptr_empty/rempty_reg/D   27008636.0000
+    0:03:00  211648.5      0.12       1.5      22.3                           29112090.0000
+    0:03:06  211635.8      0.15       1.0      23.1                           27527810.0000
+    0:03:06  211635.8      0.15       1.0      23.1                           27527810.0000
+    0:03:07  211635.8      0.15       1.0      23.1                           27527810.0000
+    0:03:07  211635.8      0.15       1.0      23.1                           27527810.0000
+    0:03:07  211635.8      0.15       1.0      23.1                           27527810.0000
+    0:03:07  211627.6      0.15       1.0      23.1                           26908504.0000
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/io_std/db_nldm/saed32io_wb_ss0p95v125c_2p25v.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/sram_lp/db_nldm/saed32sramlp_ss0p75v125c_i0p75v.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/pll/db_nldm/saed32pll_ss0p95v125c_2p25v.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ss0p95v125c.db'
+
+
+Note: Symbol # after min delay cost means estimated hold TNS across all active scenarios 
+
+
+  Optimization Complete
+  ---------------------
+Information: State dependent leakage is now switched from off to on.
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
+Warning: Design has unannotated black box outputs. (PWR-428)
+Writing verilog file '/u/vinays/ECE581-2024/lab2-Vinaysshetty/syn/outputs/fifo1_sramb.dc.vg'.
+Writing ddc file '../outputs/fifo1_sramb.dc.ddc'.
+1
+dc_shell> 
+dc_shell> 
+dc_shell> report_qor
+ 
+****************************************
+Report : qor
+Design : fifo1_sramb
+Version: Q-2019.12-SP3
+Date   : Tue Jan 23 18:44:29 2024
+****************************************
+
+
+  Timing Path Group 'INPUTS'
+  -----------------------------------
+  Levels of Logic:              10.00
+  Critical Path Length:          0.88
+  Critical Path Slack:          -0.15
+  Critical Path Clk Period:      1.50
+  Total Negative Slack:         -0.49
+  No. of Violating Paths:       10.00
+  Worst Hold Violation:         -0.13
+  Total Hold Violation:         -1.04
+  No. of Hold Violations:        8.00
+  -----------------------------------
+
+  Timing Path Group 'OUTPUTS'
+  -----------------------------------
+  Levels of Logic:               2.00
+  Critical Path Length:          0.34
+  Critical Path Slack:          -0.04
+  Critical Path Clk Period:      1.50
+  Total Negative Slack:         -0.31
+  No. of Violating Paths:        8.00
+  Worst Hold Violation:          0.00
+  Total Hold Violation:          0.00
+  No. of Hold Violations:        0.00
+  -----------------------------------
+
+  Timing Path Group 'rclk'
+  -----------------------------------
+  Levels of Logic:              10.00
+  Critical Path Length:          0.99
+  Critical Path Slack:          -0.09
+  Critical Path Clk Period:      1.50
+  Total Negative Slack:         -0.09
+  No. of Violating Paths:        1.00
+  Worst Hold Violation:         -0.43
+  Total Hold Violation:        -23.86
+  No. of Hold Violations:       71.00
+  -----------------------------------
+
+  Timing Path Group 'wclk'
+  -----------------------------------
+  Levels of Logic:               9.00
+  Critical Path Length:          1.01
+  Critical Path Slack:          -0.08
+  Critical Path Clk Period:      1.50
+  Total Negative Slack:         -0.08
+  No. of Violating Paths:        1.00
+  Worst Hold Violation:         -0.44
+  Total Hold Violation:        -52.71
+  No. of Hold Violations:      137.00
+  -----------------------------------
+
+
+  Cell Count
+  -----------------------------------
+  Hierarchical Cell Count:          5
+  Hierarchical Port Count:        160
+  Leaf Cell Count:                551
+  Buf/Inv Cell Count:              83
+  Buf Cell Count:                  15
+  Inv Cell Count:                  68
+  CT Buf/Inv Cell Count:            0
+  Combinational Cell Count:       447
+  Sequential Cell Count:          104
+  Macro Count:                      0
+  -----------------------------------
+
+
+  Area
+  -----------------------------------
+  Combinational Area:      880.100686
+  Noncombinational Area:   840.200082
+  Buf/Inv Area:            119.447681
+  Total Buffer Area:            31.51
+  Total Inverter Area:          87.93
+  Macro/Black Box Area: 209907.328125
+  Net Area:                983.598415
+  -----------------------------------
+  Cell Area:            211627.628892
+  Design Area:          212611.227308
+
+
+  Design Rules
+  -----------------------------------
+  Total Number of Nets:           688
+  Nets With Violations:            64
+  Max Trans Violations:             0
+  Max Cap Violations:              64
+  -----------------------------------
+
+
+  Hostname: mo.ece.pdx.edu
+
+  Compile CPU Statistics
+  -----------------------------------------
+  Resource Sharing:                    0.04
+  Logic Optimization:                 13.04
+  Mapping Optimization:              137.67
+  -----------------------------------------
+  Overall Compile Time:              160.95
+  Overall Compile Wall Clock Time:   162.00
+
+  --------------------------------------------------------------------
+
+  Design  WNS: 0.15  TNS: 0.80  Number of Violating Paths: 18
+
+
+  Design (Hold)  WNS: 0.44  TNS: 77.61  Number of Violating Paths: 216
+
+  --------------------------------------------------------------------
+
+
+1
+dc_shell> 
+dc_shell> 
+dc_shell> 
+dc_shell> ls -lrt
+total 6552
+-rwx------. 1 vinays them     444 Jan 19 12:17 genus_startup.tcl
+-rwx------. 1 vinays them    1630 Jan 19 12:17 .synopsys_dc.setup
+-rwx------. 1 vinays them      46 Jan 19 12:17 .gitignore
+drwx------. 7 vinays them       7 Jan 19 12:17 ..
+-rw-------. 1 vinays them   44330 Jan 19 12:22 dc_shell.log.2024-01-19_12-17
+-rw-------. 1 vinays them  304277 Jan 19 12:22 dc_shell.cmd.2024-01-19_12-17
+-rw-------. 1 vinays them   44751 Jan 19 13:05 dc_shell.log.2024-01-19_12-26_initial
+-rw-------. 1 vinays them  304492 Jan 19 13:05 dc_shell.cmd.2024-01-19_12-26
+drwx------. 2 vinays them       4 Jan 20 16:36 alib-52
+-rw-------. 1 vinays them   35039 Jan 20 16:37 dc_shell.log.2024-01-20_16-32
+-rw-------. 1 vinays them  303479 Jan 20 16:37 dc_shell.cmd.2024-01-20_16-32
+-rw-------. 1 vinays them   82818 Jan 20 16:41 dc_shell.log.2024-01-20_16-40
+-rw-------. 1 vinays them  304239 Jan 20 16:41 dc_shell.cmd.2024-01-20_16-40
+-rw-------. 1 vinays them   84352 Jan 20 20:02 dc_shell.log.2024-01-20_19-59
+-rw-------. 1 vinays them  304264 Jan 20 20:02 dc_shell.cmd.2024-01-20_19-59
+-rw-------. 1 vinays them  221502 Jan 21 03:42 dc_shell.log.2024-01-20_20-02_______
+-rw-------. 1 vinays them  255266 Jan 21 14:48 dc_shell.log.2024-01-20_20-02
+-rw-------. 1 vinays them 1690290 Jan 21 14:48 dc_shell.cmd.2024-01-20_20-02
+-rw-------. 1 vinays them   95396 Jan 21 14:51 dc_shell.log.2024-01-21_14-49
+-rw-------. 1 vinays them  310948 Jan 21 14:51 dc_shell.cmd.2024-01-21_14-49
+-rw-------. 1 vinays them   83818 Jan 21 14:57 dc_shell.log.2024-01-21_14-55
+-rw-------. 1 vinays them  304560 Jan 21 14:57 dc_shell.cmd.2024-01-21_14-55
+-rw-------. 1 vinays them 1686261 Jan 21 22:51 dc_shell.cmd.2024-01-21_14-59
+-rw-------. 1 vinays them  216235 Jan 21 22:51 dc_shell.log.2024-01-21_14-59
+-rw-------. 1 vinays them  194963 Jan 22 01:23 dc_shell.log.2024-01-21_22-51
+-rw-------. 1 vinays them  305260 Jan 22 01:23 dc_shell.cmd.2024-01-21_22-51
+-rw-------. 1 vinays them  100491 Jan 22 01:28 dc_shell.log.2024-01-22_01-24
+-rw-------. 1 vinays them  304393 Jan 22 01:28 dc_shell.cmd.2024-01-22_01-24
+-rw-------. 1 vinays them  304393 Jan 22 01:29 dc_shell.cmd.2024-01-22_01-24_initial_ref
+-rw-------. 1 vinays them  100491 Jan 22 01:29 dc_shell.log.2024-01-22_01-24_initial_ref
+-rw-------. 1 vinays them 1687777 Jan 22 03:05 dc_shell.cmd.2024-01-22_02-19
+-rw-------. 1 vinays them  980933 Jan 22 03:05 dc_shell.log.2024-01-22_02-19
+-rw-------. 1 vinays them   76089 Jan 22 05:06 dc_shell.log.2024-01-22_03-05
+-rw-------. 1 vinays them  306461 Jan 22 05:06 dc_shell.cmd.2024-01-22_03-05
+-rw-------. 1 vinays them   88458 Jan 22 05:13 dc_shell.log.2024-01-22_05-06
+-rw-------. 1 vinays them  304490 Jan 22 05:13 dc_shell.cmd.2024-01-22_05-06
+-rw-------. 1 vinays them   16384 Jan 23 14:18 .dc_shell.log.2024-01-22_10-19.swp
+-rw-------. 1 vinays them  794690 Jan 23 14:31 dc_shell.log.2024-01-22_10-19
+-rw-------. 1 vinays them  307903 Jan 23 14:31 dc_shell.cmd.2024-01-22_10-19
+-rw-------. 1 vinays them   65592 Jan 23 14:40 dc_shell.log.2024-01-23_14-34
+-rw-------. 1 vinays them  314674 Jan 23 14:40 dc_shell.cmd.2024-01-23_14-34
+-rw-------. 1 vinays them     356 Jan 23 14:43 .fifo1_sramb_22700.cmvd
+-rw-------. 1 vinays them  305556 Jan 23 14:44 dc_shell.cmd.2024-01-23_14-42
+-rw-------. 1 vinays them   45144 Jan 23 14:44 dc_shell.log.2024-01-23_14-42
+-rw-------. 1 vinays them    9642 Jan 23 17:03 .nfs00000000005f5d1000004cd8
+-rw-------. 1 vinays them   68789 Jan 23 17:15 dc_shell.log.2024-01-23_17-03
+-rw-------. 1 vinays them  305652 Jan 23 17:15 dc_shell.cmd.2024-01-23_17-03
+-rw-------. 1 vinays them   48123 Jan 23 17:16 dc_shell.log.2024-01-23_17-15
+-rw-------. 1 vinays them  305545 Jan 23 17:16 dc_shell.cmd.2024-01-23_17-15
+-rw-------. 1 vinays them  124217 Jan 23 17:22 dc_shell.log.2024-01-23_17-16
+-rw-------. 1 vinays them  305896 Jan 23 17:22 dc_shell.cmd.2024-01-23_17-16
+-rw-------. 1 vinays them   37497 Jan 23 17:25 dc_shell.log.2024-01-23_17-22
+-rw-------. 1 vinays them  305530 Jan 23 17:25 dc_shell.cmd.2024-01-23_17-22
+-rw-------. 1 vinays them   42102 Jan 23 17:30 dc_shell.log.2024-01-23_17-25
+-rw-------. 1 vinays them  305538 Jan 23 17:30 dc_shell.cmd.2024-01-23_17-25
+-rw-------. 1 vinays them   47011 Jan 23 17:37 dc_shell.log.2024-01-23_17-30
+-rw-------. 1 vinays them  306170 Jan 23 17:37 dc_shell.cmd.2024-01-23_17-30
+-rw-------. 1 vinays them   56798 Jan 23 17:57 dc_shell.log.2024-01-23_17-37
+-rw-------. 1 vinays them  305859 Jan 23 17:57 dc_shell.cmd.2024-01-23_17-37
+-rw-------. 1 vinays them   37746 Jan 23 18:01 dc_shell.log.2024-01-23_17-57
+-rw-------. 1 vinays them  305504 Jan 23 18:01 dc_shell.cmd.2024-01-23_17-57
+-rw-------. 1 vinays them   40079 Jan 23 18:05 dc_shell.log.2024-01-23_18-01
+-rw-------. 1 vinays them  305545 Jan 23 18:05 dc_shell.cmd.2024-01-23_18-01
+-rw-------. 1 vinays them   40748 Jan 23 18:12 dc_shell.log.2024-01-23_18-06
+-rw-------. 1 vinays them  305546 Jan 23 18:12 dc_shell.cmd.2024-01-23_18-06
+-rw-------. 1 vinays them   66258 Jan 23 18:19 dc_shell.log.2024-01-23_18-12
+-rw-------. 1 vinays them  305567 Jan 23 18:19 dc_shell.cmd.2024-01-23_18-12
+-rw-------. 1 vinays them  319000 Jan 23 18:24 dc_shell.cmd.2024-01-23_18-19
+-rw-------. 1 vinays them   54227 Jan 23 18:24 dc_shell.log.2024-01-23_18-19
+-rw-------. 1 vinays them   37873 Jan 23 18:40 dc_shell.log.2024-01-23_18-25
+-rw-------. 1 vinays them  305476 Jan 23 18:40 dc_shell.cmd.2024-01-23_18-25
+-rw-------. 1 vinays them    8448 Jan 23 18:41 default.svf
+drwx------. 2 vinays them      26 Jan 23 18:41 WORK_autoread
+-rw-------. 1 vinays them     356 Jan 23 18:44 .fifo1_sramb_24948.cmvd
+drwx------. 4 vinays them      78 Jan 23 18:44 .
+-rw-------. 1 vinays them    9642 Jan 23 18:44 filenames.log
+-rw-------. 1 vinays them  305480 Jan 23 18:51 dc_shell.cmd.2024-01-23_18-41
+-rw-------. 1 vinays them   37690 Jan 23 18:51 dc_shell.log.2024-01-23_18-41
+dc_shell> cp -rf dc_shell.log.2024-01-23_18-41 dc_shell.log.2024-01-23_18-41_fifo1_sramb_final
+Error: unknown option '-rf' (CMD-010)
+Error: extra positional option 'dc_shell.log.2024-01-23_18-41' (CMD-012)
+Error: extra positional option 'dc_shell.log.2024-01-23_18-41_fifo1_sramb_final' (CMD-012)
+dc_shell> sh cp -rf dc_shell.log.2024-01-23_18-41 dc_shell.log.2024-01-23_18-41_fifo1_sramb_final
+dc_shell> sh cp -rf dc_shell.cmd.2024-01-23_18-41 dc_shell.cmd.2024-01-23_18-41_fifo1_sramb_final
+dc_shell> 
+dc_shell> 
+dc_shell> 
+dc_shell> exit
+
+Memory usage for this session 201 Mbytes.
+Memory usage for this session including child processes 201 Mbytes.
+CPU usage for this session 165 seconds ( 0.05 hours ).
+Elapsed time for this session 694 seconds ( 0.19 hours ).
+
+Thank you...
+

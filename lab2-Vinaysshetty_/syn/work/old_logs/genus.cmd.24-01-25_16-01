@@ -1,0 +1,25 @@
+# Cadence Genus(TM) Synthesis Solution, Version 19.12-s121_1, built Dec  3 2019 15:07:17
+
+# Date: Thu Jan 25 16:48:21 2024
+# Host: mo.ece.pdx.edu (x86_64 w/Linux 3.10.0-1160.105.1.el7.x86_64) (1core*32cpus*32physical cpus*Intel Xeon E312xx (Sandy Bridge, IBRS update) 16384KB)
+# OS:   CentOS Linux release 7.9.2009 (Core)
+
+# Cadence Genus(TM) Synthesis Solution, Version 19.12-s121_1, built Dec  3 2019 15:07:17
+
+# Date: Thu Jan 25 16:48:35 2024
+# Host: mo.ece.pdx.edu (x86_64 w/Linux 3.10.0-1160.105.1.el7.x86_64) (1core*32cpus*32physical cpus*Intel Xeon E312xx (Sandy Bridge, IBRS update) 16384KB)
+# OS:   CentOS Linux release 7.9.2009 (Core)
+
+set top_design fifo1_sramb
+source ../scripts/genus.tcl
+report_qor
+pwd
+cd ..
+ls -lrt
+cd ..
+ls -lrt
+pwd
+cd syn/reports/
+ls -lrt
+gvim fifo1_sramb.dc.qor.rpt
+exit

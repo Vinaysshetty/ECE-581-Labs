@@ -1,0 +1,3127 @@
+setting auto_restore_mw_cel_lib_setup true
+Initializing gui preferences from file  /u/vinays/.synopsys_dv_prefs.tcl
+dc_shell> set top_design fifo1_srama
+fifo1_srama
+dc_shell> source ../scripts/dc.tcl
+set lib_dir /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib
+/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib
+# Decoder ring for the libraries
+# You will need to follow another example or look in the library directories to understand.
+# lib_types is used for the dc/dct linking variables and ICC2 NDM lcoations.
+# /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm
+# /          $lib_dir                   /lib/ $lib_type /db_nldm
+# link_library, Target_library use the sub_lib_types and corner variables. 
+# For sub_lib_types and corner:
+# Example:
+#     saed32hvt_ss0p75v125c.db
+#     |sub_lib  corner    .db
+# The current flow tries to find all sub_lib and all corners in all the search paths.  Any match will be put in the library list.
+# Wild cards can be used, but be careful.  Multiple matches can occur in ways you don't want.
+# For the target library, the same method is used as the link library except only HVT and RVT lib_types are used.
+# ICC2 NDM choosing also uses the sub_lib_types so that only the required libraries and extras are not loaded.
+# fifo1
+#set top_design fifo1
+set add_ios 1
+1
+set pad_design 1
+1
+set design_size { 580 580  } 
+ 580 580  
+set design_io_border 310
+310
+set dc_floorplanning 1
+1
+set enable_dft 0
+0
+set innovus_enable_manual_macro_placement 0
+0
+set rtl_list [list ../rtl/$top_design.sv ]
+../rtl/fifo1_srama.sv
+set slow_corner "ss0p95v125c_2p25v ss0p95v125c"
+ss0p95v125c_2p25v ss0p95v125c
+set fast_corner "ff0p95vn40c ff1p16vn40c_2p75v ff1p16vn40c"
+ff0p95vn40c ff1p16vn40c_2p75v ff1p16vn40c
+set synth_corners $slow_corner
+ss0p95v125c_2p25v ss0p95v125c
+set synth_corners_target "ss0p95v125c" 
+ss0p95v125c
+#set synth_corners_target "ss0p95v125c" 
+set synth_corners_slow $slow_corner
+ss0p95v125c_2p25v ss0p95v125c
+set synth_corners_fast $fast_corner
+ff0p95vn40c ff1p16vn40c_2p75v ff1p16vn40c
+set slow_metal Cmax_125
+Cmax_125
+set fast_metal Cmax_125
+Cmax_125
+set lib_types "$lib_dir/io_std/db_nldm $lib_dir/sram_Ip/db_nldm $lib_dir/pll/db_nldm"
+/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/io_std/db_nldm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/sram_Ip/db_nldm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/pll/db_nldm
+set ndm_types "$lib_dir/stdcell_hvt/ndm $lib_dir/stdcell_hvt/ndm $lib_dir/sram_Ip/ndm $lib_dir/io_std/ndm  $lib_dir/pll/ndm"
+/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/ndm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/ndm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/sram_Ip/ndm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/io_std/ndm  /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/pll/ndm
+set lib_types_target "$lib_dir/stdcell_hvt/db_nldm"
+/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm
+# Get just the main standard cells, srams and IOs
+set sub_lib_type "saed32?vt_ saed32sram_ saed32io_wb_ saed32pll_"
+saed32?vt_ saed32sram_ saed32io_wb_ saed32pll_
+set sub_lib_type_target "saed32hvt_"
+saed32hvt_
+set lef_types [list $lib_dir/stdcell_hvt/lef  $lib_dir/stdcell_hvt/lef $lib_dir/stdcell_lvt/lef $lib_dir/sram_Ip/lef/ $lib_dir/io_std/lef $lib_dir/pll/lef ]
+/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/lef /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/lef /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/lef /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/sram_Ip/lef/ /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/io_std/lef /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/pll/lef
+set sub_lef_type "saed32nm_?vt_*.lef saed32_sram_*.lef saed32io_std_wb saed32_PLL.lef"
+saed32nm_?vt_*.lef saed32_sram_*.lef saed32io_std_wb saed32_PLL.lef
+set mwlib_types [list $lib_dir/stdcell_hvt/milkyway $lib_dir/stdcell_hvt/milkyway $lib_dir/stdcell_lvt/milkyway  $lib_dir/io_std/milkyway $lib_dir/sram_Ip/milkyway $lib_dir/pll/milkyway  ]
+/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/milkyway /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/milkyway /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/milkyway /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/io_std/milkyway /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/sram_Ip/milkyway /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/pll/milkyway
+set sub_mwlib_type "saed32nm_?vt_* SRAM32NM saed32io_wb_* SAED32_PLL_FR*"
+saed32nm_?vt_* SRAM32NM saed32io_wb_* SAED32_PLL_FR*
+#set topdir /u/$env(USER)/PSU_RTL2GDS
+set topdir [ lindex [ regexp -inline "(.*)\(syn\|pt\|apr\)" [pwd] ] 1 ]
+/u/vinays/ECE581-2024/lab2-Vinaysshetty/
+set FCL 0
+0
+set split_constraints 0
+0
+Warning: No designs to list. (UID-275)
+== ANALYZE autoread all files ==
+
+Starting ANALYZE autoread mode...
+Warning: Defining design library 'WORK' at directory '/u/vinays/ECE581-2024/lab2-Vinaysshetty/syn/work/WORK_autoread'. (AUTOREAD-107)
+Information: Adding '/u/vinays/ECE581-2024/lab2-Vinaysshetty/syn/rtl/fifo1_srama.sv'.  (AUTOREAD-100)
+Information: Scanning file { fifo1_srama.sv }. (AUTOREAD-303)
+Compiling source file /u/vinays/ECE581-2024/lab2-Vinaysshetty/syn/rtl/fifo1_srama.sv
+Presto compilation completed successfully.
+Autoread command completed successfully.
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/io_std/db_nldm/saed32io_wb_ss0p95v125c_2p25v.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/pll/db_nldm/saed32pll_ss0p95v125c_2p25v.db'
+Loading db file '/pkgs/synopsys/2020/design_compiler/syn/Q-2019.12-SP3/libraries/syn/dw_foundation.sldb'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ss0p95v125c.db'
+Loading db file '/pkgs/synopsys/2020/design_compiler/syn/Q-2019.12-SP3/libraries/syn/gtech.db'
+Loading db file '/pkgs/synopsys/2020/design_compiler/syn/Q-2019.12-SP3/libraries/syn/standard.sldb'
+  Loading link library 'saed32io_wb_ss0p95v125c_2p25v'
+  Loading link library 'saed32pll_ss0p95v125c_2p25v'
+  Loading link library 'saed32hvt_ss0p95v125c'
+  Loading link library 'gtech'
+Running PRESTO HDLC
+
+Inferred memory devices in process
+        in routine fifo1_srama line 19 in file
+                '/u/vinays/ECE581-2024/lab2-Vinaysshetty/syn/rtl/fifo1_srama.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|      wdata_reg      | Flip-flop |   8   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (fifo1_srama)
+Elaborated 1 design.
+Current design is now 'fifo1_srama'.
+Information: Building the design 'sync_r2w'. (HDL-193)
+
+Inferred memory devices in process
+        in routine sync_r2w line 145 in file
+                '/u/vinays/ECE581-2024/lab2-Vinaysshetty/syn/rtl/fifo1_srama.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|    wq2_rptr_reg     | Flip-flop |  11   |  Y  | N  | Y  | N  | N  | N  | N  |
+|    wq1_rptr_reg     | Flip-flop |  11   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (sync_r2w)
+Information: Building the design 'sync_w2r'. (HDL-193)
+
+Inferred memory devices in process
+        in routine sync_w2r line 156 in file
+                '/u/vinays/ECE581-2024/lab2-Vinaysshetty/syn/rtl/fifo1_srama.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|    rq2_wptr_reg     | Flip-flop |  11   |  Y  | N  | Y  | N  | N  | N  | N  |
+|    rq1_wptr_reg     | Flip-flop |  11   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (sync_w2r)
+Information: Building the design 'fifomem' instantiated from design 'fifo1_srama' with
+        the parameters "8,10". (HDL-193)
+Warning:  /u/vinays/ECE581-2024/lab2-Vinaysshetty/syn/rtl/fifo1_srama.sv:71: DEFAULT branch of CASE statement cannot be reached. (ELAB-311)
+Warning:  /u/vinays/ECE581-2024/lab2-Vinaysshetty/syn/rtl/fifo1_srama.sv:86: DEFAULT branch of CASE statement cannot be reached. (ELAB-311)
+
+Statistics for case statements in always block at line 69 in file
+        '/u/vinays/ECE581-2024/lab2-Vinaysshetty/syn/rtl/fifo1_srama.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            71            |    auto/auto     |
+===============================================
+
+Statistics for case statements in always block at line 84 in file
+        '/u/vinays/ECE581-2024/lab2-Vinaysshetty/syn/rtl/fifo1_srama.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            86            |    auto/auto     |
+===============================================
+Presto compilation completed successfully. (fifomem_DATASIZE8_ADDRSIZE10)
+Information: Building the design 'rptr_empty' instantiated from design 'fifo1_srama' with
+        the parameters "10". (HDL-193)
+
+Inferred memory devices in process
+        in routine rptr_empty_ADDRSIZE10 line 175 in file
+                '/u/vinays/ECE581-2024/lab2-Vinaysshetty/syn/rtl/fifo1_srama.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|      rbin_reg       | Flip-flop |  11   |  Y  | N  | Y  | N  | N  | N  | N  |
+|      rptr_reg       | Flip-flop |  11   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+        in routine rptr_empty_ADDRSIZE10 line 186 in file
+                '/u/vinays/ECE581-2024/lab2-Vinaysshetty/syn/rtl/fifo1_srama.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|     rempty_reg      | Flip-flop |   1   |  N  | N  | N  | Y  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (rptr_empty_ADDRSIZE10)
+Information: Building the design 'wptr_full' instantiated from design 'fifo1_srama' with
+        the parameters "10". (HDL-193)
+
+Inferred memory devices in process
+        in routine wptr_full_ADDRSIZE10 line 203 in file
+                '/u/vinays/ECE581-2024/lab2-Vinaysshetty/syn/rtl/fifo1_srama.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|      wbin_reg       | Flip-flop |  11   |  Y  | N  | Y  | N  | N  | N  | N  |
+|      wptr_reg       | Flip-flop |  11   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+        in routine wptr_full_ADDRSIZE10 line 218 in file
+                '/u/vinays/ECE581-2024/lab2-Vinaysshetty/syn/rtl/fifo1_srama.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|      wfull_reg      | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (wptr_full_ADDRSIZE10)
+Information: Building the design 'RAMLP2RW128x8'. (HDL-193)
+Warning: Cannot find the design 'RAMLP2RW128x8' in the library 'WORK'. (LBR-1)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+#####################################################
+proc insert_io { port side} {
+  set this_io io_${side}_${port}
+  if {  $side == "t"   } {
+   if { [get_attribute [get_ports $port ] direction ] == "in" } {
+    create_cell $this_io saed32io_wb_ss0p95v125c_2p25v/I1025_NS
+   } else {
+    create_cell $this_io saed32io_wb_ss0p95v125c_2p25v/D8I1025_NS
+   }
+  }
+  if { $side == "b"  } {
+   if { [get_attribute [get_ports $port ] direction ] == "in" } {
+    create_cell $this_io saed32io_wb_ss0p95v125c_2p25v/I1025_NS
+   } else {
+    create_cell $this_io saed32io_wb_ss0p95v125c_2p25v/D8I1025_NS
+   }
+  }
+  if {  $side == "r"  } {
+   if { [get_attribute [get_ports $port ] direction ] == "in" } {
+    create_cell $this_io saed32io_wb_ss0p95v125c_2p25v/I1025_NS
+   } else {
+    create_cell $this_io saed32io_wb_ss0p95v125c_2p25v/D8I1025_NS
+   }
+  }
+  if { $side == "l"  } {
+   if { [get_attribute [get_ports $port ] direction ] == "in" } {
+    create_cell $this_io saed32io_wb_ss0p95v125c_2p25v/I1025_NS
+   } else {
+    create_cell $this_io saed32io_wb_ss0p95v125c_2p25v/D8I1025_NS
+   }
+  }
+  set pins [ get_pins -of_obj [ get_net $port ] ]
+  foreach_in i $pins { disconnect_net [get_net $port ] $i }
+  set port_net [get_nets -quiet $port ]
+
+  # If only a port is created, the related net is not created and connected to the port.  Do that here.
+  if { [sizeof_collection $port_net ] == 0 } { 
+      create_net $port 
+      connect_net $port [get_ports $port ]
+  }
+
+  connect_net [get_net $port ]  $this_io/PADIO
+  create_net ${this_io}_net
+  foreach_in i $pins { connect_net ${this_io}_net $i }
+  #DIN is input to IO_PAD
+  #DOUT is output of IO_PAD
+  #EN is the IO_PAD enable to output
+  if { [get_attribute [get_ports $port ] direction ] == "in" } {
+     #connect_net [get_nets  *Logic0* ] ${this_io}/EN 
+     connect_net [get_nets  *Logic1* ] ${this_io}/R_EN 
+     connect_net ${this_io}_net ${this_io}/DOUT
+  } else {
+     connect_net [get_nets  *Logic1* ] $this_io/EN 
+     #connect_net [get_nets  *Logic0* ] $this_io/R_EN 
+     connect_net ${this_io}_net $this_io/DIN
+  }
+}
+####################################################
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating cell 'io_l_rdata[7]' in design 'fifo1_srama'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Disconnecting net 'rdata[7]' from pin 'fifomem/rdata[7]'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'rdata[7]' to pin 'io_l_rdata[7]/PADIO'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating net 'io_l_rdata[7]_net' in design 'fifo1_srama'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_l_rdata[7]_net' to pin 'fifomem/rdata[7]'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net '*Logic1*' to pin 'io_l_rdata[7]/EN'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_l_rdata[7]_net' to pin 'io_l_rdata[7]/DIN'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating cell 'io_l_rdata[6]' in design 'fifo1_srama'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Disconnecting net 'rdata[6]' from pin 'fifomem/rdata[6]'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'rdata[6]' to pin 'io_l_rdata[6]/PADIO'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating net 'io_l_rdata[6]_net' in design 'fifo1_srama'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_l_rdata[6]_net' to pin 'fifomem/rdata[6]'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net '*Logic1*' to pin 'io_l_rdata[6]/EN'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_l_rdata[6]_net' to pin 'io_l_rdata[6]/DIN'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating cell 'io_l_rdata[5]' in design 'fifo1_srama'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Disconnecting net 'rdata[5]' from pin 'fifomem/rdata[5]'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'rdata[5]' to pin 'io_l_rdata[5]/PADIO'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating net 'io_l_rdata[5]_net' in design 'fifo1_srama'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_l_rdata[5]_net' to pin 'fifomem/rdata[5]'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net '*Logic1*' to pin 'io_l_rdata[5]/EN'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_l_rdata[5]_net' to pin 'io_l_rdata[5]/DIN'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating cell 'io_l_rdata[4]' in design 'fifo1_srama'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Disconnecting net 'rdata[4]' from pin 'fifomem/rdata[4]'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'rdata[4]' to pin 'io_l_rdata[4]/PADIO'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating net 'io_l_rdata[4]_net' in design 'fifo1_srama'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_l_rdata[4]_net' to pin 'fifomem/rdata[4]'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net '*Logic1*' to pin 'io_l_rdata[4]/EN'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_l_rdata[4]_net' to pin 'io_l_rdata[4]/DIN'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating cell 'io_l_rdata[3]' in design 'fifo1_srama'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Disconnecting net 'rdata[3]' from pin 'fifomem/rdata[3]'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'rdata[3]' to pin 'io_l_rdata[3]/PADIO'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating net 'io_l_rdata[3]_net' in design 'fifo1_srama'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_l_rdata[3]_net' to pin 'fifomem/rdata[3]'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net '*Logic1*' to pin 'io_l_rdata[3]/EN'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_l_rdata[3]_net' to pin 'io_l_rdata[3]/DIN'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating cell 'io_l_rdata[2]' in design 'fifo1_srama'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Disconnecting net 'rdata[2]' from pin 'fifomem/rdata[2]'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'rdata[2]' to pin 'io_l_rdata[2]/PADIO'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating net 'io_l_rdata[2]_net' in design 'fifo1_srama'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_l_rdata[2]_net' to pin 'fifomem/rdata[2]'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net '*Logic1*' to pin 'io_l_rdata[2]/EN'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_l_rdata[2]_net' to pin 'io_l_rdata[2]/DIN'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating cell 'io_l_rdata[1]' in design 'fifo1_srama'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Disconnecting net 'rdata[1]' from pin 'fifomem/rdata[1]'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'rdata[1]' to pin 'io_l_rdata[1]/PADIO'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating net 'io_l_rdata[1]_net' in design 'fifo1_srama'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_l_rdata[1]_net' to pin 'fifomem/rdata[1]'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net '*Logic1*' to pin 'io_l_rdata[1]/EN'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_l_rdata[1]_net' to pin 'io_l_rdata[1]/DIN'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating cell 'io_l_rdata[0]' in design 'fifo1_srama'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Disconnecting net 'rdata[0]' from pin 'fifomem/rdata[0]'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'rdata[0]' to pin 'io_l_rdata[0]/PADIO'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating net 'io_l_rdata[0]_net' in design 'fifo1_srama'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_l_rdata[0]_net' to pin 'fifomem/rdata[0]'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net '*Logic1*' to pin 'io_l_rdata[0]/EN'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_l_rdata[0]_net' to pin 'io_l_rdata[0]/DIN'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating cell 'io_r_wdata_in[7]' in design 'fifo1_srama'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Disconnecting net 'wdata_in[7]' from pin 'wdata_reg[7]/next_state'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'wdata_in[7]' to pin 'io_r_wdata_in[7]/PADIO'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating net 'io_r_wdata_in[7]_net' in design 'fifo1_srama'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_r_wdata_in[7]_net' to pin 'wdata_reg[7]/next_state'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net '*Logic1*' to pin 'io_r_wdata_in[7]/R_EN'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_r_wdata_in[7]_net' to pin 'io_r_wdata_in[7]/DOUT'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating cell 'io_r_wdata_in[6]' in design 'fifo1_srama'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Disconnecting net 'wdata_in[6]' from pin 'wdata_reg[6]/next_state'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'wdata_in[6]' to pin 'io_r_wdata_in[6]/PADIO'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating net 'io_r_wdata_in[6]_net' in design 'fifo1_srama'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_r_wdata_in[6]_net' to pin 'wdata_reg[6]/next_state'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net '*Logic1*' to pin 'io_r_wdata_in[6]/R_EN'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_r_wdata_in[6]_net' to pin 'io_r_wdata_in[6]/DOUT'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating cell 'io_r_wdata_in[5]' in design 'fifo1_srama'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Disconnecting net 'wdata_in[5]' from pin 'wdata_reg[5]/next_state'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'wdata_in[5]' to pin 'io_r_wdata_in[5]/PADIO'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating net 'io_r_wdata_in[5]_net' in design 'fifo1_srama'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_r_wdata_in[5]_net' to pin 'wdata_reg[5]/next_state'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net '*Logic1*' to pin 'io_r_wdata_in[5]/R_EN'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_r_wdata_in[5]_net' to pin 'io_r_wdata_in[5]/DOUT'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating cell 'io_r_wdata_in[4]' in design 'fifo1_srama'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Disconnecting net 'wdata_in[4]' from pin 'wdata_reg[4]/next_state'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'wdata_in[4]' to pin 'io_r_wdata_in[4]/PADIO'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating net 'io_r_wdata_in[4]_net' in design 'fifo1_srama'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_r_wdata_in[4]_net' to pin 'wdata_reg[4]/next_state'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net '*Logic1*' to pin 'io_r_wdata_in[4]/R_EN'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_r_wdata_in[4]_net' to pin 'io_r_wdata_in[4]/DOUT'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating cell 'io_r_wdata_in[3]' in design 'fifo1_srama'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Disconnecting net 'wdata_in[3]' from pin 'wdata_reg[3]/next_state'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'wdata_in[3]' to pin 'io_r_wdata_in[3]/PADIO'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating net 'io_r_wdata_in[3]_net' in design 'fifo1_srama'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_r_wdata_in[3]_net' to pin 'wdata_reg[3]/next_state'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net '*Logic1*' to pin 'io_r_wdata_in[3]/R_EN'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_r_wdata_in[3]_net' to pin 'io_r_wdata_in[3]/DOUT'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating cell 'io_r_wdata_in[2]' in design 'fifo1_srama'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Disconnecting net 'wdata_in[2]' from pin 'wdata_reg[2]/next_state'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'wdata_in[2]' to pin 'io_r_wdata_in[2]/PADIO'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating net 'io_r_wdata_in[2]_net' in design 'fifo1_srama'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_r_wdata_in[2]_net' to pin 'wdata_reg[2]/next_state'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net '*Logic1*' to pin 'io_r_wdata_in[2]/R_EN'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_r_wdata_in[2]_net' to pin 'io_r_wdata_in[2]/DOUT'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating cell 'io_r_wdata_in[1]' in design 'fifo1_srama'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Disconnecting net 'wdata_in[1]' from pin 'wdata_reg[1]/next_state'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'wdata_in[1]' to pin 'io_r_wdata_in[1]/PADIO'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating net 'io_r_wdata_in[1]_net' in design 'fifo1_srama'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_r_wdata_in[1]_net' to pin 'wdata_reg[1]/next_state'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net '*Logic1*' to pin 'io_r_wdata_in[1]/R_EN'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_r_wdata_in[1]_net' to pin 'io_r_wdata_in[1]/DOUT'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating cell 'io_r_wdata_in[0]' in design 'fifo1_srama'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Disconnecting net 'wdata_in[0]' from pin 'wdata_reg[0]/next_state'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'wdata_in[0]' to pin 'io_r_wdata_in[0]/PADIO'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating net 'io_r_wdata_in[0]_net' in design 'fifo1_srama'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_r_wdata_in[0]_net' to pin 'wdata_reg[0]/next_state'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net '*Logic1*' to pin 'io_r_wdata_in[0]/R_EN'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_r_wdata_in[0]_net' to pin 'io_r_wdata_in[0]/DOUT'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating cell 'io_t_rempty' in design 'fifo1_srama'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Disconnecting net 'rempty' from pin 'rptr_empty/rempty'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'rempty' to pin 'io_t_rempty/PADIO'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating net 'io_t_rempty_net' in design 'fifo1_srama'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_t_rempty_net' to pin 'rptr_empty/rempty'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net '*Logic1*' to pin 'io_t_rempty/EN'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_t_rempty_net' to pin 'io_t_rempty/DIN'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating cell 'io_t_wfull' in design 'fifo1_srama'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Disconnecting net 'wfull' from pin 'fifomem/wfull'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Disconnecting net 'wfull' from pin 'wptr_full/wfull'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'wfull' to pin 'io_t_wfull/PADIO'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating net 'io_t_wfull_net' in design 'fifo1_srama'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_t_wfull_net' to pin 'fifomem/wfull'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_t_wfull_net' to pin 'wptr_full/wfull'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net '*Logic1*' to pin 'io_t_wfull/EN'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_t_wfull_net' to pin 'io_t_wfull/DIN'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating cell 'io_b_rrst_n' in design 'fifo1_srama'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Disconnecting net 'rrst_n' from pin 'rptr_empty/rrst_n'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Disconnecting net 'rrst_n' from pin 'sync_w2r/rrst_n'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'rrst_n' to pin 'io_b_rrst_n/PADIO'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating net 'io_b_rrst_n_net' in design 'fifo1_srama'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_b_rrst_n_net' to pin 'rptr_empty/rrst_n'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_b_rrst_n_net' to pin 'sync_w2r/rrst_n'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net '*Logic1*' to pin 'io_b_rrst_n/R_EN'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_b_rrst_n_net' to pin 'io_b_rrst_n/DOUT'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating cell 'io_b_rclk' in design 'fifo1_srama'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Disconnecting net 'rclk' from pin 'rptr_empty/rclk'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Disconnecting net 'rclk' from pin 'fifomem/rclk'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Disconnecting net 'rclk' from pin 'sync_w2r/rclk'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'rclk' to pin 'io_b_rclk/PADIO'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating net 'io_b_rclk_net' in design 'fifo1_srama'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_b_rclk_net' to pin 'rptr_empty/rclk'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_b_rclk_net' to pin 'fifomem/rclk'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_b_rclk_net' to pin 'sync_w2r/rclk'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net '*Logic1*' to pin 'io_b_rclk/R_EN'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_b_rclk_net' to pin 'io_b_rclk/DOUT'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating cell 'io_b_rinc' in design 'fifo1_srama'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Disconnecting net 'rinc' from pin 'rptr_empty/rinc'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'rinc' to pin 'io_b_rinc/PADIO'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating net 'io_b_rinc_net' in design 'fifo1_srama'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_b_rinc_net' to pin 'rptr_empty/rinc'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net '*Logic1*' to pin 'io_b_rinc/R_EN'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_b_rinc_net' to pin 'io_b_rinc/DOUT'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating cell 'io_b_wrst_n' in design 'fifo1_srama'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Disconnecting net 'wrst_n' from pin 'wptr_full/wrst_n'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Disconnecting net 'wrst_n' from pin 'sync_r2w/wrst_n'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Disconnecting net 'wrst_n' from pin 'I_0/A'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'wrst_n' to pin 'io_b_wrst_n/PADIO'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating net 'io_b_wrst_n_net' in design 'fifo1_srama'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_b_wrst_n_net' to pin 'wptr_full/wrst_n'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_b_wrst_n_net' to pin 'sync_r2w/wrst_n'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_b_wrst_n_net' to pin 'I_0/A'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net '*Logic1*' to pin 'io_b_wrst_n/R_EN'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_b_wrst_n_net' to pin 'io_b_wrst_n/DOUT'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating cell 'io_b_wclk2x' in design 'fifo1_srama'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Disconnecting net 'wclk2x' from pin 'wdata_reg[0]/clocked_on'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Disconnecting net 'wclk2x' from pin 'wdata_reg[1]/clocked_on'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Disconnecting net 'wclk2x' from pin 'wdata_reg[2]/clocked_on'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Disconnecting net 'wclk2x' from pin 'wdata_reg[3]/clocked_on'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Disconnecting net 'wclk2x' from pin 'wdata_reg[4]/clocked_on'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Disconnecting net 'wclk2x' from pin 'wdata_reg[5]/clocked_on'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Disconnecting net 'wclk2x' from pin 'wdata_reg[6]/clocked_on'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Disconnecting net 'wclk2x' from pin 'wdata_reg[7]/clocked_on'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'wclk2x' to pin 'io_b_wclk2x/PADIO'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating net 'io_b_wclk2x_net' in design 'fifo1_srama'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_b_wclk2x_net' to pin 'wdata_reg[0]/clocked_on'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_b_wclk2x_net' to pin 'wdata_reg[1]/clocked_on'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_b_wclk2x_net' to pin 'wdata_reg[2]/clocked_on'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_b_wclk2x_net' to pin 'wdata_reg[3]/clocked_on'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_b_wclk2x_net' to pin 'wdata_reg[4]/clocked_on'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_b_wclk2x_net' to pin 'wdata_reg[5]/clocked_on'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_b_wclk2x_net' to pin 'wdata_reg[6]/clocked_on'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_b_wclk2x_net' to pin 'wdata_reg[7]/clocked_on'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net '*Logic1*' to pin 'io_b_wclk2x/R_EN'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_b_wclk2x_net' to pin 'io_b_wclk2x/DOUT'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating cell 'io_b_wclk' in design 'fifo1_srama'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Disconnecting net 'wclk' from pin 'wptr_full/wclk'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Disconnecting net 'wclk' from pin 'fifomem/wclk'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Disconnecting net 'wclk' from pin 'sync_r2w/wclk'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'wclk' to pin 'io_b_wclk/PADIO'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating net 'io_b_wclk_net' in design 'fifo1_srama'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_b_wclk_net' to pin 'wptr_full/wclk'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_b_wclk_net' to pin 'fifomem/wclk'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_b_wclk_net' to pin 'sync_r2w/wclk'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net '*Logic1*' to pin 'io_b_wclk/R_EN'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_b_wclk_net' to pin 'io_b_wclk/DOUT'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating cell 'io_b_winc' in design 'fifo1_srama'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Disconnecting net 'winc' from pin 'wptr_full/winc'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Disconnecting net 'winc' from pin 'fifomem/wclken'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'winc' to pin 'io_b_winc/PADIO'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating net 'io_b_winc_net' in design 'fifo1_srama'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_b_winc_net' to pin 'wptr_full/winc'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_b_winc_net' to pin 'fifomem/wclken'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net '*Logic1*' to pin 'io_b_winc/R_EN'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_b_winc_net' to pin 'io_b_winc/DOUT'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: The specified replacement character (_) is conflicting with the specified allowed or restricted character.   (UCN-4)
+if { [info exists synopsys_program_name ] && ($synopsys_program_name == "icc2_shell") } {
+    puts " Creating ICC2 MCMM "
+    create_mode func
+    create_corner slow
+    create_scenario -mode func -corner slow -name func_slow
+    current_scenario func_slow
+    set_operating_conditions ss0p75v125c
+    read_parasitic_tech -tlup $tlu_dir/saed32nm_1p9m_Cmax.tluplus -layermap $tlu_dir/saed32nm_tf_itf_tluplus.map -name Cmax
+    read_parasitic_tech -tlup $tlu_dir/saed32nm_1p9m_Cmin.tluplus -layermap $tlu_dir/saed32nm_tf_itf_tluplus.map -name Cmin
+    set_parasitic_parameters -early_spec Cmax -early_temperature 125
+    set_parasitic_parameters -late_spec Cmax -late_temperature 125
+    #set_parasitic_parameters -early_spec 1p9m_Cmax -early_temperature 125 -corner default
+    #set_parasitic_parameters -late_spec 1p9m_Cmax -late_temperature 125 -corner default
+
+    #set_scenario_status  default -active false
+    set_scenario_status func_slow -active true -hold true -setup true
+}
+set wclk_period 2.0
+2.0
+set rclk_period 2.0
+2.0
+set wclk2x_period [ expr $wclk_period / 2 ]
+1.0
+create_clock -name "wclk" -period $wclk_period  wclk
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+1
+create_clock -name "rclk" -period $rclk_period rclk
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+1
+#Add the new clock.  Make it 1/2 the wclk period since it is called wclk2x
+create_clock -name "wclk2x" -period $wclk2x_period wclk2x
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+1
+set_false_path -from [get_clocks wclk ] -to [get_clocks rclk]
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+1
+set_false_path -from [get_clocks rclk ] -to [ get_clocks wclk]
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+1
+# Add input/output delays in relation to related clocks
+# Can tell the related clock by doing report_timing -group INPUTS  or -group OUTPUTS after using group_path
+# External delay should be some percentage of clock period.
+# Tune/relax if violating; most concerned about internal paths.
+# I like set_driving_cell to a std cell from the library.  set_drive works to.
+set_clock_transition 0.33 {rclk wclk}
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+1
+set_clock_latency 0.05 {rclk wclk}
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+1
+set_clock_uncertainty 0.2 {rclk wclk}
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+1
+# set_load
+#set_input_delay 0.00001 -max -clock rclk -add_delay {winc}
+#set_input_delay 0.00001 -max -clock wclk -add_delay {winc}
+set_input_delay 0.00001 -max -clock rclk -add_delay [all_inputs]
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+1
+set_input_delay 0.00001 -max -clock wclk -add_delay [all_inputs]
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+1
+set_input_delay 0.00001 -min -clock rclk -add_delay [all_inputs]
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+1
+set_input_delay 0.00001 -min -clock wclk -add_delay [all_inputs]
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+1
+set_output_delay 0.00001 -min -clock wclk -add_delay [all_outputs]
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+1
+set_output_delay 0.00001 -min -clock rclk -add_delay [all_outputs]
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+1
+set_output_delay 0.00001 -max -clock wclk -add_delay [all_outputs]
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+1
+set_output_delay 0.00001 -max -clock rclk -add_delay [all_outputs]
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+1
+set_drive 0.00001 [all_inputs]
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+1
+set_load 0.000001 [all_outputs]
+1
+#group_path -name INTERNAL -from [all_clocks] -to [all_clocks ]
+group_path -name INPUTS -from [ get_ports -filter "direction==in&&full_name!~*clk*" ]
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+1
+group_path -name OUTPUTS -to [ get_ports -filter "direction==out" ]
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+1
+Current design is 'fifo1_srama'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Information: Performing power optimization. (PWR-850)
+Alib files are up-to-date.
+Information: Choosing a test methodology will restrict the optimization of sequential cells. (UIO-12)
+Information: Evaluating DesignWare library utilization. (UISN-27)
+
+============================================================================
+| DesignWare Building Block Library  |         Version         | Available |
+============================================================================
+| Basic DW Building Blocks           | Q-2019.12-DWBB_201912.3 |     *     |
+| Licensed DW Building Blocks        | Q-2019.12-DWBB_201912.3 |     *     |
+============================================================================
+
+Information: Sequential output inversion is enabled.  SVF file must be used for formal verification. (OPT-1208)
+
+Information: There are 71 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
+
+  Simplifying Design 'fifo1_srama'
+
+Information: Building the design 'RAMLP2RW128x8'. (HDL-193)
+Warning: Cannot find the design 'RAMLP2RW128x8' in the library 'WORK'. (LBR-1)
+Warning: Unable to resolve reference 'RAMLP2RW128x8' in 'fifomem_DATASIZE8_ADDRSIZE10'. (LINK-5)
+Loaded alib file './alib-52/saed32hvt_ss0p95v125c.db.alib'
+Information: State dependent leakage is now switched from on to off.
+
+  Beginning Pass 1 Mapping
+  ------------------------
+  Processing 'fifomem_DATASIZE8_ADDRSIZE10'
+  Processing 'fifo1_srama'
+  Processing 'wptr_full_ADDRSIZE10'
+Information: Added key list 'DesignWare' to design 'wptr_full_ADDRSIZE10'. (DDB-72)
+Information: In design 'wptr_full_ADDRSIZE10', the register 'wptr_reg_10_' is removed because it is merged to 'wbin_reg_10_'. (OPT-1215)
+ Implement Synthetic for 'wptr_full_ADDRSIZE10'.
+  Processing 'rptr_empty_ADDRSIZE10'
+Information: Added key list 'DesignWare' to design 'rptr_empty_ADDRSIZE10'. (DDB-72)
+Information: In design 'rptr_empty_ADDRSIZE10', the register 'rptr_reg_10_' is removed because it is merged to 'rbin_reg_10_'. (OPT-1215)
+ Implement Synthetic for 'rptr_empty_ADDRSIZE10'.
+  Processing 'sync_w2r'
+  Processing 'sync_r2w'
+Information: Building the design 'RAMLP2RW128x8'. (HDL-193)
+Warning: Cannot find the design 'RAMLP2RW128x8' in the library 'WORK'. (LBR-1)
+Warning: Unable to resolve reference 'RAMLP2RW128x8' in 'fifomem_DATASIZE8_ADDRSIZE10'. (LINK-5)
+
+  Updating timing information
+Information: Updating design information... (UID-85)
+Warning: Clock port 'wclk' is assigned input delay relative to clock 'rclk'. (TIM-111)
+Warning: Clock port 'wclk' is assigned input delay relative to clock 'rclk'. (TIM-111)
+Warning: Clock port 'rclk' is assigned input delay relative to clock 'wclk'. (TIM-111)
+Warning: Clock port 'rclk' is assigned input delay relative to clock 'wclk'. (TIM-111)
+Warning: Clock port 'wclk2x' is assigned input delay relative to clock 'rclk'. (TIM-111)
+Warning: Clock port 'wclk2x' is assigned input delay relative to clock 'rclk'. (TIM-111)
+Warning: Clock port 'wclk2x' is assigned input delay relative to clock 'wclk'. (TIM-111)
+Warning: Clock port 'wclk2x' is assigned input delay relative to clock 'wclk'. (TIM-111)
+Information: The library cell 'PMT3_HVT' in the library 'saed32hvt_ss0p95v125c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'PMT2_HVT' in the library 'saed32hvt_ss0p95v125c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'PMT1_HVT' in the library 'saed32hvt_ss0p95v125c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'NMT3_HVT' in the library 'saed32hvt_ss0p95v125c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'NMT2_HVT' in the library 'saed32hvt_ss0p95v125c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'NMT1_HVT' in the library 'saed32hvt_ss0p95v125c' is not characterized for internal power. (PWR-536)
+Information: The target library(s) contains cell(s), other than black boxes, that are not characterized for internal power. (PWR-24)
+Information: Automatic shift-register identification is enabled for scan. Not all registers will be scan-replaced. (OPT-467)
+Warning: Clock port 'wclk' is assigned input delay relative to clock 'rclk'. (TIM-111)
+Warning: Clock port 'wclk' is assigned input delay relative to clock 'rclk'. (TIM-111)
+Warning: Clock port 'rclk' is assigned input delay relative to clock 'wclk'. (TIM-111)
+Warning: Clock port 'rclk' is assigned input delay relative to clock 'wclk'. (TIM-111)
+Warning: Clock port 'wclk2x' is assigned input delay relative to clock 'rclk'. (TIM-111)
+Warning: Clock port 'wclk2x' is assigned input delay relative to clock 'rclk'. (TIM-111)
+Warning: Clock port 'wclk2x' is assigned input delay relative to clock 'wclk'. (TIM-111)
+Warning: Clock port 'wclk2x' is assigned input delay relative to clock 'wclk'. (TIM-111)
+Information: Complementing port 'rempty' in design 'rptr_empty_ADDRSIZE10'.
+         The new name of the port is 'rempty_BAR'. (OPT-319)
+Information: Complementing port 'wfull' in design 'wptr_full_ADDRSIZE10'.
+         The new name of the port is 'wfull_BAR'. (OPT-319)
+
+Threshold voltage group cell usage:
+>> saed32cell_hvt 91.80%, saed32cell_svt 8.20%
+
+  Beginning Mapping Optimizations  (Ultra High effort)
+  -------------------------------
+  Mapping Optimization (Phase 1)
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:39  301329.9      0.06       0.1       6.4                           1067608704.0000
+    0:00:39  301322.8      0.06       0.1       6.4                           1067470528.0000
+
+Threshold voltage group cell usage:
+>> saed32cell_hvt 92.28%, saed32cell_svt 7.72%
+
+  Beginning Constant Register Removal
+  -----------------------------------
+
+Threshold voltage group cell usage:
+>> saed32cell_hvt 92.28%, saed32cell_svt 7.72%
+
+  Beginning Global Optimizations
+  ------------------------------
+  Numerical Synthesis (Phase 1)
+  Numerical Synthesis (Phase 2)
+  Global Optimization (Phase 1)
+  Global Optimization (Phase 2)
+  Global Optimization (Phase 3)
+  Global Optimization (Phase 4)
+  Global Optimization (Phase 5)
+  Global Optimization (Phase 6)
+  Global Optimization (Phase 7)
+  Global Optimization (Phase 8)
+  Global Optimization (Phase 9)
+  Global Optimization (Phase 10)
+  Global Optimization (Phase 11)
+  Global Optimization (Phase 12)
+  Global Optimization (Phase 13)
+  Global Optimization (Phase 14)
+  Global Optimization (Phase 15)
+  Global Optimization (Phase 16)
+  Global Optimization (Phase 17)
+  Global Optimization (Phase 18)
+  Global Optimization (Phase 19)
+  Global Optimization (Phase 20)
+  Global Optimization (Phase 21)
+  Global Optimization (Phase 22)
+  Global Optimization (Phase 23)
+  Global Optimization (Phase 24)
+  Global Optimization (Phase 25)
+  Global Optimization (Phase 26)
+  Global Optimization (Phase 27)
+  Global Optimization (Phase 28)
+  Global Optimization (Phase 29)
+  Global Optimization (Phase 30)
+Warning: Clock port 'wclk' is assigned input delay relative to clock 'rclk'. (TIM-111)
+Warning: Clock port 'wclk' is assigned input delay relative to clock 'rclk'. (TIM-111)
+Warning: Clock port 'rclk' is assigned input delay relative to clock 'wclk'. (TIM-111)
+Warning: Clock port 'rclk' is assigned input delay relative to clock 'wclk'. (TIM-111)
+Warning: Clock port 'wclk2x' is assigned input delay relative to clock 'rclk'. (TIM-111)
+Warning: Clock port 'wclk2x' is assigned input delay relative to clock 'rclk'. (TIM-111)
+Warning: Clock port 'wclk2x' is assigned input delay relative to clock 'wclk'. (TIM-111)
+Warning: Clock port 'wclk2x' is assigned input delay relative to clock 'wclk'. (TIM-111)
+
+Threshold voltage group cell usage:
+>> saed32cell_hvt 92.04%, saed32cell_svt 7.96%
+
+  Beginning Isolate Ports
+  -----------------------
+
+Threshold voltage group cell usage:
+>> saed32cell_hvt 92.04%, saed32cell_svt 7.96%
+
+  Beginning Delay Optimization
+  ----------------------------
+    0:00:39  301273.5      0.11       0.3       4.0                           1061920768.0000
+    0:00:40  301296.6      0.02       0.0       4.0                           1062586304.0000
+    0:00:40  301296.6      0.02       0.0       4.0                           1062586304.0000
+    0:00:40  301278.9      0.02       0.0       4.0                           1062229376.0000
+
+Threshold voltage group cell usage:
+>> saed32cell_hvt 92.06%, saed32cell_svt 7.94%
+    0:00:40  301278.9      0.02       0.0       4.0                           1062229376.0000
+    0:00:40  301278.9      0.02       0.0       4.0                           1062229376.0000
+
+  Beginning WLM Backend Optimization
+  --------------------------------------
+    0:00:40  301274.0      0.02       0.0       4.0                           1061894016.0000
+    0:00:40  301274.0      0.02       0.0       4.0                           1061894016.0000
+    0:00:40  301274.0      0.02       0.0       4.0                           1061894016.0000
+    0:00:40  301273.5      0.02       0.0       4.0                           1061604096.0000
+    0:00:40  301273.5      0.02       0.0       4.0                           1061604096.0000
+    0:00:40  301273.5      0.02       0.0       4.0                           1061604096.0000
+    0:00:40  301273.5      0.02       0.0       4.0                           1061604096.0000
+    0:00:40  301273.5      0.02       0.0       4.0                           1061604096.0000
+    0:00:40  301273.5      0.02       0.0       4.0                           1061604096.0000
+    0:00:40  301273.5      0.02       0.0       4.0                           1061604096.0000
+    0:00:40  301273.5      0.02       0.0       4.0                           1061604096.0000
+    0:00:40  301273.5      0.02       0.0       4.0                           1061604096.0000
+    0:00:40  301273.5      0.02       0.0       4.0                           1061604096.0000
+    0:00:40  301273.5      0.02       0.0       4.0                           1061604096.0000
+    0:00:40  301273.5      0.02       0.0       4.0                           1061604096.0000
+    0:00:40  301273.5      0.02       0.0       4.0                           1061604096.0000
+    0:00:40  301273.5      0.02       0.0       4.0                           1061604096.0000
+    0:00:40  301273.5      0.02       0.0       4.0                           1061604096.0000
+    0:00:40  301273.5      0.02       0.0       4.0                           1061604096.0000
+    0:00:40  301273.5      0.02       0.0       4.0                           1061604096.0000
+    0:00:40  301273.5      0.02       0.0       4.0                           1061604096.0000
+    0:00:40  301273.5      0.02       0.0       4.0                           1061604096.0000
+
+
+  Beginning Design Rule Fixing  (max_transition)
+  ----------------------------
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:40  301273.5      0.02       0.0       4.0                           1061604096.0000
+  Global Optimization (Phase 31)
+  Global Optimization (Phase 32)
+  Global Optimization (Phase 33)
+    0:00:40  301274.5      0.01       0.0       4.0                           1061752128.0000
+    0:00:40  301274.5      0.01       0.0       4.0                           1061752128.0000
+
+Threshold voltage group cell usage:
+>> saed32cell_hvt 92.04%, saed32cell_svt 7.96%
+
+
+  Beginning Leakage Power Optimization  (max_leakage_power 0)
+  ------------------------------------
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:40  301274.5      0.01       0.0       4.0                           1061752128.0000
+  Global Optimization (Phase 34)
+  Global Optimization (Phase 35)
+  Global Optimization (Phase 36)
+  Global Optimization (Phase 37)
+  Global Optimization (Phase 38)
+  Global Optimization (Phase 39)
+  Global Optimization (Phase 40)
+  Global Optimization (Phase 41)
+  Global Optimization (Phase 42)
+  Global Optimization (Phase 43)
+  Global Optimization (Phase 44)
+  Global Optimization (Phase 45)
+  Global Optimization (Phase 46)
+    0:00:41  301262.8      0.01       0.0       4.0                           1061139904.0000
+    0:00:41  301279.4      0.01       0.0       4.0                           1061739712.0000
+    0:00:41  301279.4      0.01       0.0       4.0                           1061739712.0000
+    0:00:41  301278.9      0.01       0.0       4.0                           1061671744.0000
+    0:00:41  301278.9      0.01       0.0       4.0                           1061671744.0000
+    0:00:41  301278.9      0.01       0.0       4.0                           1061671744.0000
+    0:00:41  301278.9      0.01       0.0       4.0                           1061671744.0000
+    0:00:41  301278.9      0.01       0.0       4.0                           1061671744.0000
+    0:00:41  301278.9      0.01       0.0       4.0                           1061671744.0000
+    0:00:41  301278.9      0.01       0.0       4.0                           1061671744.0000
+    0:00:41  301278.9      0.01       0.0       4.0                           1061671744.0000
+    0:00:41  301278.9      0.01       0.0       4.0                           1061671744.0000
+    0:00:41  301278.9      0.01       0.0       4.0                           1061671744.0000
+    0:00:41  301278.9      0.01       0.0       4.0                           1061671744.0000
+    0:00:41  301278.9      0.01       0.0       4.0                           1061671744.0000
+    0:00:41  301278.9      0.01       0.0       4.0                           1061671744.0000
+    0:00:41  301278.9      0.01       0.0       4.0                           1061671744.0000
+    0:00:41  301278.9      0.01       0.0       4.0                           1061671744.0000
+    0:00:41  301278.9      0.01       0.0       4.0                           1061671744.0000
+    0:00:41  301278.9      0.01       0.0       4.0                           1061671744.0000
+    0:00:41  301278.9      0.01       0.0       4.0                           1061671744.0000
+    0:00:41  301278.9      0.01       0.0       4.0                           1061671744.0000
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:41  301278.9      0.01       0.0       4.0                           1061671744.0000
+    0:00:41  301275.0      0.01       0.0       4.0                           1061114880.0000
+    0:00:41  301273.8      0.01       0.0       4.0                           1061101120.0000
+    0:00:41  301273.8      0.01       0.0       4.0                           1061101120.0000
+    0:00:42  301273.8      0.01       0.0       4.0                           1061101120.0000
+    0:00:42  301273.8      0.01       0.0       4.0                           1060882496.0000
+    0:00:42  301274.3      0.01       0.0       4.0                           1060929280.0000
+    0:00:42  301274.3      0.01       0.0       4.0                           1060929280.0000
+    0:00:42  301274.3      0.01       0.0       4.0                           1060929280.0000
+    0:00:42  301274.3      0.01       0.0       4.0                           1060929280.0000
+    0:00:42  301274.3      0.01       0.0       4.0                           1060929280.0000
+    0:00:42  301273.0      0.01       0.0       4.0                           1060702528.0000
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/io_std/db_nldm/saed32io_wb_ss0p95v125c_2p25v.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/pll/db_nldm/saed32pll_ss0p95v125c_2p25v.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ss0p95v125c.db'
+
+
+Note: Symbol # after min delay cost means estimated hold TNS across all active scenarios 
+
+
+  Optimization Complete
+  ---------------------
+Information: Building the design 'RAMLP2RW128x8'. (HDL-193)
+Warning: Cannot find the design 'RAMLP2RW128x8' in the library 'WORK'. (LBR-1)
+Warning: Unable to resolve reference 'RAMLP2RW128x8' in 'fifomem_DATASIZE8_ADDRSIZE10'. (LINK-5)
+Information: State dependent leakage is now switched from off to on.
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
+Warning: Design has unannotated black box outputs. (PWR-428)
+Information: Building the design 'RAMLP2RW128x8'. (HDL-193)
+Warning: Cannot find the design 'RAMLP2RW128x8' in the library 'WORK'. (LBR-1)
+Warning: Unable to resolve reference 'RAMLP2RW128x8' in 'fifomem_DATASIZE8_ADDRSIZE10'. (LINK-5)
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Writing verilog file '/u/vinays/ECE581-2024/lab2-Vinaysshetty/syn/outputs/fifo1_srama.dc.vg'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Writing ddc file '../outputs/fifo1_srama.dc.ddc'.
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+1
+dc_shell> report_timing
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Information: Updating design information... (UID-85)
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : fifo1_srama
+Version: Q-2019.12-SP3
+Date   : Sun Jan 21 22:52:40 2024
+****************************************
+
+Operating Conditions: ss0p95v125c   Library: saed32hvt_ss0p95v125c
+Wire Load Model Mode: enclosed
+
+  Startpoint: rinc (input port clocked by rclk)
+  Endpoint: rptr_empty/rempty_reg
+            (rising edge-triggered flip-flop clocked by rclk)
+  Path Group: INPUTS
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  fifo1_srama        540000                saed32hvt_ss0p95v125c
+  rptr_empty_ADDRSIZE10
+                     8000                  saed32hvt_ss0p95v125c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock rclk (rise edge)                                  0.00       0.00
+  clock network delay (ideal)                             0.05       0.05
+  input external delay                                    0.00       0.05 r
+  rinc (in)                                               0.03       0.08 r
+  io_b_rinc/DOUT (I1025_NS)                               0.40       0.47 r
+  rptr_empty/rinc (rptr_empty_ADDRSIZE10)                 0.00       0.47 r
+  rptr_empty/U14/Y (NAND3X0_HVT)                          0.15       0.62 f
+  rptr_empty/U13/Y (OR2X1_HVT)                            0.12       0.74 f
+  rptr_empty/U4/Y (OR2X1_HVT)                             0.09       0.83 f
+  rptr_empty/U6/Y (OR2X1_HVT)                             0.10       0.93 f
+  rptr_empty/U7/Y (XNOR2X1_HVT)                           0.18       1.11 r
+  rptr_empty/U17/Y (MUX21X1_HVT)                          0.14       1.25 r
+  rptr_empty/U3/Y (XOR2X1_HVT)                            0.16       1.42 f
+  rptr_empty/U89/Y (NOR4X1_HVT)                           0.13       1.54 r
+  rptr_empty/U92/Y (NAND4X0_HVT)                          0.08       1.62 f
+  rptr_empty/U94/Y (NOR3X0_HVT)                           0.16       1.78 r
+  rptr_empty/rempty_reg/D (SDFFASX2_HVT)                  0.00       1.78 r
+  data arrival time                                                  1.78
+
+  clock rclk (rise edge)                                  2.00       2.00
+  clock network delay (ideal)                             0.05       2.05
+  clock uncertainty                                      -0.20       1.85
+  rptr_empty/rempty_reg/CLK (SDFFASX2_HVT)                0.00       1.85 r
+  library setup time                                     -0.05       1.80
+  data required time                                                 1.80
+  --------------------------------------------------------------------------
+  data required time                                                 1.80
+  data arrival time                                                 -1.78
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.02
+
+
+  Startpoint: rptr_empty/rempty_reg
+              (rising edge-triggered flip-flop clocked by rclk)
+  Endpoint: rempty (output port clocked by rclk)
+  Path Group: OUTPUTS
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  fifo1_srama        540000                saed32hvt_ss0p95v125c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock rclk (rise edge)                                  0.00       0.00
+  clock network delay (ideal)                             0.05       0.05
+  rptr_empty/rempty_reg/CLK (SDFFASX2_HVT)                0.00       0.05 r
+  rptr_empty/rempty_reg/QN (SDFFASX2_HVT)                 0.35       0.40 r
+  rptr_empty/rempty_BAR (rptr_empty_ADDRSIZE10)           0.00       0.40 r
+  U13/Y (INVX8_HVT)                                       0.07       0.46 f
+  io_t_rempty/PADIO (D8I1025_NS)                          1.39       1.86 f
+  rempty (out)                                            0.00       1.86 f
+  data arrival time                                                  1.86
+
+  clock rclk (rise edge)                                  2.00       2.00
+  clock network delay (ideal)                             0.05       2.05
+  clock uncertainty                                      -0.20       1.85
+  output external delay                                   0.00       1.85
+  data required time                                                 1.85
+  --------------------------------------------------------------------------
+  data required time                                                 1.85
+  data arrival time                                                 -1.86
+  --------------------------------------------------------------------------
+  slack (VIOLATED)                                                  -0.01
+
+
+  Startpoint: rptr_empty/rempty_reg
+              (rising edge-triggered flip-flop clocked by rclk)
+  Endpoint: rptr_empty/rempty_reg
+            (rising edge-triggered flip-flop clocked by rclk)
+  Path Group: rclk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  fifo1_srama        540000                saed32hvt_ss0p95v125c
+  rptr_empty_ADDRSIZE10
+                     8000                  saed32hvt_ss0p95v125c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock rclk (rise edge)                                  0.00       0.00
+  clock network delay (ideal)                             0.05       0.05
+  rptr_empty/rempty_reg/CLK (SDFFASX2_HVT)                0.00       0.05 r
+  rptr_empty/rempty_reg/Q (SDFFASX2_HVT)                  0.37       0.42 f
+  rptr_empty/U5/Y (INVX0_HVT)                             0.03       0.45 r
+  rptr_empty/U32/Y (NBUFFX2_HVT)                          0.06       0.51 r
+  rptr_empty/U14/Y (NAND3X0_HVT)                          0.11       0.62 f
+  rptr_empty/U13/Y (OR2X1_HVT)                            0.12       0.74 f
+  rptr_empty/U4/Y (OR2X1_HVT)                             0.09       0.83 f
+  rptr_empty/U6/Y (OR2X1_HVT)                             0.10       0.93 f
+  rptr_empty/U7/Y (XNOR2X1_HVT)                           0.18       1.11 r
+  rptr_empty/U17/Y (MUX21X1_HVT)                          0.14       1.25 r
+  rptr_empty/U3/Y (XOR2X1_HVT)                            0.16       1.41 f
+  rptr_empty/U89/Y (NOR4X1_HVT)                           0.13       1.54 r
+  rptr_empty/U92/Y (NAND4X0_HVT)                          0.08       1.62 f
+  rptr_empty/U94/Y (NOR3X0_HVT)                           0.16       1.77 r
+  rptr_empty/rempty_reg/D (SDFFASX2_HVT)                  0.00       1.77 r
+  data arrival time                                                  1.77
+
+  clock rclk (rise edge)                                  2.00       2.00
+  clock network delay (ideal)                             0.05       2.05
+  clock uncertainty                                      -0.20       1.85
+  rptr_empty/rempty_reg/CLK (SDFFASX2_HVT)                0.00       1.85 r
+  library setup time                                     -0.05       1.80
+  data required time                                                 1.80
+  --------------------------------------------------------------------------
+  data required time                                                 1.80
+  data arrival time                                                 -1.77
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.03
+
+
+  Startpoint: wptr_full/wbin_reg_0_
+              (rising edge-triggered flip-flop clocked by wclk)
+  Endpoint: wptr_full/wfull_reg
+            (rising edge-triggered flip-flop clocked by wclk)
+  Path Group: wclk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  fifo1_srama        540000                saed32hvt_ss0p95v125c
+  wptr_full_ADDRSIZE10
+                     8000                  saed32hvt_ss0p95v125c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock wclk (rise edge)                                  0.00       0.00
+  clock network delay (ideal)                             0.05       0.05
+  wptr_full/wbin_reg_0_/CLK (SDFFARX1_HVT)                0.00       0.05 r
+  wptr_full/wbin_reg_0_/Q (SDFFARX1_HVT)                  0.34       0.39 f
+  wptr_full/U40/Y (NAND3X2_HVT)                           0.14       0.53 r
+  wptr_full/U5/Y (OR2X1_HVT)                              0.09       0.62 r
+  wptr_full/U36/Y (OR2X1_HVT)                             0.09       0.71 r
+  wptr_full/U41/Y (OR2X1_HVT)                             0.08       0.79 r
+  wptr_full/U17/Y (INVX0_HVT)                             0.03       0.82 f
+  wptr_full/U54/Y (AND2X1_HVT)                            0.08       0.90 f
+  wptr_full/U55/Y (AND2X1_HVT)                            0.08       0.98 f
+  wptr_full/U56/Y (NAND2X0_HVT)                           0.06       1.04 r
+  wptr_full/U4/Y (XOR2X1_HVT)                             0.18       1.22 f
+  wptr_full/U101/Y (NAND2X0_HVT)                          0.08       1.30 r
+  wptr_full/U29/Y (AO21X1_HVT)                            0.12       1.42 r
+  wptr_full/U27/Y (NAND2X0_HVT)                           0.05       1.47 f
+  wptr_full/U26/Y (NOR4X1_HVT)                            0.15       1.62 r
+  wptr_full/wfull_reg/D (SDFFARX2_HVT)                    0.00       1.62 r
+  data arrival time                                                  1.62
+
+  clock wclk (rise edge)                                  2.00       2.00
+  clock network delay (ideal)                             0.05       2.05
+  clock uncertainty                                      -0.20       1.85
+  wptr_full/wfull_reg/CLK (SDFFARX2_HVT)                  0.00       1.85 r
+  library setup time                                     -0.11       1.74
+  data required time                                                 1.74
+  --------------------------------------------------------------------------
+  data required time                                                 1.74
+  data arrival time                                                 -1.62
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.11
+
+
+1
+dc_shell> report_qor
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+ 
+****************************************
+Report : qor
+Design : fifo1_srama
+Version: Q-2019.12-SP3
+Date   : Sun Jan 21 22:52:45 2024
+****************************************
+
+
+  Timing Path Group 'INPUTS'
+  -----------------------------------
+  Levels of Logic:              11.00
+  Critical Path Length:          1.73
+  Critical Path Slack:           0.02
+  Critical Path Clk Period:      2.00
+  Total Negative Slack:          0.00
+  No. of Violating Paths:        0.00
+  Worst Hold Violation:          0.00
+  Total Hold Violation:          0.00
+  No. of Hold Violations:        0.00
+  -----------------------------------
+
+  Timing Path Group 'OUTPUTS'
+  -----------------------------------
+  Levels of Logic:               2.00
+  Critical Path Length:          1.81
+  Critical Path Slack:          -0.01
+  Critical Path Clk Period:      2.00
+  Total Negative Slack:         -0.01
+  No. of Violating Paths:        1.00
+  Worst Hold Violation:          0.00
+  Total Hold Violation:          0.00
+  No. of Hold Violations:        0.00
+  -----------------------------------
+
+  Timing Path Group 'rclk'
+  -----------------------------------
+  Levels of Logic:              12.00
+  Critical Path Length:          1.72
+  Critical Path Slack:           0.03
+  Critical Path Clk Period:      2.00
+  Total Negative Slack:          0.00
+  No. of Violating Paths:        0.00
+  Worst Hold Violation:          0.00
+  Total Hold Violation:          0.00
+  No. of Hold Violations:        0.00
+  -----------------------------------
+
+  Timing Path Group 'wclk'
+  -----------------------------------
+  Levels of Logic:              13.00
+  Critical Path Length:          1.57
+  Critical Path Slack:           0.11
+  Critical Path Clk Period:      2.00
+  Total Negative Slack:          0.00
+  No. of Violating Paths:        0.00
+  Worst Hold Violation:          0.00
+  Total Hold Violation:          0.00
+  No. of Hold Violations:        0.00
+  -----------------------------------
+
+
+  Cell Count
+  -----------------------------------
+  Hierarchical Cell Count:          5
+  Hierarchical Port Count:        160
+  Leaf Cell Count:                326
+  Buf/Inv Cell Count:              44
+  Buf Cell Count:                   1
+  Inv Cell Count:                  43
+  CT Buf/Inv Cell Count:            0
+  Combinational Cell Count:       230
+  Sequential Cell Count:           96
+  Macro Count:                      0
+  -----------------------------------
+
+
+  Area
+  -----------------------------------
+  Combinational Area:   180437.381828
+  Noncombinational Area:
+                        120835.625491
+  Buf/Inv Area:             59.215552
+  Total Buffer Area:             2.03
+  Total Inverter Area:          57.18
+  Macro/Black Box Area:      0.000000
+  Net Area:                835.958070
+  -----------------------------------
+  Cell Area:            301273.007319
+  Design Area:          302108.965389
+
+
+  Design Rules
+  -----------------------------------
+  Total Number of Nets:           434
+  Nets With Violations:            10
+  Max Trans Violations:            10
+  Max Cap Violations:               0
+  -----------------------------------
+
+
+  Hostname: mo.ece.pdx.edu
+
+  Compile CPU Statistics
+  -----------------------------------------
+  Resource Sharing:                    0.05
+  Logic Optimization:                  0.67
+  Mapping Optimization:                2.19
+  -----------------------------------------
+  Overall Compile Time:                9.90
+  Overall Compile Wall Clock Time:    10.61
+
+  --------------------------------------------------------------------
+
+  Design  WNS: 0.01  TNS: 0.01  Number of Violating Paths: 1
+
+
+  Design (Hold)  WNS: 0.00  TNS: 0.00  Number of Violating Paths: 0
+
+  --------------------------------------------------------------------
+
+
+1
+dc_shell> report_timing
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : fifo1_srama
+Version: Q-2019.12-SP3
+Date   : Sun Jan 21 22:53:20 2024
+****************************************
+
+Operating Conditions: ss0p95v125c   Library: saed32hvt_ss0p95v125c
+Wire Load Model Mode: enclosed
+
+  Startpoint: rinc (input port clocked by rclk)
+  Endpoint: rptr_empty/rempty_reg
+            (rising edge-triggered flip-flop clocked by rclk)
+  Path Group: INPUTS
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  fifo1_srama        540000                saed32hvt_ss0p95v125c
+  rptr_empty_ADDRSIZE10
+                     8000                  saed32hvt_ss0p95v125c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock rclk (rise edge)                                  0.00       0.00
+  clock network delay (ideal)                             0.05       0.05
+  input external delay                                    0.00       0.05 r
+  rinc (in)                                               0.03       0.08 r
+  io_b_rinc/DOUT (I1025_NS)                               0.40       0.47 r
+  rptr_empty/rinc (rptr_empty_ADDRSIZE10)                 0.00       0.47 r
+  rptr_empty/U14/Y (NAND3X0_HVT)                          0.15       0.62 f
+  rptr_empty/U13/Y (OR2X1_HVT)                            0.12       0.74 f
+  rptr_empty/U4/Y (OR2X1_HVT)                             0.09       0.83 f
+  rptr_empty/U6/Y (OR2X1_HVT)                             0.10       0.93 f
+  rptr_empty/U7/Y (XNOR2X1_HVT)                           0.18       1.11 r
+  rptr_empty/U17/Y (MUX21X1_HVT)                          0.14       1.25 r
+  rptr_empty/U3/Y (XOR2X1_HVT)                            0.16       1.42 f
+  rptr_empty/U89/Y (NOR4X1_HVT)                           0.13       1.54 r
+  rptr_empty/U92/Y (NAND4X0_HVT)                          0.08       1.62 f
+  rptr_empty/U94/Y (NOR3X0_HVT)                           0.16       1.78 r
+  rptr_empty/rempty_reg/D (SDFFASX2_HVT)                  0.00       1.78 r
+  data arrival time                                                  1.78
+
+  clock rclk (rise edge)                                  2.00       2.00
+  clock network delay (ideal)                             0.05       2.05
+  clock uncertainty                                      -0.20       1.85
+  rptr_empty/rempty_reg/CLK (SDFFASX2_HVT)                0.00       1.85 r
+  library setup time                                     -0.05       1.80
+  data required time                                                 1.80
+  --------------------------------------------------------------------------
+  data required time                                                 1.80
+  data arrival time                                                 -1.78
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.02
+
+
+  Startpoint: rptr_empty/rempty_reg
+              (rising edge-triggered flip-flop clocked by rclk)
+  Endpoint: rempty (output port clocked by rclk)
+  Path Group: OUTPUTS
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  fifo1_srama        540000                saed32hvt_ss0p95v125c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock rclk (rise edge)                                  0.00       0.00
+  clock network delay (ideal)                             0.05       0.05
+  rptr_empty/rempty_reg/CLK (SDFFASX2_HVT)                0.00       0.05 r
+  rptr_empty/rempty_reg/QN (SDFFASX2_HVT)                 0.35       0.40 r
+  rptr_empty/rempty_BAR (rptr_empty_ADDRSIZE10)           0.00       0.40 r
+  U13/Y (INVX8_HVT)                                       0.07       0.46 f
+  io_t_rempty/PADIO (D8I1025_NS)                          1.39       1.86 f
+  rempty (out)                                            0.00       1.86 f
+  data arrival time                                                  1.86
+
+  clock rclk (rise edge)                                  2.00       2.00
+  clock network delay (ideal)                             0.05       2.05
+  clock uncertainty                                      -0.20       1.85
+  output external delay                                   0.00       1.85
+  data required time                                                 1.85
+  --------------------------------------------------------------------------
+  data required time                                                 1.85
+  data arrival time                                                 -1.86
+  --------------------------------------------------------------------------
+  slack (VIOLATED)                                                  -0.01
+
+
+  Startpoint: rptr_empty/rempty_reg
+              (rising edge-triggered flip-flop clocked by rclk)
+  Endpoint: rptr_empty/rempty_reg
+            (rising edge-triggered flip-flop clocked by rclk)
+  Path Group: rclk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  fifo1_srama        540000                saed32hvt_ss0p95v125c
+  rptr_empty_ADDRSIZE10
+                     8000                  saed32hvt_ss0p95v125c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock rclk (rise edge)                                  0.00       0.00
+  clock network delay (ideal)                             0.05       0.05
+  rptr_empty/rempty_reg/CLK (SDFFASX2_HVT)                0.00       0.05 r
+  rptr_empty/rempty_reg/Q (SDFFASX2_HVT)                  0.37       0.42 f
+  rptr_empty/U5/Y (INVX0_HVT)                             0.03       0.45 r
+  rptr_empty/U32/Y (NBUFFX2_HVT)                          0.06       0.51 r
+  rptr_empty/U14/Y (NAND3X0_HVT)                          0.11       0.62 f
+  rptr_empty/U13/Y (OR2X1_HVT)                            0.12       0.74 f
+  rptr_empty/U4/Y (OR2X1_HVT)                             0.09       0.83 f
+  rptr_empty/U6/Y (OR2X1_HVT)                             0.10       0.93 f
+  rptr_empty/U7/Y (XNOR2X1_HVT)                           0.18       1.11 r
+  rptr_empty/U17/Y (MUX21X1_HVT)                          0.14       1.25 r
+  rptr_empty/U3/Y (XOR2X1_HVT)                            0.16       1.41 f
+  rptr_empty/U89/Y (NOR4X1_HVT)                           0.13       1.54 r
+  rptr_empty/U92/Y (NAND4X0_HVT)                          0.08       1.62 f
+  rptr_empty/U94/Y (NOR3X0_HVT)                           0.16       1.77 r
+  rptr_empty/rempty_reg/D (SDFFASX2_HVT)                  0.00       1.77 r
+  data arrival time                                                  1.77
+
+  clock rclk (rise edge)                                  2.00       2.00
+  clock network delay (ideal)                             0.05       2.05
+  clock uncertainty                                      -0.20       1.85
+  rptr_empty/rempty_reg/CLK (SDFFASX2_HVT)                0.00       1.85 r
+  library setup time                                     -0.05       1.80
+  data required time                                                 1.80
+  --------------------------------------------------------------------------
+  data required time                                                 1.80
+  data arrival time                                                 -1.77
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.03
+
+
+  Startpoint: wptr_full/wbin_reg_0_
+              (rising edge-triggered flip-flop clocked by wclk)
+  Endpoint: wptr_full/wfull_reg
+            (rising edge-triggered flip-flop clocked by wclk)
+  Path Group: wclk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  fifo1_srama        540000                saed32hvt_ss0p95v125c
+  wptr_full_ADDRSIZE10
+                     8000                  saed32hvt_ss0p95v125c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock wclk (rise edge)                                  0.00       0.00
+  clock network delay (ideal)                             0.05       0.05
+  wptr_full/wbin_reg_0_/CLK (SDFFARX1_HVT)                0.00       0.05 r
+  wptr_full/wbin_reg_0_/Q (SDFFARX1_HVT)                  0.34       0.39 f
+  wptr_full/U40/Y (NAND3X2_HVT)                           0.14       0.53 r
+  wptr_full/U5/Y (OR2X1_HVT)                              0.09       0.62 r
+  wptr_full/U36/Y (OR2X1_HVT)                             0.09       0.71 r
+  wptr_full/U41/Y (OR2X1_HVT)                             0.08       0.79 r
+  wptr_full/U17/Y (INVX0_HVT)                             0.03       0.82 f
+  wptr_full/U54/Y (AND2X1_HVT)                            0.08       0.90 f
+  wptr_full/U55/Y (AND2X1_HVT)                            0.08       0.98 f
+  wptr_full/U56/Y (NAND2X0_HVT)                           0.06       1.04 r
+  wptr_full/U4/Y (XOR2X1_HVT)                             0.18       1.22 f
+  wptr_full/U101/Y (NAND2X0_HVT)                          0.08       1.30 r
+  wptr_full/U29/Y (AO21X1_HVT)                            0.12       1.42 r
+  wptr_full/U27/Y (NAND2X0_HVT)                           0.05       1.47 f
+  wptr_full/U26/Y (NOR4X1_HVT)                            0.15       1.62 r
+  wptr_full/wfull_reg/D (SDFFARX2_HVT)                    0.00       1.62 r
+  data arrival time                                                  1.62
+
+  clock wclk (rise edge)                                  2.00       2.00
+  clock network delay (ideal)                             0.05       2.05
+  clock uncertainty                                      -0.20       1.85
+  wptr_full/wfull_reg/CLK (SDFFARX2_HVT)                  0.00       1.85 r
+  library setup time                                     -0.11       1.74
+  data required time                                                 1.74
+  --------------------------------------------------------------------------
+  data required time                                                 1.74
+  data arrival time                                                 -1.62
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.11
+
+
+1
+dc_shell> report_timing -max_paths
+Error: value not specified for option '-max_paths' (CMD-008)
+dc_shell> report_timing -max_paths 10
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 10
+Design : fifo1_srama
+Version: Q-2019.12-SP3
+Date   : Sun Jan 21 22:53:28 2024
+****************************************
+
+Operating Conditions: ss0p95v125c   Library: saed32hvt_ss0p95v125c
+Wire Load Model Mode: enclosed
+
+  Startpoint: rinc (input port clocked by rclk)
+  Endpoint: rptr_empty/rempty_reg
+            (rising edge-triggered flip-flop clocked by rclk)
+  Path Group: INPUTS
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  fifo1_srama        540000                saed32hvt_ss0p95v125c
+  rptr_empty_ADDRSIZE10
+                     8000                  saed32hvt_ss0p95v125c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock rclk (rise edge)                                  0.00       0.00
+  clock network delay (ideal)                             0.05       0.05
+  input external delay                                    0.00       0.05 r
+  rinc (in)                                               0.03       0.08 r
+  io_b_rinc/DOUT (I1025_NS)                               0.40       0.47 r
+  rptr_empty/rinc (rptr_empty_ADDRSIZE10)                 0.00       0.47 r
+  rptr_empty/U14/Y (NAND3X0_HVT)                          0.15       0.62 f
+  rptr_empty/U13/Y (OR2X1_HVT)                            0.12       0.74 f
+  rptr_empty/U4/Y (OR2X1_HVT)                             0.09       0.83 f
+  rptr_empty/U6/Y (OR2X1_HVT)                             0.10       0.93 f
+  rptr_empty/U7/Y (XNOR2X1_HVT)                           0.18       1.11 r
+  rptr_empty/U17/Y (MUX21X1_HVT)                          0.14       1.25 r
+  rptr_empty/U3/Y (XOR2X1_HVT)                            0.16       1.42 f
+  rptr_empty/U89/Y (NOR4X1_HVT)                           0.13       1.54 r
+  rptr_empty/U92/Y (NAND4X0_HVT)                          0.08       1.62 f
+  rptr_empty/U94/Y (NOR3X0_HVT)                           0.16       1.78 r
+  rptr_empty/rempty_reg/D (SDFFASX2_HVT)                  0.00       1.78 r
+  data arrival time                                                  1.78
+
+  clock rclk (rise edge)                                  2.00       2.00
+  clock network delay (ideal)                             0.05       2.05
+  clock uncertainty                                      -0.20       1.85
+  rptr_empty/rempty_reg/CLK (SDFFASX2_HVT)                0.00       1.85 r
+  library setup time                                     -0.05       1.80
+  data required time                                                 1.80
+  --------------------------------------------------------------------------
+  data required time                                                 1.80
+  data arrival time                                                 -1.78
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.02
+
+
+  Startpoint: winc (input port clocked by wclk)
+  Endpoint: wptr_full/wfull_reg
+            (rising edge-triggered flip-flop clocked by wclk)
+  Path Group: INPUTS
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  fifo1_srama        540000                saed32hvt_ss0p95v125c
+  wptr_full_ADDRSIZE10
+                     8000                  saed32hvt_ss0p95v125c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock wclk (rise edge)                                  0.00       0.00
+  clock network delay (ideal)                             0.05       0.05
+  input external delay                                    0.00       0.05 r
+  winc (in)                                               0.03       0.08 r
+  io_b_winc/DOUT (I1025_NS)                               0.40       0.47 r
+  wptr_full/winc (wptr_full_ADDRSIZE10)                   0.00       0.47 r
+  wptr_full/U40/Y (NAND3X2_HVT)                           0.17       0.64 f
+  wptr_full/U5/Y (OR2X1_HVT)                              0.09       0.73 f
+  wptr_full/U36/Y (OR2X1_HVT)                             0.08       0.82 f
+  wptr_full/U41/Y (OR2X1_HVT)                             0.08       0.89 f
+  wptr_full/U17/Y (INVX0_HVT)                             0.03       0.93 r
+  wptr_full/U54/Y (AND2X1_HVT)                            0.08       1.00 r
+  wptr_full/U55/Y (AND2X1_HVT)                            0.09       1.09 r
+  wptr_full/U56/Y (NAND2X0_HVT)                           0.06       1.15 f
+  wptr_full/U4/Y (XOR2X1_HVT)                             0.17       1.33 r
+  wptr_full/U101/Y (NAND2X0_HVT)                          0.09       1.41 f
+  wptr_full/U28/Y (NAND2X0_HVT)                           0.07       1.48 r
+  wptr_full/U27/Y (NAND2X0_HVT)                           0.06       1.54 f
+  wptr_full/U26/Y (NOR4X1_HVT)                            0.15       1.70 r
+  wptr_full/wfull_reg/D (SDFFARX2_HVT)                    0.00       1.70 r
+  data arrival time                                                  1.70
+
+  clock wclk (rise edge)                                  2.00       2.00
+  clock network delay (ideal)                             0.05       2.05
+  clock uncertainty                                      -0.20       1.85
+  wptr_full/wfull_reg/CLK (SDFFARX2_HVT)                  0.00       1.85 r
+  library setup time                                     -0.11       1.74
+  data required time                                                 1.74
+  --------------------------------------------------------------------------
+  data required time                                                 1.74
+  data arrival time                                                 -1.70
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.04
+
+
+  Startpoint: winc (input port clocked by wclk)
+  Endpoint: wptr_full/wptr_reg_9_
+            (rising edge-triggered flip-flop clocked by wclk)
+  Path Group: INPUTS
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  fifo1_srama        540000                saed32hvt_ss0p95v125c
+  wptr_full_ADDRSIZE10
+                     8000                  saed32hvt_ss0p95v125c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock wclk (rise edge)                                  0.00       0.00
+  clock network delay (ideal)                             0.05       0.05
+  input external delay                                    0.00       0.05 r
+  winc (in)                                               0.03       0.08 r
+  io_b_winc/DOUT (I1025_NS)                               0.40       0.47 r
+  wptr_full/winc (wptr_full_ADDRSIZE10)                   0.00       0.47 r
+  wptr_full/U40/Y (NAND3X2_HVT)                           0.17       0.64 f
+  wptr_full/U5/Y (OR2X1_HVT)                              0.09       0.73 f
+  wptr_full/U36/Y (OR2X1_HVT)                             0.08       0.82 f
+  wptr_full/U41/Y (OR2X1_HVT)                             0.08       0.89 f
+  wptr_full/U17/Y (INVX0_HVT)                             0.03       0.93 r
+  wptr_full/U54/Y (AND2X1_HVT)                            0.08       1.00 r
+  wptr_full/U55/Y (AND2X1_HVT)                            0.09       1.09 r
+  wptr_full/U56/Y (NAND2X0_HVT)                           0.06       1.15 f
+  wptr_full/U4/Y (XOR2X1_HVT)                             0.17       1.33 r
+  wptr_full/U101/Y (NAND2X0_HVT)                          0.09       1.41 f
+  wptr_full/U25/Y (NAND2X0_HVT)                           0.07       1.48 r
+  wptr_full/wptr_reg_9_/D (SDFFARX1_HVT)                  0.00       1.48 r
+  data arrival time                                                  1.48
+
+  clock wclk (rise edge)                                  2.00       2.00
+  clock network delay (ideal)                             0.05       2.05
+  clock uncertainty                                      -0.20       1.85
+  wptr_full/wptr_reg_9_/CLK (SDFFARX1_HVT)                0.00       1.85 r
+  library setup time                                     -0.12       1.73
+  data required time                                                 1.73
+  --------------------------------------------------------------------------
+  data required time                                                 1.73
+  data arrival time                                                 -1.48
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.25
+
+
+  Startpoint: wdata_in[6]
+              (input port clocked by wclk)
+  Endpoint: wdata_reg_6_
+            (rising edge-triggered flip-flop clocked by wclk2x)
+  Path Group: INPUTS
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  fifo1_srama        540000                saed32hvt_ss0p95v125c
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock wclk (rise edge)                   0.00       0.00
+  clock network delay (ideal)              0.05       0.05
+  input external delay                     0.00       0.05 r
+  wdata_in[6] (in)                         0.03       0.08 r
+  io_r_wdata_in_6_/DOUT (I1025_NS)         0.40       0.47 r
+  wdata_reg_6_/D (SDFFARX1_HVT)            0.00       0.47 r
+  data arrival time                                   0.47
+
+  clock wclk2x (rise edge)                 1.00       1.00
+  clock network delay (ideal)              0.00       1.00
+  wdata_reg_6_/CLK (SDFFARX1_HVT)          0.00       1.00 r
+  library setup time                      -0.20       0.80
+  data required time                                  0.80
+  -----------------------------------------------------------
+  data required time                                  0.80
+  data arrival time                                  -0.47
+  -----------------------------------------------------------
+  slack (MET)                                         0.33
+
+
+  Startpoint: wdata_in[5]
+              (input port clocked by wclk)
+  Endpoint: wdata_reg_5_
+            (rising edge-triggered flip-flop clocked by wclk2x)
+  Path Group: INPUTS
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  fifo1_srama        540000                saed32hvt_ss0p95v125c
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock wclk (rise edge)                   0.00       0.00
+  clock network delay (ideal)              0.05       0.05
+  input external delay                     0.00       0.05 r
+  wdata_in[5] (in)                         0.03       0.08 r
+  io_r_wdata_in_5_/DOUT (I1025_NS)         0.40       0.47 r
+  wdata_reg_5_/D (SDFFARX1_HVT)            0.00       0.47 r
+  data arrival time                                   0.47
+
+  clock wclk2x (rise edge)                 1.00       1.00
+  clock network delay (ideal)              0.00       1.00
+  wdata_reg_5_/CLK (SDFFARX1_HVT)          0.00       1.00 r
+  library setup time                      -0.20       0.80
+  data required time                                  0.80
+  -----------------------------------------------------------
+  data required time                                  0.80
+  data arrival time                                  -0.47
+  -----------------------------------------------------------
+  slack (MET)                                         0.33
+
+
+  Startpoint: wdata_in[4]
+              (input port clocked by wclk)
+  Endpoint: wdata_reg_4_
+            (rising edge-triggered flip-flop clocked by wclk2x)
+  Path Group: INPUTS
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  fifo1_srama        540000                saed32hvt_ss0p95v125c
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock wclk (rise edge)                   0.00       0.00
+  clock network delay (ideal)              0.05       0.05
+  input external delay                     0.00       0.05 r
+  wdata_in[4] (in)                         0.03       0.08 r
+  io_r_wdata_in_4_/DOUT (I1025_NS)         0.40       0.47 r
+  wdata_reg_4_/D (SDFFARX1_HVT)            0.00       0.47 r
+  data arrival time                                   0.47
+
+  clock wclk2x (rise edge)                 1.00       1.00
+  clock network delay (ideal)              0.00       1.00
+  wdata_reg_4_/CLK (SDFFARX1_HVT)          0.00       1.00 r
+  library setup time                      -0.20       0.80
+  data required time                                  0.80
+  -----------------------------------------------------------
+  data required time                                  0.80
+  data arrival time                                  -0.47
+  -----------------------------------------------------------
+  slack (MET)                                         0.33
+
+
+  Startpoint: wdata_in[3]
+              (input port clocked by wclk)
+  Endpoint: wdata_reg_3_
+            (rising edge-triggered flip-flop clocked by wclk2x)
+  Path Group: INPUTS
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  fifo1_srama        540000                saed32hvt_ss0p95v125c
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock wclk (rise edge)                   0.00       0.00
+  clock network delay (ideal)              0.05       0.05
+  input external delay                     0.00       0.05 r
+  wdata_in[3] (in)                         0.03       0.08 r
+  io_r_wdata_in_3_/DOUT (I1025_NS)         0.40       0.47 r
+  wdata_reg_3_/D (SDFFARX1_HVT)            0.00       0.47 r
+  data arrival time                                   0.47
+
+  clock wclk2x (rise edge)                 1.00       1.00
+  clock network delay (ideal)              0.00       1.00
+  wdata_reg_3_/CLK (SDFFARX1_HVT)          0.00       1.00 r
+  library setup time                      -0.20       0.80
+  data required time                                  0.80
+  -----------------------------------------------------------
+  data required time                                  0.80
+  data arrival time                                  -0.47
+  -----------------------------------------------------------
+  slack (MET)                                         0.33
+
+
+  Startpoint: wdata_in[2]
+              (input port clocked by wclk)
+  Endpoint: wdata_reg_2_
+            (rising edge-triggered flip-flop clocked by wclk2x)
+  Path Group: INPUTS
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  fifo1_srama        540000                saed32hvt_ss0p95v125c
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock wclk (rise edge)                   0.00       0.00
+  clock network delay (ideal)              0.05       0.05
+  input external delay                     0.00       0.05 r
+  wdata_in[2] (in)                         0.03       0.08 r
+  io_r_wdata_in_2_/DOUT (I1025_NS)         0.40       0.47 r
+  wdata_reg_2_/D (SDFFARX1_HVT)            0.00       0.47 r
+  data arrival time                                   0.47
+
+  clock wclk2x (rise edge)                 1.00       1.00
+  clock network delay (ideal)              0.00       1.00
+  wdata_reg_2_/CLK (SDFFARX1_HVT)          0.00       1.00 r
+  library setup time                      -0.20       0.80
+  data required time                                  0.80
+  -----------------------------------------------------------
+  data required time                                  0.80
+  data arrival time                                  -0.47
+  -----------------------------------------------------------
+  slack (MET)                                         0.33
+
+
+  Startpoint: wdata_in[1]
+              (input port clocked by wclk)
+  Endpoint: wdata_reg_1_
+            (rising edge-triggered flip-flop clocked by wclk2x)
+  Path Group: INPUTS
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  fifo1_srama        540000                saed32hvt_ss0p95v125c
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock wclk (rise edge)                   0.00       0.00
+  clock network delay (ideal)              0.05       0.05
+  input external delay                     0.00       0.05 r
+  wdata_in[1] (in)                         0.03       0.08 r
+  io_r_wdata_in_1_/DOUT (I1025_NS)         0.40       0.47 r
+  wdata_reg_1_/D (SDFFARX1_HVT)            0.00       0.47 r
+  data arrival time                                   0.47
+
+  clock wclk2x (rise edge)                 1.00       1.00
+  clock network delay (ideal)              0.00       1.00
+  wdata_reg_1_/CLK (SDFFARX1_HVT)          0.00       1.00 r
+  library setup time                      -0.20       0.80
+  data required time                                  0.80
+  -----------------------------------------------------------
+  data required time                                  0.80
+  data arrival time                                  -0.47
+  -----------------------------------------------------------
+  slack (MET)                                         0.33
+
+
+  Startpoint: wdata_in[0]
+              (input port clocked by wclk)
+  Endpoint: wdata_reg_0_
+            (rising edge-triggered flip-flop clocked by wclk2x)
+  Path Group: INPUTS
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  fifo1_srama        540000                saed32hvt_ss0p95v125c
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock wclk (rise edge)                   0.00       0.00
+  clock network delay (ideal)              0.05       0.05
+  input external delay                     0.00       0.05 r
+  wdata_in[0] (in)                         0.03       0.08 r
+  io_r_wdata_in_0_/DOUT (I1025_NS)         0.40       0.47 r
+  wdata_reg_0_/D (SDFFARX1_HVT)            0.00       0.47 r
+  data arrival time                                   0.47
+
+  clock wclk2x (rise edge)                 1.00       1.00
+  clock network delay (ideal)              0.00       1.00
+  wdata_reg_0_/CLK (SDFFARX1_HVT)          0.00       1.00 r
+  library setup time                      -0.20       0.80
+  data required time                                  0.80
+  -----------------------------------------------------------
+  data required time                                  0.80
+  data arrival time                                  -0.47
+  -----------------------------------------------------------
+  slack (MET)                                         0.33
+
+
+  Startpoint: rptr_empty/rempty_reg
+              (rising edge-triggered flip-flop clocked by rclk)
+  Endpoint: rempty (output port clocked by rclk)
+  Path Group: OUTPUTS
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  fifo1_srama        540000                saed32hvt_ss0p95v125c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock rclk (rise edge)                                  0.00       0.00
+  clock network delay (ideal)                             0.05       0.05
+  rptr_empty/rempty_reg/CLK (SDFFASX2_HVT)                0.00       0.05 r
+  rptr_empty/rempty_reg/QN (SDFFASX2_HVT)                 0.35       0.40 r
+  rptr_empty/rempty_BAR (rptr_empty_ADDRSIZE10)           0.00       0.40 r
+  U13/Y (INVX8_HVT)                                       0.07       0.46 f
+  io_t_rempty/PADIO (D8I1025_NS)                          1.39       1.86 f
+  rempty (out)                                            0.00       1.86 f
+  data arrival time                                                  1.86
+
+  clock rclk (rise edge)                                  2.00       2.00
+  clock network delay (ideal)                             0.05       2.05
+  clock uncertainty                                      -0.20       1.85
+  output external delay                                   0.00       1.85
+  data required time                                                 1.85
+  --------------------------------------------------------------------------
+  data required time                                                 1.85
+  data arrival time                                                 -1.86
+  --------------------------------------------------------------------------
+  slack (VIOLATED)                                                  -0.01
+
+
+  Startpoint: wptr_full/wfull_reg
+              (rising edge-triggered flip-flop clocked by wclk)
+  Endpoint: wfull (output port clocked by wclk)
+  Path Group: OUTPUTS
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  fifo1_srama        540000                saed32hvt_ss0p95v125c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock wclk (rise edge)                                  0.00       0.00
+  clock network delay (ideal)                             0.05       0.05
+  wptr_full/wfull_reg/CLK (SDFFARX2_HVT)                  0.00       0.05 r
+  wptr_full/wfull_reg/QN (SDFFARX2_HVT)                   0.31       0.36 r
+  wptr_full/wfull_BAR (wptr_full_ADDRSIZE10)              0.00       0.36 r
+  U22/Y (INVX4_HVT)                                       0.09       0.44 f
+  io_t_wfull/PADIO (D8I1025_NS)                           1.40       1.84 f
+  wfull (out)                                             0.00       1.84 f
+  data arrival time                                                  1.84
+
+  clock wclk (rise edge)                                  2.00       2.00
+  clock network delay (ideal)                             0.05       2.05
+  clock uncertainty                                      -0.20       1.85
+  output external delay                                   0.00       1.85
+  data required time                                                 1.85
+  --------------------------------------------------------------------------
+  data required time                                                 1.85
+  data arrival time                                                 -1.84
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.01
+
+
+  Startpoint: rptr_empty/rempty_reg
+              (rising edge-triggered flip-flop clocked by rclk)
+  Endpoint: rptr_empty/rempty_reg
+            (rising edge-triggered flip-flop clocked by rclk)
+  Path Group: rclk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  fifo1_srama        540000                saed32hvt_ss0p95v125c
+  rptr_empty_ADDRSIZE10
+                     8000                  saed32hvt_ss0p95v125c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock rclk (rise edge)                                  0.00       0.00
+  clock network delay (ideal)                             0.05       0.05
+  rptr_empty/rempty_reg/CLK (SDFFASX2_HVT)                0.00       0.05 r
+  rptr_empty/rempty_reg/Q (SDFFASX2_HVT)                  0.37       0.42 f
+  rptr_empty/U5/Y (INVX0_HVT)                             0.03       0.45 r
+  rptr_empty/U32/Y (NBUFFX2_HVT)                          0.06       0.51 r
+  rptr_empty/U14/Y (NAND3X0_HVT)                          0.11       0.62 f
+  rptr_empty/U13/Y (OR2X1_HVT)                            0.12       0.74 f
+  rptr_empty/U4/Y (OR2X1_HVT)                             0.09       0.83 f
+  rptr_empty/U6/Y (OR2X1_HVT)                             0.10       0.93 f
+  rptr_empty/U7/Y (XNOR2X1_HVT)                           0.18       1.11 r
+  rptr_empty/U17/Y (MUX21X1_HVT)                          0.14       1.25 r
+  rptr_empty/U3/Y (XOR2X1_HVT)                            0.16       1.41 f
+  rptr_empty/U89/Y (NOR4X1_HVT)                           0.13       1.54 r
+  rptr_empty/U92/Y (NAND4X0_HVT)                          0.08       1.62 f
+  rptr_empty/U94/Y (NOR3X0_HVT)                           0.16       1.77 r
+  rptr_empty/rempty_reg/D (SDFFASX2_HVT)                  0.00       1.77 r
+  data arrival time                                                  1.77
+
+  clock rclk (rise edge)                                  2.00       2.00
+  clock network delay (ideal)                             0.05       2.05
+  clock uncertainty                                      -0.20       1.85
+  rptr_empty/rempty_reg/CLK (SDFFASX2_HVT)                0.00       1.85 r
+  library setup time                                     -0.05       1.80
+  data required time                                                 1.80
+  --------------------------------------------------------------------------
+  data required time                                                 1.80
+  data arrival time                                                 -1.77
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.03
+
+
+  Startpoint: rptr_empty/rempty_reg
+              (rising edge-triggered flip-flop clocked by rclk)
+  Endpoint: rptr_empty/rptr_reg_9_
+            (rising edge-triggered flip-flop clocked by rclk)
+  Path Group: rclk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  fifo1_srama        540000                saed32hvt_ss0p95v125c
+  rptr_empty_ADDRSIZE10
+                     8000                  saed32hvt_ss0p95v125c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock rclk (rise edge)                                  0.00       0.00
+  clock network delay (ideal)                             0.05       0.05
+  rptr_empty/rempty_reg/CLK (SDFFASX2_HVT)                0.00       0.05 r
+  rptr_empty/rempty_reg/Q (SDFFASX2_HVT)                  0.37       0.42 f
+  rptr_empty/U5/Y (INVX0_HVT)                             0.03       0.45 r
+  rptr_empty/U32/Y (NBUFFX2_HVT)                          0.06       0.51 r
+  rptr_empty/U14/Y (NAND3X0_HVT)                          0.11       0.62 f
+  rptr_empty/U13/Y (OR2X1_HVT)                            0.12       0.74 f
+  rptr_empty/U4/Y (OR2X1_HVT)                             0.09       0.83 f
+  rptr_empty/U6/Y (OR2X1_HVT)                             0.10       0.93 f
+  rptr_empty/U19/Y (OR2X1_HVT)                            0.09       1.02 f
+  rptr_empty/U21/Y (OR2X1_HVT)                            0.08       1.11 f
+  rptr_empty/U12/Y (XOR2X1_HVT)                           0.16       1.26 r
+  rptr_empty/U63/Y (NAND2X0_HVT)                          0.07       1.33 f
+  rptr_empty/U65/Y (NAND2X0_HVT)                          0.07       1.40 r
+  rptr_empty/rptr_reg_9_/D (SDFFARX1_HVT)                 0.00       1.40 r
+  data arrival time                                                  1.40
+
+  clock rclk (rise edge)                                  2.00       2.00
+  clock network delay (ideal)                             0.05       2.05
+  clock uncertainty                                      -0.20       1.85
+  rptr_empty/rptr_reg_9_/CLK (SDFFARX1_HVT)               0.00       1.85 r
+  library setup time                                     -0.12       1.73
+  data required time                                                 1.73
+  --------------------------------------------------------------------------
+  data required time                                                 1.73
+  data arrival time                                                 -1.40
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.33
+
+
+  Startpoint: rptr_empty/rempty_reg
+              (rising edge-triggered flip-flop clocked by rclk)
+  Endpoint: rptr_empty/rptr_reg_8_
+            (rising edge-triggered flip-flop clocked by rclk)
+  Path Group: rclk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  fifo1_srama        540000                saed32hvt_ss0p95v125c
+  rptr_empty_ADDRSIZE10
+                     8000                  saed32hvt_ss0p95v125c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock rclk (rise edge)                                  0.00       0.00
+  clock network delay (ideal)                             0.05       0.05
+  rptr_empty/rempty_reg/CLK (SDFFASX2_HVT)                0.00       0.05 r
+  rptr_empty/rempty_reg/Q (SDFFASX2_HVT)                  0.37       0.42 f
+  rptr_empty/U5/Y (INVX0_HVT)                             0.03       0.45 r
+  rptr_empty/U32/Y (NBUFFX2_HVT)                          0.06       0.51 r
+  rptr_empty/U14/Y (NAND3X0_HVT)                          0.11       0.62 f
+  rptr_empty/U13/Y (OR2X1_HVT)                            0.12       0.74 f
+  rptr_empty/U4/Y (OR2X1_HVT)                             0.09       0.83 f
+  rptr_empty/U6/Y (OR2X1_HVT)                             0.10       0.93 f
+  rptr_empty/U19/Y (OR2X1_HVT)                            0.09       1.02 f
+  rptr_empty/U8/Y (XNOR2X1_HVT)                           0.17       1.19 r
+  rptr_empty/U62/Y (MUX21X1_HVT)                          0.14       1.33 r
+  rptr_empty/rptr_reg_8_/D (SDFFARX1_HVT)                 0.00       1.33 r
+  data arrival time                                                  1.33
+
+  clock rclk (rise edge)                                  2.00       2.00
+  clock network delay (ideal)                             0.05       2.05
+  clock uncertainty                                      -0.20       1.85
+  rptr_empty/rptr_reg_8_/CLK (SDFFARX1_HVT)               0.00       1.85 r
+  library setup time                                     -0.12       1.73
+  data required time                                                 1.73
+  --------------------------------------------------------------------------
+  data required time                                                 1.73
+  data arrival time                                                 -1.33
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.40
+
+
+  Startpoint: rptr_empty/rempty_reg
+              (rising edge-triggered flip-flop clocked by rclk)
+  Endpoint: rptr_empty/rptr_reg_7_
+            (rising edge-triggered flip-flop clocked by rclk)
+  Path Group: rclk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  fifo1_srama        540000                saed32hvt_ss0p95v125c
+  rptr_empty_ADDRSIZE10
+                     8000                  saed32hvt_ss0p95v125c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock rclk (rise edge)                                  0.00       0.00
+  clock network delay (ideal)                             0.05       0.05
+  rptr_empty/rempty_reg/CLK (SDFFASX2_HVT)                0.00       0.05 r
+  rptr_empty/rempty_reg/Q (SDFFASX2_HVT)                  0.37       0.42 f
+  rptr_empty/U5/Y (INVX0_HVT)                             0.03       0.45 r
+  rptr_empty/U32/Y (NBUFFX2_HVT)                          0.06       0.51 r
+  rptr_empty/U14/Y (NAND3X0_HVT)                          0.11       0.62 f
+  rptr_empty/U13/Y (OR2X1_HVT)                            0.12       0.74 f
+  rptr_empty/U4/Y (OR2X1_HVT)                             0.09       0.83 f
+  rptr_empty/U6/Y (OR2X1_HVT)                             0.10       0.93 f
+  rptr_empty/U26/Y (INVX0_HVT)                            0.04       0.97 r
+  rptr_empty/U35/Y (NAND2X0_HVT)                          0.05       1.02 f
+  rptr_empty/U36/Y (NAND2X0_HVT)                          0.05       1.07 r
+  rptr_empty/U37/Y (AND2X1_HVT)                           0.09       1.16 r
+  rptr_empty/U27/Y (MUX21X1_HVT)                          0.13       1.29 r
+  rptr_empty/rptr_reg_7_/D (SDFFARX1_HVT)                 0.00       1.29 r
+  data arrival time                                                  1.29
+
+  clock rclk (rise edge)                                  2.00       2.00
+  clock network delay (ideal)                             0.05       2.05
+  clock uncertainty                                      -0.20       1.85
+  rptr_empty/rptr_reg_7_/CLK (SDFFARX1_HVT)               0.00       1.85 r
+  library setup time                                     -0.11       1.74
+  data required time                                                 1.74
+  --------------------------------------------------------------------------
+  data required time                                                 1.74
+  data arrival time                                                 -1.29
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.45
+
+
+  Startpoint: rptr_empty/rempty_reg
+              (rising edge-triggered flip-flop clocked by rclk)
+  Endpoint: rptr_empty/rptr_reg_6_
+            (rising edge-triggered flip-flop clocked by rclk)
+  Path Group: rclk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  fifo1_srama        540000                saed32hvt_ss0p95v125c
+  rptr_empty_ADDRSIZE10
+                     8000                  saed32hvt_ss0p95v125c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock rclk (rise edge)                                  0.00       0.00
+  clock network delay (ideal)                             0.05       0.05
+  rptr_empty/rempty_reg/CLK (SDFFASX2_HVT)                0.00       0.05 r
+  rptr_empty/rempty_reg/Q (SDFFASX2_HVT)                  0.37       0.42 f
+  rptr_empty/U5/Y (INVX0_HVT)                             0.03       0.45 r
+  rptr_empty/U32/Y (NBUFFX2_HVT)                          0.06       0.51 r
+  rptr_empty/U14/Y (NAND3X0_HVT)                          0.11       0.62 f
+  rptr_empty/U13/Y (OR2X1_HVT)                            0.12       0.74 f
+  rptr_empty/U4/Y (OR2X1_HVT)                             0.09       0.83 f
+  rptr_empty/U6/Y (OR2X1_HVT)                             0.10       0.93 f
+  rptr_empty/U26/Y (INVX0_HVT)                            0.04       0.97 r
+  rptr_empty/U35/Y (NAND2X0_HVT)                          0.05       1.02 f
+  rptr_empty/U36/Y (NAND2X0_HVT)                          0.05       1.07 r
+  rptr_empty/U37/Y (AND2X1_HVT)                           0.09       1.16 r
+  rptr_empty/U60/Y (MUX21X1_HVT)                          0.13       1.29 r
+  rptr_empty/rptr_reg_6_/D (SDFFARX1_HVT)                 0.00       1.29 r
+  data arrival time                                                  1.29
+
+  clock rclk (rise edge)                                  2.00       2.00
+  clock network delay (ideal)                             0.05       2.05
+  clock uncertainty                                      -0.20       1.85
+  rptr_empty/rptr_reg_6_/CLK (SDFFARX1_HVT)               0.00       1.85 r
+  library setup time                                     -0.11       1.74
+  data required time                                                 1.74
+  --------------------------------------------------------------------------
+  data required time                                                 1.74
+  data arrival time                                                 -1.29
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.45
+
+
+  Startpoint: rptr_empty/rempty_reg
+              (rising edge-triggered flip-flop clocked by rclk)
+  Endpoint: rptr_empty/rbin_reg_10_
+            (rising edge-triggered flip-flop clocked by rclk)
+  Path Group: rclk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  fifo1_srama        540000                saed32hvt_ss0p95v125c
+  rptr_empty_ADDRSIZE10
+                     8000                  saed32hvt_ss0p95v125c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock rclk (rise edge)                                  0.00       0.00
+  clock network delay (ideal)                             0.05       0.05
+  rptr_empty/rempty_reg/CLK (SDFFASX2_HVT)                0.00       0.05 r
+  rptr_empty/rempty_reg/Q (SDFFASX2_HVT)                  0.37       0.42 f
+  rptr_empty/U5/Y (INVX0_HVT)                             0.03       0.45 r
+  rptr_empty/U32/Y (NBUFFX2_HVT)                          0.06       0.51 r
+  rptr_empty/U14/Y (NAND3X0_HVT)                          0.11       0.62 f
+  rptr_empty/U13/Y (OR2X1_HVT)                            0.12       0.74 f
+  rptr_empty/U4/Y (OR2X1_HVT)                             0.09       0.83 f
+  rptr_empty/U6/Y (OR2X1_HVT)                             0.10       0.93 f
+  rptr_empty/U19/Y (OR2X1_HVT)                            0.09       1.02 f
+  rptr_empty/U21/Y (OR2X1_HVT)                            0.08       1.11 f
+  rptr_empty/U12/Y (XOR2X1_HVT)                           0.16       1.26 r
+  rptr_empty/rbin_reg_10_/D (SDFFARX1_HVT)                0.00       1.26 r
+  data arrival time                                                  1.26
+
+  clock rclk (rise edge)                                  2.00       2.00
+  clock network delay (ideal)                             0.05       2.05
+  clock uncertainty                                      -0.20       1.85
+  rptr_empty/rbin_reg_10_/CLK (SDFFARX1_HVT)              0.00       1.85 r
+  library setup time                                     -0.12       1.73
+  data required time                                                 1.73
+  --------------------------------------------------------------------------
+  data required time                                                 1.73
+  data arrival time                                                 -1.26
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.47
+
+
+  Startpoint: rptr_empty/rempty_reg
+              (rising edge-triggered flip-flop clocked by rclk)
+  Endpoint: rptr_empty/rptr_reg_5_
+            (rising edge-triggered flip-flop clocked by rclk)
+  Path Group: rclk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  fifo1_srama        540000                saed32hvt_ss0p95v125c
+  rptr_empty_ADDRSIZE10
+                     8000                  saed32hvt_ss0p95v125c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock rclk (rise edge)                                  0.00       0.00
+  clock network delay (ideal)                             0.05       0.05
+  rptr_empty/rempty_reg/CLK (SDFFASX2_HVT)                0.00       0.05 r
+  rptr_empty/rempty_reg/Q (SDFFASX2_HVT)                  0.37       0.42 f
+  rptr_empty/U5/Y (INVX0_HVT)                             0.03       0.45 r
+  rptr_empty/U32/Y (NBUFFX2_HVT)                          0.06       0.51 r
+  rptr_empty/U14/Y (NAND3X0_HVT)                          0.11       0.62 f
+  rptr_empty/U13/Y (OR2X1_HVT)                            0.12       0.74 f
+  rptr_empty/U4/Y (OR2X1_HVT)                             0.09       0.83 f
+  rptr_empty/U6/Y (OR2X1_HVT)                             0.10       0.93 f
+  rptr_empty/U7/Y (XNOR2X1_HVT)                           0.18       1.11 r
+  rptr_empty/U17/Y (MUX21X1_HVT)                          0.14       1.25 r
+  rptr_empty/rptr_reg_5_/D (SDFFARX1_HVT)                 0.00       1.25 r
+  data arrival time                                                  1.25
+
+  clock rclk (rise edge)                                  2.00       2.00
+  clock network delay (ideal)                             0.05       2.05
+  clock uncertainty                                      -0.20       1.85
+  rptr_empty/rptr_reg_5_/CLK (SDFFARX1_HVT)               0.00       1.85 r
+  library setup time                                     -0.12       1.73
+  data required time                                                 1.73
+  --------------------------------------------------------------------------
+  data required time                                                 1.73
+  data arrival time                                                 -1.25
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.48
+
+
+  Startpoint: rptr_empty/rempty_reg
+              (rising edge-triggered flip-flop clocked by rclk)
+  Endpoint: rptr_empty/rptr_reg_4_
+            (rising edge-triggered flip-flop clocked by rclk)
+  Path Group: rclk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  fifo1_srama        540000                saed32hvt_ss0p95v125c
+  rptr_empty_ADDRSIZE10
+                     8000                  saed32hvt_ss0p95v125c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock rclk (rise edge)                                  0.00       0.00
+  clock network delay (ideal)                             0.05       0.05
+  rptr_empty/rempty_reg/CLK (SDFFASX2_HVT)                0.00       0.05 r
+  rptr_empty/rempty_reg/Q (SDFFASX2_HVT)                  0.37       0.42 f
+  rptr_empty/U5/Y (INVX0_HVT)                             0.03       0.45 r
+  rptr_empty/U32/Y (NBUFFX2_HVT)                          0.06       0.51 r
+  rptr_empty/U14/Y (NAND3X0_HVT)                          0.11       0.62 f
+  rptr_empty/U13/Y (OR2X1_HVT)                            0.12       0.74 f
+  rptr_empty/U4/Y (OR2X1_HVT)                             0.09       0.83 f
+  rptr_empty/U15/Y (OR2X1_HVT)                            0.07       0.91 f
+  rptr_empty/U52/Y (NAND2X0_HVT)                          0.06       0.96 r
+  rptr_empty/U53/Y (AND2X1_HVT)                           0.10       1.06 r
+  rptr_empty/U59/Y (MUX21X1_HVT)                          0.13       1.20 r
+  rptr_empty/rptr_reg_4_/D (SDFFARX1_HVT)                 0.00       1.20 r
+  data arrival time                                                  1.20
+
+  clock rclk (rise edge)                                  2.00       2.00
+  clock network delay (ideal)                             0.05       2.05
+  clock uncertainty                                      -0.20       1.85
+  rptr_empty/rptr_reg_4_/CLK (SDFFARX1_HVT)               0.00       1.85 r
+  library setup time                                     -0.12       1.73
+  data required time                                                 1.73
+  --------------------------------------------------------------------------
+  data required time                                                 1.73
+  data arrival time                                                 -1.20
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.54
+
+
+  Startpoint: rptr_empty/rempty_reg
+              (rising edge-triggered flip-flop clocked by rclk)
+  Endpoint: rptr_empty/rbin_reg_9_
+            (rising edge-triggered flip-flop clocked by rclk)
+  Path Group: rclk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  fifo1_srama        540000                saed32hvt_ss0p95v125c
+  rptr_empty_ADDRSIZE10
+                     8000                  saed32hvt_ss0p95v125c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock rclk (rise edge)                                  0.00       0.00
+  clock network delay (ideal)                             0.05       0.05
+  rptr_empty/rempty_reg/CLK (SDFFASX2_HVT)                0.00       0.05 r
+  rptr_empty/rempty_reg/Q (SDFFASX2_HVT)                  0.37       0.42 f
+  rptr_empty/U5/Y (INVX0_HVT)                             0.03       0.45 r
+  rptr_empty/U32/Y (NBUFFX2_HVT)                          0.06       0.51 r
+  rptr_empty/U14/Y (NAND3X0_HVT)                          0.11       0.62 f
+  rptr_empty/U13/Y (OR2X1_HVT)                            0.12       0.74 f
+  rptr_empty/U4/Y (OR2X1_HVT)                             0.09       0.83 f
+  rptr_empty/U6/Y (OR2X1_HVT)                             0.10       0.93 f
+  rptr_empty/U19/Y (OR2X1_HVT)                            0.09       1.02 f
+  rptr_empty/U8/Y (XNOR2X1_HVT)                           0.17       1.19 r
+  rptr_empty/rbin_reg_9_/D (SDFFARX1_HVT)                 0.00       1.19 r
+  data arrival time                                                  1.19
+
+  clock rclk (rise edge)                                  2.00       2.00
+  clock network delay (ideal)                             0.05       2.05
+  clock uncertainty                                      -0.20       1.85
+  rptr_empty/rbin_reg_9_/CLK (SDFFARX1_HVT)               0.00       1.85 r
+  library setup time                                     -0.12       1.73
+  data required time                                                 1.73
+  --------------------------------------------------------------------------
+  data required time                                                 1.73
+  data arrival time                                                 -1.19
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.54
+
+
+  Startpoint: rptr_empty/rempty_reg
+              (rising edge-triggered flip-flop clocked by rclk)
+  Endpoint: rptr_empty/rbin_reg_8_
+            (rising edge-triggered flip-flop clocked by rclk)
+  Path Group: rclk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  fifo1_srama        540000                saed32hvt_ss0p95v125c
+  rptr_empty_ADDRSIZE10
+                     8000                  saed32hvt_ss0p95v125c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock rclk (rise edge)                                  0.00       0.00
+  clock network delay (ideal)                             0.05       0.05
+  rptr_empty/rempty_reg/CLK (SDFFASX2_HVT)                0.00       0.05 r
+  rptr_empty/rempty_reg/Q (SDFFASX2_HVT)                  0.37       0.42 f
+  rptr_empty/U5/Y (INVX0_HVT)                             0.03       0.45 r
+  rptr_empty/U32/Y (NBUFFX2_HVT)                          0.06       0.51 r
+  rptr_empty/U14/Y (NAND3X0_HVT)                          0.11       0.62 f
+  rptr_empty/U13/Y (OR2X1_HVT)                            0.12       0.74 f
+  rptr_empty/U4/Y (OR2X1_HVT)                             0.09       0.83 f
+  rptr_empty/U6/Y (OR2X1_HVT)                             0.10       0.93 f
+  rptr_empty/U18/Y (OR2X1_HVT)                            0.08       1.01 f
+  rptr_empty/U33/Y (NAND2X0_HVT)                          0.05       1.06 r
+  rptr_empty/U34/Y (AND2X1_HVT)                           0.09       1.16 r
+  rptr_empty/rbin_reg_8_/D (SDFFARX1_HVT)                 0.00       1.16 r
+  data arrival time                                                  1.16
+
+  clock rclk (rise edge)                                  2.00       2.00
+  clock network delay (ideal)                             0.05       2.05
+  clock uncertainty                                      -0.20       1.85
+  rptr_empty/rbin_reg_8_/CLK (SDFFARX1_HVT)               0.00       1.85 r
+  library setup time                                     -0.11       1.74
+  data required time                                                 1.74
+  --------------------------------------------------------------------------
+  data required time                                                 1.74
+  data arrival time                                                 -1.16
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.58
+
+
+  Startpoint: wptr_full/wbin_reg_0_
+              (rising edge-triggered flip-flop clocked by wclk)
+  Endpoint: wptr_full/wfull_reg
+            (rising edge-triggered flip-flop clocked by wclk)
+  Path Group: wclk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  fifo1_srama        540000                saed32hvt_ss0p95v125c
+  wptr_full_ADDRSIZE10
+                     8000                  saed32hvt_ss0p95v125c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock wclk (rise edge)                                  0.00       0.00
+  clock network delay (ideal)                             0.05       0.05
+  wptr_full/wbin_reg_0_/CLK (SDFFARX1_HVT)                0.00       0.05 r
+  wptr_full/wbin_reg_0_/Q (SDFFARX1_HVT)                  0.34       0.39 f
+  wptr_full/U40/Y (NAND3X2_HVT)                           0.14       0.53 r
+  wptr_full/U5/Y (OR2X1_HVT)                              0.09       0.62 r
+  wptr_full/U36/Y (OR2X1_HVT)                             0.09       0.71 r
+  wptr_full/U41/Y (OR2X1_HVT)                             0.08       0.79 r
+  wptr_full/U17/Y (INVX0_HVT)                             0.03       0.82 f
+  wptr_full/U54/Y (AND2X1_HVT)                            0.08       0.90 f
+  wptr_full/U55/Y (AND2X1_HVT)                            0.08       0.98 f
+  wptr_full/U56/Y (NAND2X0_HVT)                           0.06       1.04 r
+  wptr_full/U4/Y (XOR2X1_HVT)                             0.18       1.22 f
+  wptr_full/U101/Y (NAND2X0_HVT)                          0.08       1.30 r
+  wptr_full/U29/Y (AO21X1_HVT)                            0.12       1.42 r
+  wptr_full/U27/Y (NAND2X0_HVT)                           0.05       1.47 f
+  wptr_full/U26/Y (NOR4X1_HVT)                            0.15       1.62 r
+  wptr_full/wfull_reg/D (SDFFARX2_HVT)                    0.00       1.62 r
+  data arrival time                                                  1.62
+
+  clock wclk (rise edge)                                  2.00       2.00
+  clock network delay (ideal)                             0.05       2.05
+  clock uncertainty                                      -0.20       1.85
+  wptr_full/wfull_reg/CLK (SDFFARX2_HVT)                  0.00       1.85 r
+  library setup time                                     -0.11       1.74
+  data required time                                                 1.74
+  --------------------------------------------------------------------------
+  data required time                                                 1.74
+  data arrival time                                                 -1.62
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.11
+
+
+  Startpoint: wptr_full/wbin_reg_0_
+              (rising edge-triggered flip-flop clocked by wclk)
+  Endpoint: wptr_full/wptr_reg_9_
+            (rising edge-triggered flip-flop clocked by wclk)
+  Path Group: wclk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  fifo1_srama        540000                saed32hvt_ss0p95v125c
+  wptr_full_ADDRSIZE10
+                     8000                  saed32hvt_ss0p95v125c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock wclk (rise edge)                                  0.00       0.00
+  clock network delay (ideal)                             0.05       0.05
+  wptr_full/wbin_reg_0_/CLK (SDFFARX1_HVT)                0.00       0.05 r
+  wptr_full/wbin_reg_0_/Q (SDFFARX1_HVT)                  0.36       0.41 r
+  wptr_full/U40/Y (NAND3X2_HVT)                           0.15       0.56 f
+  wptr_full/U5/Y (OR2X1_HVT)                              0.09       0.64 f
+  wptr_full/U36/Y (OR2X1_HVT)                             0.08       0.73 f
+  wptr_full/U41/Y (OR2X1_HVT)                             0.08       0.81 f
+  wptr_full/U17/Y (INVX0_HVT)                             0.03       0.84 r
+  wptr_full/U54/Y (AND2X1_HVT)                            0.08       0.92 r
+  wptr_full/U55/Y (AND2X1_HVT)                            0.09       1.00 r
+  wptr_full/U56/Y (NAND2X0_HVT)                           0.06       1.06 f
+  wptr_full/U4/Y (XOR2X1_HVT)                             0.17       1.24 r
+  wptr_full/U101/Y (NAND2X0_HVT)                          0.09       1.32 f
+  wptr_full/U25/Y (NAND2X0_HVT)                           0.07       1.39 r
+  wptr_full/wptr_reg_9_/D (SDFFARX1_HVT)                  0.00       1.39 r
+  data arrival time                                                  1.39
+
+  clock wclk (rise edge)                                  2.00       2.00
+  clock network delay (ideal)                             0.05       2.05
+  clock uncertainty                                      -0.20       1.85
+  wptr_full/wptr_reg_9_/CLK (SDFFARX1_HVT)                0.00       1.85 r
+  library setup time                                     -0.12       1.73
+  data required time                                                 1.73
+  --------------------------------------------------------------------------
+  data required time                                                 1.73
+  data arrival time                                                 -1.39
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.34
+
+
+  Startpoint: wptr_full/wbin_reg_0_
+              (rising edge-triggered flip-flop clocked by wclk)
+  Endpoint: wptr_full/wptr_reg_8_
+            (rising edge-triggered flip-flop clocked by wclk)
+  Path Group: wclk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  fifo1_srama        540000                saed32hvt_ss0p95v125c
+  wptr_full_ADDRSIZE10
+                     8000                  saed32hvt_ss0p95v125c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock wclk (rise edge)                                  0.00       0.00
+  clock network delay (ideal)                             0.05       0.05
+  wptr_full/wbin_reg_0_/CLK (SDFFARX1_HVT)                0.00       0.05 r
+  wptr_full/wbin_reg_0_/Q (SDFFARX1_HVT)                  0.34       0.39 f
+  wptr_full/U40/Y (NAND3X2_HVT)                           0.14       0.53 r
+  wptr_full/U5/Y (OR2X1_HVT)                              0.09       0.62 r
+  wptr_full/U36/Y (OR2X1_HVT)                             0.09       0.71 r
+  wptr_full/U41/Y (OR2X1_HVT)                             0.08       0.79 r
+  wptr_full/U17/Y (INVX0_HVT)                             0.03       0.82 f
+  wptr_full/U54/Y (AND2X1_HVT)                            0.08       0.90 f
+  wptr_full/U55/Y (AND2X1_HVT)                            0.08       0.98 f
+  wptr_full/U7/Y (XOR2X1_HVT)                             0.17       1.15 r
+  wptr_full/U33/Y (AO21X1_HVT)                            0.13       1.28 r
+  wptr_full/wptr_reg_8_/D (SDFFARX1_HVT)                  0.00       1.28 r
+  data arrival time                                                  1.28
+
+  clock wclk (rise edge)                                  2.00       2.00
+  clock network delay (ideal)                             0.05       2.05
+  clock uncertainty                                      -0.20       1.85
+  wptr_full/wptr_reg_8_/CLK (SDFFARX1_HVT)                0.00       1.85 r
+  library setup time                                     -0.11       1.74
+  data required time                                                 1.74
+  --------------------------------------------------------------------------
+  data required time                                                 1.74
+  data arrival time                                                 -1.28
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.46
+
+
+  Startpoint: wptr_full/wbin_reg_0_
+              (rising edge-triggered flip-flop clocked by wclk)
+  Endpoint: wptr_full/wbin_reg_10_
+            (rising edge-triggered flip-flop clocked by wclk)
+  Path Group: wclk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  fifo1_srama        540000                saed32hvt_ss0p95v125c
+  wptr_full_ADDRSIZE10
+                     8000                  saed32hvt_ss0p95v125c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock wclk (rise edge)                                  0.00       0.00
+  clock network delay (ideal)                             0.05       0.05
+  wptr_full/wbin_reg_0_/CLK (SDFFARX1_HVT)                0.00       0.05 r
+  wptr_full/wbin_reg_0_/Q (SDFFARX1_HVT)                  0.36       0.41 r
+  wptr_full/U40/Y (NAND3X2_HVT)                           0.15       0.56 f
+  wptr_full/U5/Y (OR2X1_HVT)                              0.09       0.64 f
+  wptr_full/U36/Y (OR2X1_HVT)                             0.08       0.73 f
+  wptr_full/U41/Y (OR2X1_HVT)                             0.08       0.81 f
+  wptr_full/U17/Y (INVX0_HVT)                             0.03       0.84 r
+  wptr_full/U54/Y (AND2X1_HVT)                            0.08       0.92 r
+  wptr_full/U55/Y (AND2X1_HVT)                            0.09       1.00 r
+  wptr_full/U56/Y (NAND2X0_HVT)                           0.06       1.06 f
+  wptr_full/U4/Y (XOR2X1_HVT)                             0.17       1.24 r
+  wptr_full/wbin_reg_10_/D (SDFFARX1_HVT)                 0.00       1.24 r
+  data arrival time                                                  1.24
+
+  clock wclk (rise edge)                                  2.00       2.00
+  clock network delay (ideal)                             0.05       2.05
+  clock uncertainty                                      -0.20       1.85
+  wptr_full/wbin_reg_10_/CLK (SDFFARX1_HVT)               0.00       1.85 r
+  library setup time                                     -0.12       1.73
+  data required time                                                 1.73
+  --------------------------------------------------------------------------
+  data required time                                                 1.73
+  data arrival time                                                 -1.24
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.49
+
+
+  Startpoint: wptr_full/wbin_reg_0_
+              (rising edge-triggered flip-flop clocked by wclk)
+  Endpoint: wptr_full/wptr_reg_7_
+            (rising edge-triggered flip-flop clocked by wclk)
+  Path Group: wclk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  fifo1_srama        540000                saed32hvt_ss0p95v125c
+  wptr_full_ADDRSIZE10
+                     8000                  saed32hvt_ss0p95v125c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock wclk (rise edge)                                  0.00       0.00
+  clock network delay (ideal)                             0.05       0.05
+  wptr_full/wbin_reg_0_/CLK (SDFFARX1_HVT)                0.00       0.05 r
+  wptr_full/wbin_reg_0_/Q (SDFFARX1_HVT)                  0.34       0.39 f
+  wptr_full/U40/Y (NAND3X2_HVT)                           0.14       0.53 r
+  wptr_full/U5/Y (OR2X1_HVT)                              0.09       0.62 r
+  wptr_full/U36/Y (OR2X1_HVT)                             0.09       0.71 r
+  wptr_full/U41/Y (OR2X1_HVT)                             0.08       0.79 r
+  wptr_full/U17/Y (INVX0_HVT)                             0.03       0.82 f
+  wptr_full/U54/Y (AND2X1_HVT)                            0.08       0.90 f
+  wptr_full/U55/Y (AND2X1_HVT)                            0.08       0.98 f
+  wptr_full/U47/Y (INVX0_HVT)                             0.03       1.02 r
+  wptr_full/U75/Y (AND2X1_HVT)                            0.08       1.10 r
+  wptr_full/U82/Y (AO21X1_HVT)                            0.12       1.22 r
+  wptr_full/wptr_reg_7_/D (SDFFARX1_HVT)                  0.00       1.22 r
+  data arrival time                                                  1.22
+
+  clock wclk (rise edge)                                  2.00       2.00
+  clock network delay (ideal)                             0.05       2.05
+  clock uncertainty                                      -0.20       1.85
+  wptr_full/wptr_reg_7_/CLK (SDFFARX1_HVT)                0.00       1.85 r
+  library setup time                                     -0.11       1.74
+  data required time                                                 1.74
+  --------------------------------------------------------------------------
+  data required time                                                 1.74
+  data arrival time                                                 -1.22
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.51
+
+
+  Startpoint: wptr_full/wbin_reg_0_
+              (rising edge-triggered flip-flop clocked by wclk)
+  Endpoint: wptr_full/wbin_reg_9_
+            (rising edge-triggered flip-flop clocked by wclk)
+  Path Group: wclk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  fifo1_srama        540000                saed32hvt_ss0p95v125c
+  wptr_full_ADDRSIZE10
+                     8000                  saed32hvt_ss0p95v125c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock wclk (rise edge)                                  0.00       0.00
+  clock network delay (ideal)                             0.05       0.05
+  wptr_full/wbin_reg_0_/CLK (SDFFARX1_HVT)                0.00       0.05 r
+  wptr_full/wbin_reg_0_/Q (SDFFARX1_HVT)                  0.36       0.41 r
+  wptr_full/U40/Y (NAND3X2_HVT)                           0.15       0.56 f
+  wptr_full/U5/Y (OR2X1_HVT)                              0.09       0.64 f
+  wptr_full/U36/Y (OR2X1_HVT)                             0.08       0.73 f
+  wptr_full/U41/Y (OR2X1_HVT)                             0.08       0.81 f
+  wptr_full/U17/Y (INVX0_HVT)                             0.03       0.84 r
+  wptr_full/U54/Y (AND2X1_HVT)                            0.08       0.92 r
+  wptr_full/U55/Y (AND2X1_HVT)                            0.09       1.00 r
+  wptr_full/U7/Y (XOR2X1_HVT)                             0.18       1.18 f
+  wptr_full/wbin_reg_9_/D (SDFFARX1_HVT)                  0.00       1.18 f
+  data arrival time                                                  1.18
+
+  clock wclk (rise edge)                                  2.00       2.00
+  clock network delay (ideal)                             0.05       2.05
+  clock uncertainty                                      -0.20       1.85
+  wptr_full/wbin_reg_9_/CLK (SDFFARX1_HVT)                0.00       1.85 r
+  library setup time                                     -0.09       1.76
+  data required time                                                 1.76
+  --------------------------------------------------------------------------
+  data required time                                                 1.76
+  data arrival time                                                 -1.18
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.58
+
+
+  Startpoint: wptr_full/wbin_reg_0_
+              (rising edge-triggered flip-flop clocked by wclk)
+  Endpoint: wptr_full/wptr_reg_6_
+            (rising edge-triggered flip-flop clocked by wclk)
+  Path Group: wclk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  fifo1_srama        540000                saed32hvt_ss0p95v125c
+  wptr_full_ADDRSIZE10
+                     8000                  saed32hvt_ss0p95v125c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock wclk (rise edge)                                  0.00       0.00
+  clock network delay (ideal)                             0.05       0.05
+  wptr_full/wbin_reg_0_/CLK (SDFFARX1_HVT)                0.00       0.05 r
+  wptr_full/wbin_reg_0_/Q (SDFFARX1_HVT)                  0.34       0.39 f
+  wptr_full/U40/Y (NAND3X2_HVT)                           0.14       0.53 r
+  wptr_full/U5/Y (OR2X1_HVT)                              0.09       0.62 r
+  wptr_full/U36/Y (OR2X1_HVT)                             0.09       0.71 r
+  wptr_full/U41/Y (OR2X1_HVT)                             0.08       0.79 r
+  wptr_full/U17/Y (INVX0_HVT)                             0.03       0.82 f
+  wptr_full/U54/Y (AND2X1_HVT)                            0.08       0.90 f
+  wptr_full/U49/Y (INVX0_HVT)                             0.03       0.93 r
+  wptr_full/U58/Y (AND2X1_HVT)                            0.08       1.01 r
+  wptr_full/U80/Y (MUX21X1_HVT)                           0.13       1.14 r
+  wptr_full/wptr_reg_6_/D (SDFFARX1_HVT)                  0.00       1.14 r
+  data arrival time                                                  1.14
+
+  clock wclk (rise edge)                                  2.00       2.00
+  clock network delay (ideal)                             0.05       2.05
+  clock uncertainty                                      -0.20       1.85
+  wptr_full/wptr_reg_6_/CLK (SDFFARX1_HVT)                0.00       1.85 r
+  library setup time                                     -0.11       1.74
+  data required time                                                 1.74
+  --------------------------------------------------------------------------
+  data required time                                                 1.74
+  data arrival time                                                 -1.14
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.59
+
+
+  Startpoint: wptr_full/wbin_reg_0_
+              (rising edge-triggered flip-flop clocked by wclk)
+  Endpoint: wptr_full/wptr_reg_5_
+            (rising edge-triggered flip-flop clocked by wclk)
+  Path Group: wclk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  fifo1_srama        540000                saed32hvt_ss0p95v125c
+  wptr_full_ADDRSIZE10
+                     8000                  saed32hvt_ss0p95v125c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock wclk (rise edge)                                  0.00       0.00
+  clock network delay (ideal)                             0.05       0.05
+  wptr_full/wbin_reg_0_/CLK (SDFFARX1_HVT)                0.00       0.05 r
+  wptr_full/wbin_reg_0_/Q (SDFFARX1_HVT)                  0.36       0.41 r
+  wptr_full/U40/Y (NAND3X2_HVT)                           0.15       0.56 f
+  wptr_full/U5/Y (OR2X1_HVT)                              0.09       0.64 f
+  wptr_full/U36/Y (OR2X1_HVT)                             0.08       0.73 f
+  wptr_full/U18/Y (INVX0_HVT)                             0.04       0.77 r
+  wptr_full/U6/Y (XOR2X1_HVT)                             0.17       0.95 f
+  wptr_full/U16/Y (INVX0_HVT)                             0.04       0.98 r
+  wptr_full/U21/Y (NAND2X0_HVT)                           0.05       1.04 f
+  wptr_full/U78/Y (NAND2X0_HVT)                           0.07       1.11 r
+  wptr_full/wptr_reg_5_/D (SDFFARX1_HVT)                  0.00       1.11 r
+  data arrival time                                                  1.11
+
+  clock wclk (rise edge)                                  2.00       2.00
+  clock network delay (ideal)                             0.05       2.05
+  clock uncertainty                                      -0.20       1.85
+  wptr_full/wptr_reg_5_/CLK (SDFFARX1_HVT)                0.00       1.85 r
+  library setup time                                     -0.12       1.73
+  data required time                                                 1.73
+  --------------------------------------------------------------------------
+  data required time                                                 1.73
+  data arrival time                                                 -1.11
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.62
+
+
+  Startpoint: wptr_full/wbin_reg_0_
+              (rising edge-triggered flip-flop clocked by wclk)
+  Endpoint: wptr_full/wbin_reg_8_
+            (rising edge-triggered flip-flop clocked by wclk)
+  Path Group: wclk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  fifo1_srama        540000                saed32hvt_ss0p95v125c
+  wptr_full_ADDRSIZE10
+                     8000                  saed32hvt_ss0p95v125c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock wclk (rise edge)                                  0.00       0.00
+  clock network delay (ideal)                             0.05       0.05
+  wptr_full/wbin_reg_0_/CLK (SDFFARX1_HVT)                0.00       0.05 r
+  wptr_full/wbin_reg_0_/Q (SDFFARX1_HVT)                  0.34       0.39 f
+  wptr_full/U40/Y (NAND3X2_HVT)                           0.14       0.53 r
+  wptr_full/U5/Y (OR2X1_HVT)                              0.09       0.62 r
+  wptr_full/U36/Y (OR2X1_HVT)                             0.09       0.71 r
+  wptr_full/U41/Y (OR2X1_HVT)                             0.08       0.79 r
+  wptr_full/U17/Y (INVX0_HVT)                             0.03       0.82 f
+  wptr_full/U54/Y (AND2X1_HVT)                            0.08       0.90 f
+  wptr_full/U55/Y (AND2X1_HVT)                            0.08       0.98 f
+  wptr_full/U47/Y (INVX0_HVT)                             0.03       1.02 r
+  wptr_full/U75/Y (AND2X1_HVT)                            0.08       1.10 r
+  wptr_full/wbin_reg_8_/D (SDFFARX1_HVT)                  0.00       1.10 r
+  data arrival time                                                  1.10
+
+  clock wclk (rise edge)                                  2.00       2.00
+  clock network delay (ideal)                             0.05       2.05
+  clock uncertainty                                      -0.20       1.85
+  wptr_full/wbin_reg_8_/CLK (SDFFARX1_HVT)                0.00       1.85 r
+  library setup time                                     -0.11       1.74
+  data required time                                                 1.74
+  --------------------------------------------------------------------------
+  data required time                                                 1.74
+  data arrival time                                                 -1.10
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.64
+
+
+  Startpoint: wptr_full/wbin_reg_0_
+              (rising edge-triggered flip-flop clocked by wclk)
+  Endpoint: wptr_full/wptr_reg_4_
+            (rising edge-triggered flip-flop clocked by wclk)
+  Path Group: wclk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  fifo1_srama        540000                saed32hvt_ss0p95v125c
+  wptr_full_ADDRSIZE10
+                     8000                  saed32hvt_ss0p95v125c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock wclk (rise edge)                                  0.00       0.00
+  clock network delay (ideal)                             0.05       0.05
+  wptr_full/wbin_reg_0_/CLK (SDFFARX1_HVT)                0.00       0.05 r
+  wptr_full/wbin_reg_0_/Q (SDFFARX1_HVT)                  0.34       0.39 f
+  wptr_full/U40/Y (NAND3X2_HVT)                           0.14       0.53 r
+  wptr_full/U5/Y (OR2X1_HVT)                              0.09       0.62 r
+  wptr_full/U36/Y (OR2X1_HVT)                             0.09       0.71 r
+  wptr_full/U18/Y (INVX0_HVT)                             0.05       0.75 f
+  wptr_full/U6/Y (XOR2X1_HVT)                             0.17       0.92 r
+  wptr_full/U73/Y (MUX21X1_HVT)                           0.15       1.07 r
+  wptr_full/wptr_reg_4_/D (SDFFARX1_HVT)                  0.00       1.07 r
+  data arrival time                                                  1.07
+
+  clock wclk (rise edge)                                  2.00       2.00
+  clock network delay (ideal)                             0.05       2.05
+  clock uncertainty                                      -0.20       1.85
+  wptr_full/wptr_reg_4_/CLK (SDFFARX1_HVT)                0.00       1.85 r
+  library setup time                                     -0.12       1.73
+  data required time                                                 1.73
+  --------------------------------------------------------------------------
+  data required time                                                 1.73
+  data arrival time                                                 -1.07
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.67
+
+
+1
+dc_shell> 
+dc_shell> report_constraint -all_violators
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+ 
+****************************************
+Report : constraint
+        -all_violators
+Design : fifo1_srama
+Version: Q-2019.12-SP3
+Date   : Sun Jan 21 22:54:22 2024
+****************************************
+
+
+   max_delay/setup ('OUTPUTS' group)
+
+                             Required        Actual
+   Endpoint                 Path Delay     Path Delay        Slack
+   -----------------------------------------------------------------
+   rempty                       1.85           1.86 f        -0.01  (VIOLATED)
+
+
+   max_transition
+
+                             Required        Actual
+   Net                      Transition     Transition        Slack
+   -----------------------------------------------------------------
+   rdata[0]                     0.50           0.90          -0.40  (VIOLATED)
+       PORT :  rdata[0]         0.50           0.90          -0.40  (VIOLATED)
+   rdata[1]                     0.50           0.90          -0.40  (VIOLATED)
+       PORT :  rdata[1]         0.50           0.90          -0.40  (VIOLATED)
+   rdata[2]                     0.50           0.90          -0.40  (VIOLATED)
+       PORT :  rdata[2]         0.50           0.90          -0.40  (VIOLATED)
+   rdata[3]                     0.50           0.90          -0.40  (VIOLATED)
+       PORT :  rdata[3]         0.50           0.90          -0.40  (VIOLATED)
+   rdata[4]                     0.50           0.90          -0.40  (VIOLATED)
+       PORT :  rdata[4]         0.50           0.90          -0.40  (VIOLATED)
+   rdata[5]                     0.50           0.90          -0.40  (VIOLATED)
+       PORT :  rdata[5]         0.50           0.90          -0.40  (VIOLATED)
+   rdata[6]                     0.50           0.90          -0.40  (VIOLATED)
+       PORT :  rdata[6]         0.50           0.90          -0.40  (VIOLATED)
+   rdata[7]                     0.50           0.90          -0.40  (VIOLATED)
+       PORT :  rdata[7]         0.50           0.90          -0.40  (VIOLATED)
+   wfull                        0.50           0.89          -0.39  (VIOLATED)
+       PORT :  wfull            0.50           0.89          -0.39  (VIOLATED)
+   rempty                       0.50           0.89          -0.39  (VIOLATED)
+       PORT :  rempty           0.50           0.89          -0.39  (VIOLATED)
+
+   -----------------------------------------------------------------
+   Total                      10                 -3.97  
+
+   max_leakage_power
+
+                             Required        Actual
+   Design                   Leakage Power  Leakage Power     Slack
+   -----------------------------------------------------------------
+   fifo1_srama                  0.00       1062477824.00  -1062477824.00
+                                                                    (VIOLATED)
+
+
+1
+dc_shell> report_timing -to [all_outputs ]
+Warning: Design 'fifo1_srama' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : fifo1_srama
+Version: Q-2019.12-SP3
+Date   : Sun Jan 21 22:54:43 2024
+****************************************
+
+Operating Conditions: ss0p95v125c   Library: saed32hvt_ss0p95v125c
+Wire Load Model Mode: enclosed
+
+  Startpoint: rptr_empty/rempty_reg
+              (rising edge-triggered flip-flop clocked by rclk)
+  Endpoint: rempty (output port clocked by rclk)
+  Path Group: OUTPUTS
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  fifo1_srama        540000                saed32hvt_ss0p95v125c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock rclk (rise edge)                                  0.00       0.00
+  clock network delay (ideal)                             0.05       0.05
+  rptr_empty/rempty_reg/CLK (SDFFASX2_HVT)                0.00       0.05 r
+  rptr_empty/rempty_reg/QN (SDFFASX2_HVT)                 0.35       0.40 r
+  rptr_empty/rempty_BAR (rptr_empty_ADDRSIZE10)           0.00       0.40 r
+  U13/Y (INVX8_HVT)                                       0.07       0.46 f
+  io_t_rempty/PADIO (D8I1025_NS)                          1.39       1.86 f
+  rempty (out)                                            0.00       1.86 f
+  data arrival time                                                  1.86
+
+  clock rclk (rise edge)                                  2.00       2.00
+  clock network delay (ideal)                             0.05       2.05
+  clock uncertainty                                      -0.20       1.85
+  output external delay                                   0.00       1.85
+  data required time                                                 1.85
+  --------------------------------------------------------------------------
+  data required time                                                 1.85
+  data arrival time                                                 -1.86
+  --------------------------------------------------------------------------
+  slack (VIOLATED)                                                  -0.01
+
+
+1
+dc_shell> 
+dc_shell> 
+dc_shell> exit
+
+Memory usage for this session 187 Mbytes.
+Memory usage for this session including child processes 187 Mbytes.
+CPU usage for this session 14 seconds ( 0.00 hours ).
+Elapsed time for this session 9121 seconds ( 2.53 hours ).
+
+Thank you...
+

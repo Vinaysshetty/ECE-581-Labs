@@ -1,0 +1,20 @@
+# Cadence Genus(TM) Synthesis Solution, Version 19.12-s121_1, built Dec  3 2019 15:07:17
+
+# Date: Wed Jan 24 16:20:00 2024
+# Host: mo.ece.pdx.edu (x86_64 w/Linux 3.10.0-1160.105.1.el7.x86_64) (1core*32cpus*32physical cpus*Intel Xeon E312xx (Sandy Bridge, IBRS update) 16384KB)
+# OS:   CentOS Linux release 7.9.2009 (Core)
+
+# Cadence Genus(TM) Synthesis Solution, Version 19.12-s121_1, built Dec  3 2019 15:07:17
+
+# Date: Wed Jan 24 16:20:16 2024
+# Host: mo.ece.pdx.edu (x86_64 w/Linux 3.10.0-1160.105.1.el7.x86_64) (1core*32cpus*32physical cpus*Intel Xeon E312xx (Sandy Bridge, IBRS update) 16384KB)
+# OS:   CentOS Linux release 7.9.2009 (Core)
+
+sh mv ../../constraints/fifo1_sramb.genus.sdc parallel.sdc
+sh gvim ../scripts/genus.tcl &
+set top_design fifo1_sramb
+source ../scripts/genus.tcl
+ls -lrt
+gvim genus.log.24-01-24_16-01 &
+report_qor
+exit

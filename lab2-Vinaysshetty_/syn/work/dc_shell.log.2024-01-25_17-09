@@ -1,0 +1,885 @@
+setting auto_restore_mw_cel_lib_setup true
+Initializing gui preferences from file  /u/vinays/.synopsys_dv_prefs.tcl
+dc_shell> set top_design fifo1_sram
+fifo1_sram
+dc_shell> source ../scripts/dc.tcl
+set lib_dir /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib
+/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib
+# Decoder ring for the libraries
+# You will need to follow another example or look in the library directories to understand.
+# lib_types is used for the dc/dct linking variables and ICC2 NDM lcoations.
+# /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm
+# /          $lib_dir                   /lib/ $lib_type /db_nldm
+# link_library, Target_library use the sub_lib_types and corner variables. 
+# For sub_lib_types and corner:
+# Example:
+#     saed32hvt_ss0p75v125c.db
+#     |sub_lib  corner    .db
+# The current flow tries to find all sub_lib and all corners in all the search paths.  Any match will be put in the library list.
+# Wild cards can be used, but be careful.  Multiple matches can occur in ways you don't want.
+# For the target library, the same method is used as the link library except only HVT and RVT lib_types are used.
+# ICC2 NDM choosing also uses the sub_lib_types so that only the required libraries and extras are not loaded.
+# fifo1
+#set top_design fifo1
+set add_ios 1
+1
+set pad_design 1
+1
+set design_size { 580 580  } 
+ 580 580  
+set design_io_border 310
+310
+set dc_floorplanning 1
+1
+set enable_dft 0
+0
+set innovus_enable_manual_macro_placement 0
+0
+set rtl_list [list ../rtl/$top_design.sv ]
+../rtl/fifo1_sram.sv
+<<<<<<< HEAD
+Error: unknown command '<<<<<<<' (CMD-005)
+set slow_corner "ss0p95v125c_2p25v ss0p95v125c"
+ss0p95v125c_2p25v ss0p95v125c
+=======
+Error: unknown command '=======' (CMD-005)
+<<<<<<< HEAD
+Error: unknown command '<<<<<<<' (CMD-005)
+set slow_corner "ss0p95v125c_2p25v ss0p95v125c"
+ss0p95v125c_2p25v ss0p95v125c
+=======
+Error: unknown command '=======' (CMD-005)
+set slow_corner "ss0p95v125c_2p25v ss0p95v125c ss0p75v125c_i0p75v"
+ss0p95v125c_2p25v ss0p95v125c ss0p75v125c_i0p75v
+>>>>>>> 679e217... lab2
+Error: unknown command '>>>>>>>' (CMD-005)
+>>>>>>> 9b4bb7e... lab__2
+Error: unknown command '>>>>>>>' (CMD-005)
+set fast_corner "ff0p95vn40c ff1p16vn40c_2p75v ff1p16vn40c"
+ff0p95vn40c ff1p16vn40c_2p75v ff1p16vn40c
+set synth_corners $slow_corner
+ss0p95v125c_2p25v ss0p95v125c ss0p75v125c_i0p75v
+set synth_corners_target "ss0p95v125c" 
+ss0p95v125c
+#set synth_corners_target "ss0p95v125c" 
+set synth_corners_slow $slow_corner
+ss0p95v125c_2p25v ss0p95v125c ss0p75v125c_i0p75v
+set synth_corners_fast $fast_corner
+ff0p95vn40c ff1p16vn40c_2p75v ff1p16vn40c
+set slow_metal Cmax_125
+Cmax_125
+set fast_metal Cmax_125
+Cmax_125
+<<<<<<< HEAD
+Error: unknown command '<<<<<<<' (CMD-005)
+set lib_types "$lib_dir/io_std/db_nldm $lib_dir/sram/db_nldm $lib_dir/pll/db_nldm"
+/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/io_std/db_nldm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/sram/db_nldm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/pll/db_nldm
+set ndm_types "$lib_dir/stdcell_rvt/ndm $lib_dir/stdcell_hvt/ndm $lib_dir/sram/ndm $lib_dir/io_std/ndm  $lib_dir/pll/ndm"
+/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/ndm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/ndm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/sram/ndm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/io_std/ndm  /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/pll/ndm
+=======
+Error: unknown command '=======' (CMD-005)
+<<<<<<< HEAD
+Error: unknown command '<<<<<<<' (CMD-005)
+set lib_types "$lib_dir/io_std/db_nldm $lib_dir/sram/db_nldm $lib_dir/pll/db_nldm"
+/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/io_std/db_nldm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/sram/db_nldm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/pll/db_nldm
+set ndm_types "$lib_dir/stdcell_rvt/ndm $lib_dir/stdcell_hvt/ndm $lib_dir/sram/ndm $lib_dir/io_std/ndm  $lib_dir/pll/ndm"
+/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/ndm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/ndm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/sram/ndm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/io_std/ndm  /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/pll/ndm
+=======
+Error: unknown command '=======' (CMD-005)
+set lib_types "$lib_dir/io_std/db_nldm $lib_dir/sram_Ip/db_nldm $lib_dir/pll/db_nldm"
+/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/io_std/db_nldm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/sram_Ip/db_nldm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/pll/db_nldm
+set ndm_types "$lib_dir/stdcell_rvt/ndm $lib_dir/stdcell_hvt/ndm $lib_dir/sram_Ip/ndm $lib_dir/io_std/ndm  $lib_dir/pll/ndm"
+/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/ndm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/ndm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/sram_Ip/ndm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/io_std/ndm  /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/pll/ndm
+>>>>>>> 679e217... lab2
+Error: unknown command '>>>>>>>' (CMD-005)
+>>>>>>> 9b4bb7e... lab__2
+Error: unknown command '>>>>>>>' (CMD-005)
+set lib_types_target "$lib_dir/stdcell_rvt/db_nldm"
+/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm
+# Get just the main standard cells, srams and IOs
+set sub_lib_type "saed32?vt_ saed32sram_ saed32io_wb_ saed32pll_"
+saed32?vt_ saed32sram_ saed32io_wb_ saed32pll_
+set sub_lib_type_target "saed32rvt_"
+saed32rvt_
+set lef_types [list $lib_dir/stdcell_hvt/lef  $lib_dir/stdcell_rvt/lef $lib_dir/stdcell_lvt/lef <<<<<<< HEAD
+$lib_dir/sram/lef/ =======
+<<<<<<< HEAD
+$lib_dir/sram/lef/ =======
+$lib_dir/sram_Ip/lef/ >>>>>>> 679e217... lab2
+>>>>>>> 9b4bb7e... lab__2
+$lib_dir/io_std/lef $lib_dir/pll/lef ]
+Error: unknown command '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/sram/lef/' (CMD-005)
+set sub_lef_type "saed32nm_?vt_*.lef saed32_sram_*.lef saed32io_std_wb saed32_PLL.lef"
+saed32nm_?vt_*.lef saed32_sram_*.lef saed32io_std_wb saed32_PLL.lef
+set mwlib_types [list $lib_dir/stdcell_hvt/milkyway $lib_dir/stdcell_rvt/milkyway $lib_dir/stdcell_lvt/milkyway  $lib_dir/io_std/milkyway <<<<<<< HEAD
+$lib_dir/sram/milkyway $lib_dir/pll/milkyway =======
+<<<<<<< HEAD
+$lib_dir/sram/milkyway $lib_dir/pll/milkyway =======
+$lib_dir/sram_Ip/milkyway $lib_dir/pll/milkyway >>>>>>> 679e217... lab2
+>>>>>>> 9b4bb7e... lab__2
+ ]
+Error: unknown command '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/sram/milkyway' (CMD-005)
+set sub_mwlib_type "saed32nm_?vt_* SRAM32NM saed32io_wb_* SAED32_PLL_FR*"
+saed32nm_?vt_* SRAM32NM saed32io_wb_* SAED32_PLL_FR*
+#set topdir /u/$env(USER)/PSU_RTL2GDS
+set topdir [ lindex [ regexp -inline "(.*)\(syn\|pt\|apr\)" [pwd] ] 1 ]
+/u/vinays/ECE581-2024/lab2-Vinaysshetty_/
+set FCL 0
+0
+set split_constraints 0
+0
+Warning: No designs to list. (UID-275)
+== ANALYZE autoread all files ==
+
+Starting ANALYZE autoread mode...
+Warning: Defining design library 'WORK' at directory '/u/vinays/ECE581-2024/lab2-Vinaysshetty_/syn/work/WORK_autoread'. (AUTOREAD-107)
+Information: Adding '/u/vinays/ECE581-2024/lab2-Vinaysshetty_/syn/rtl/fifo1_sram.sv'.  (AUTOREAD-100)
+Information: Scanning file { fifo1_sram.sv }. (AUTOREAD-303)
+Compiling source file /u/vinays/ECE581-2024/lab2-Vinaysshetty_/syn/rtl/fifo1_sram.sv
+Presto compilation completed successfully.
+Autoread command completed successfully.
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/io_std/db_nldm/saed32io_wb_ss0p95v125c_2p25v.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/pll/db_nldm/saed32pll_ss0p95v125c_2p25v.db'
+Loading db file '/pkgs/synopsys/2020/design_compiler/syn/Q-2019.12-SP3/libraries/syn/dw_foundation.sldb'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p95v125c.db'
+Loading db file '/pkgs/synopsys/2020/design_compiler/syn/Q-2019.12-SP3/libraries/syn/gtech.db'
+Loading db file '/pkgs/synopsys/2020/design_compiler/syn/Q-2019.12-SP3/libraries/syn/standard.sldb'
+  Loading link library 'saed32io_wb_ss0p95v125c_2p25v'
+  Loading link library 'saed32pll_ss0p95v125c_2p25v'
+  Loading link library 'saed32rvt_ss0p95v125c'
+  Loading link library 'gtech'
+Running PRESTO HDLC
+
+Inferred memory devices in process
+        in routine fifo1_sram line 19 in file
+                '/u/vinays/ECE581-2024/lab2-Vinaysshetty_/syn/rtl/fifo1_sram.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|      wdata_reg      | Flip-flop |   8   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (fifo1_sram)
+Elaborated 1 design.
+Current design is now 'fifo1_sram'.
+Information: Building the design 'sync_r2w'. (HDL-193)
+
+Inferred memory devices in process
+        in routine sync_r2w line 145 in file
+                '/u/vinays/ECE581-2024/lab2-Vinaysshetty_/syn/rtl/fifo1_sram.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|    wq2_rptr_reg     | Flip-flop |  11   |  Y  | N  | Y  | N  | N  | N  | N  |
+|    wq1_rptr_reg     | Flip-flop |  11   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (sync_r2w)
+Information: Building the design 'sync_w2r'. (HDL-193)
+
+Inferred memory devices in process
+        in routine sync_w2r line 156 in file
+                '/u/vinays/ECE581-2024/lab2-Vinaysshetty_/syn/rtl/fifo1_sram.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|    rq2_wptr_reg     | Flip-flop |  11   |  Y  | N  | Y  | N  | N  | N  | N  |
+|    rq1_wptr_reg     | Flip-flop |  11   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (sync_w2r)
+Information: Building the design 'fifomem' instantiated from design 'fifo1_sram' with
+        the parameters "8,10". (HDL-193)
+Warning:  /u/vinays/ECE581-2024/lab2-Vinaysshetty_/syn/rtl/fifo1_sram.sv:71: DEFAULT branch of CASE statement cannot be reached. (ELAB-311)
+Warning:  /u/vinays/ECE581-2024/lab2-Vinaysshetty_/syn/rtl/fifo1_sram.sv:86: DEFAULT branch of CASE statement cannot be reached. (ELAB-311)
+
+Statistics for case statements in always block at line 69 in file
+        '/u/vinays/ECE581-2024/lab2-Vinaysshetty_/syn/rtl/fifo1_sram.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            71            |    auto/auto     |
+===============================================
+
+Statistics for case statements in always block at line 84 in file
+        '/u/vinays/ECE581-2024/lab2-Vinaysshetty_/syn/rtl/fifo1_sram.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            86            |    auto/auto     |
+===============================================
+Presto compilation completed successfully. (fifomem_DATASIZE8_ADDRSIZE10)
+Information: Building the design 'rptr_empty' instantiated from design 'fifo1_sram' with
+        the parameters "10". (HDL-193)
+
+Inferred memory devices in process
+        in routine rptr_empty_ADDRSIZE10 line 175 in file
+                '/u/vinays/ECE581-2024/lab2-Vinaysshetty_/syn/rtl/fifo1_sram.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|      rbin_reg       | Flip-flop |  11   |  Y  | N  | Y  | N  | N  | N  | N  |
+|      rptr_reg       | Flip-flop |  11   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+        in routine rptr_empty_ADDRSIZE10 line 186 in file
+                '/u/vinays/ECE581-2024/lab2-Vinaysshetty_/syn/rtl/fifo1_sram.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|     rempty_reg      | Flip-flop |   1   |  N  | N  | N  | Y  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (rptr_empty_ADDRSIZE10)
+Information: Building the design 'wptr_full' instantiated from design 'fifo1_sram' with
+        the parameters "10". (HDL-193)
+
+Inferred memory devices in process
+        in routine wptr_full_ADDRSIZE10 line 203 in file
+                '/u/vinays/ECE581-2024/lab2-Vinaysshetty_/syn/rtl/fifo1_sram.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|      wbin_reg       | Flip-flop |  11   |  Y  | N  | Y  | N  | N  | N  | N  |
+|      wptr_reg       | Flip-flop |  11   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+        in routine wptr_full_ADDRSIZE10 line 218 in file
+                '/u/vinays/ECE581-2024/lab2-Vinaysshetty_/syn/rtl/fifo1_sram.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|      wfull_reg      | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (wptr_full_ADDRSIZE10)
+Information: Building the design 'SRAM2RW128x8'. (HDL-193)
+Warning: Cannot find the design 'SRAM2RW128x8' in the library 'WORK'. (LBR-1)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+#####################################################
+proc insert_io { port side} {
+  set this_io io_${side}_${port}
+  if {  $side == "t"   } {
+   if { [get_attribute [get_ports $port ] direction ] == "in" } {
+    create_cell $this_io saed32io_wb_ss0p95v125c_2p25v/I1025_NS
+   } else {
+    create_cell $this_io saed32io_wb_ss0p95v125c_2p25v/D8I1025_NS
+   }
+  }
+  if { $side == "b"  } {
+   if { [get_attribute [get_ports $port ] direction ] == "in" } {
+    create_cell $this_io saed32io_wb_ss0p95v125c_2p25v/I1025_NS
+   } else {
+    create_cell $this_io saed32io_wb_ss0p95v125c_2p25v/D8I1025_NS
+   }
+  }
+  if {  $side == "r"  } {
+   if { [get_attribute [get_ports $port ] direction ] == "in" } {
+    create_cell $this_io saed32io_wb_ss0p95v125c_2p25v/I1025_NS
+   } else {
+    create_cell $this_io saed32io_wb_ss0p95v125c_2p25v/D8I1025_NS
+   }
+  }
+  if { $side == "l"  } {
+   if { [get_attribute [get_ports $port ] direction ] == "in" } {
+    create_cell $this_io saed32io_wb_ss0p95v125c_2p25v/I1025_NS
+   } else {
+    create_cell $this_io saed32io_wb_ss0p95v125c_2p25v/D8I1025_NS
+   }
+  }
+  set pins [ get_pins -of_obj [ get_net $port ] ]
+  foreach_in i $pins { disconnect_net [get_net $port ] $i }
+  set port_net [get_nets -quiet $port ]
+
+  # If only a port is created, the related net is not created and connected to the port.  Do that here.
+  if { [sizeof_collection $port_net ] == 0 } { 
+      create_net $port 
+      connect_net $port [get_ports $port ]
+  }
+
+  connect_net [get_net $port ]  $this_io/PADIO
+  create_net ${this_io}_net
+  foreach_in i $pins { connect_net ${this_io}_net $i }
+  #DIN is input to IO_PAD
+  #DOUT is output of IO_PAD
+  #EN is the IO_PAD enable to output
+  if { [get_attribute [get_ports $port ] direction ] == "in" } {
+     #connect_net [get_nets  *Logic0* ] ${this_io}/EN 
+     connect_net [get_nets  *Logic1* ] ${this_io}/R_EN 
+     connect_net ${this_io}_net ${this_io}/DOUT
+  } else {
+     connect_net [get_nets  *Logic1* ] $this_io/EN 
+     #connect_net [get_nets  *Logic0* ] $this_io/R_EN 
+     connect_net ${this_io}_net $this_io/DIN
+  }
+}
+####################################################
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating cell 'io_l_rdata[7]' in design 'fifo1_sram'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Disconnecting net 'rdata[7]' from pin 'fifomem/rdata[7]'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'rdata[7]' to pin 'io_l_rdata[7]/PADIO'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating net 'io_l_rdata[7]_net' in design 'fifo1_sram'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_l_rdata[7]_net' to pin 'fifomem/rdata[7]'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net '*Logic1*' to pin 'io_l_rdata[7]/EN'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_l_rdata[7]_net' to pin 'io_l_rdata[7]/DIN'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating cell 'io_l_rdata[6]' in design 'fifo1_sram'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Disconnecting net 'rdata[6]' from pin 'fifomem/rdata[6]'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'rdata[6]' to pin 'io_l_rdata[6]/PADIO'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating net 'io_l_rdata[6]_net' in design 'fifo1_sram'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_l_rdata[6]_net' to pin 'fifomem/rdata[6]'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net '*Logic1*' to pin 'io_l_rdata[6]/EN'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_l_rdata[6]_net' to pin 'io_l_rdata[6]/DIN'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating cell 'io_l_rdata[5]' in design 'fifo1_sram'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Disconnecting net 'rdata[5]' from pin 'fifomem/rdata[5]'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'rdata[5]' to pin 'io_l_rdata[5]/PADIO'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating net 'io_l_rdata[5]_net' in design 'fifo1_sram'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_l_rdata[5]_net' to pin 'fifomem/rdata[5]'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net '*Logic1*' to pin 'io_l_rdata[5]/EN'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_l_rdata[5]_net' to pin 'io_l_rdata[5]/DIN'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating cell 'io_l_rdata[4]' in design 'fifo1_sram'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Disconnecting net 'rdata[4]' from pin 'fifomem/rdata[4]'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'rdata[4]' to pin 'io_l_rdata[4]/PADIO'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating net 'io_l_rdata[4]_net' in design 'fifo1_sram'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_l_rdata[4]_net' to pin 'fifomem/rdata[4]'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net '*Logic1*' to pin 'io_l_rdata[4]/EN'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_l_rdata[4]_net' to pin 'io_l_rdata[4]/DIN'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating cell 'io_l_rdata[3]' in design 'fifo1_sram'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Disconnecting net 'rdata[3]' from pin 'fifomem/rdata[3]'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'rdata[3]' to pin 'io_l_rdata[3]/PADIO'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating net 'io_l_rdata[3]_net' in design 'fifo1_sram'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_l_rdata[3]_net' to pin 'fifomem/rdata[3]'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net '*Logic1*' to pin 'io_l_rdata[3]/EN'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_l_rdata[3]_net' to pin 'io_l_rdata[3]/DIN'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating cell 'io_l_rdata[2]' in design 'fifo1_sram'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Disconnecting net 'rdata[2]' from pin 'fifomem/rdata[2]'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'rdata[2]' to pin 'io_l_rdata[2]/PADIO'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating net 'io_l_rdata[2]_net' in design 'fifo1_sram'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_l_rdata[2]_net' to pin 'fifomem/rdata[2]'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net '*Logic1*' to pin 'io_l_rdata[2]/EN'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_l_rdata[2]_net' to pin 'io_l_rdata[2]/DIN'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating cell 'io_l_rdata[1]' in design 'fifo1_sram'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Disconnecting net 'rdata[1]' from pin 'fifomem/rdata[1]'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'rdata[1]' to pin 'io_l_rdata[1]/PADIO'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating net 'io_l_rdata[1]_net' in design 'fifo1_sram'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_l_rdata[1]_net' to pin 'fifomem/rdata[1]'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net '*Logic1*' to pin 'io_l_rdata[1]/EN'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_l_rdata[1]_net' to pin 'io_l_rdata[1]/DIN'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating cell 'io_l_rdata[0]' in design 'fifo1_sram'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Disconnecting net 'rdata[0]' from pin 'fifomem/rdata[0]'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'rdata[0]' to pin 'io_l_rdata[0]/PADIO'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating net 'io_l_rdata[0]_net' in design 'fifo1_sram'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_l_rdata[0]_net' to pin 'fifomem/rdata[0]'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net '*Logic1*' to pin 'io_l_rdata[0]/EN'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_l_rdata[0]_net' to pin 'io_l_rdata[0]/DIN'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating cell 'io_r_wdata_in[7]' in design 'fifo1_sram'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Disconnecting net 'wdata_in[7]' from pin 'wdata_reg[7]/next_state'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'wdata_in[7]' to pin 'io_r_wdata_in[7]/PADIO'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating net 'io_r_wdata_in[7]_net' in design 'fifo1_sram'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_r_wdata_in[7]_net' to pin 'wdata_reg[7]/next_state'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net '*Logic1*' to pin 'io_r_wdata_in[7]/R_EN'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_r_wdata_in[7]_net' to pin 'io_r_wdata_in[7]/DOUT'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating cell 'io_r_wdata_in[6]' in design 'fifo1_sram'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Disconnecting net 'wdata_in[6]' from pin 'wdata_reg[6]/next_state'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'wdata_in[6]' to pin 'io_r_wdata_in[6]/PADIO'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating net 'io_r_wdata_in[6]_net' in design 'fifo1_sram'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_r_wdata_in[6]_net' to pin 'wdata_reg[6]/next_state'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net '*Logic1*' to pin 'io_r_wdata_in[6]/R_EN'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_r_wdata_in[6]_net' to pin 'io_r_wdata_in[6]/DOUT'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating cell 'io_r_wdata_in[5]' in design 'fifo1_sram'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Disconnecting net 'wdata_in[5]' from pin 'wdata_reg[5]/next_state'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'wdata_in[5]' to pin 'io_r_wdata_in[5]/PADIO'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating net 'io_r_wdata_in[5]_net' in design 'fifo1_sram'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_r_wdata_in[5]_net' to pin 'wdata_reg[5]/next_state'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net '*Logic1*' to pin 'io_r_wdata_in[5]/R_EN'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_r_wdata_in[5]_net' to pin 'io_r_wdata_in[5]/DOUT'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating cell 'io_r_wdata_in[4]' in design 'fifo1_sram'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Disconnecting net 'wdata_in[4]' from pin 'wdata_reg[4]/next_state'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'wdata_in[4]' to pin 'io_r_wdata_in[4]/PADIO'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating net 'io_r_wdata_in[4]_net' in design 'fifo1_sram'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_r_wdata_in[4]_net' to pin 'wdata_reg[4]/next_state'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net '*Logic1*' to pin 'io_r_wdata_in[4]/R_EN'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_r_wdata_in[4]_net' to pin 'io_r_wdata_in[4]/DOUT'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating cell 'io_r_wdata_in[3]' in design 'fifo1_sram'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Disconnecting net 'wdata_in[3]' from pin 'wdata_reg[3]/next_state'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'wdata_in[3]' to pin 'io_r_wdata_in[3]/PADIO'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating net 'io_r_wdata_in[3]_net' in design 'fifo1_sram'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_r_wdata_in[3]_net' to pin 'wdata_reg[3]/next_state'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net '*Logic1*' to pin 'io_r_wdata_in[3]/R_EN'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_r_wdata_in[3]_net' to pin 'io_r_wdata_in[3]/DOUT'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating cell 'io_r_wdata_in[2]' in design 'fifo1_sram'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Disconnecting net 'wdata_in[2]' from pin 'wdata_reg[2]/next_state'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'wdata_in[2]' to pin 'io_r_wdata_in[2]/PADIO'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating net 'io_r_wdata_in[2]_net' in design 'fifo1_sram'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_r_wdata_in[2]_net' to pin 'wdata_reg[2]/next_state'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net '*Logic1*' to pin 'io_r_wdata_in[2]/R_EN'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_r_wdata_in[2]_net' to pin 'io_r_wdata_in[2]/DOUT'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating cell 'io_r_wdata_in[1]' in design 'fifo1_sram'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Disconnecting net 'wdata_in[1]' from pin 'wdata_reg[1]/next_state'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'wdata_in[1]' to pin 'io_r_wdata_in[1]/PADIO'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating net 'io_r_wdata_in[1]_net' in design 'fifo1_sram'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_r_wdata_in[1]_net' to pin 'wdata_reg[1]/next_state'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net '*Logic1*' to pin 'io_r_wdata_in[1]/R_EN'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_r_wdata_in[1]_net' to pin 'io_r_wdata_in[1]/DOUT'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating cell 'io_r_wdata_in[0]' in design 'fifo1_sram'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Disconnecting net 'wdata_in[0]' from pin 'wdata_reg[0]/next_state'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'wdata_in[0]' to pin 'io_r_wdata_in[0]/PADIO'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating net 'io_r_wdata_in[0]_net' in design 'fifo1_sram'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_r_wdata_in[0]_net' to pin 'wdata_reg[0]/next_state'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net '*Logic1*' to pin 'io_r_wdata_in[0]/R_EN'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_r_wdata_in[0]_net' to pin 'io_r_wdata_in[0]/DOUT'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating cell 'io_t_rempty' in design 'fifo1_sram'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Disconnecting net 'rempty' from pin 'rptr_empty/rempty'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'rempty' to pin 'io_t_rempty/PADIO'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating net 'io_t_rempty_net' in design 'fifo1_sram'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_t_rempty_net' to pin 'rptr_empty/rempty'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net '*Logic1*' to pin 'io_t_rempty/EN'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_t_rempty_net' to pin 'io_t_rempty/DIN'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating cell 'io_t_wfull' in design 'fifo1_sram'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Disconnecting net 'wfull' from pin 'fifomem/wfull'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Disconnecting net 'wfull' from pin 'wptr_full/wfull'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'wfull' to pin 'io_t_wfull/PADIO'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating net 'io_t_wfull_net' in design 'fifo1_sram'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_t_wfull_net' to pin 'fifomem/wfull'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_t_wfull_net' to pin 'wptr_full/wfull'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net '*Logic1*' to pin 'io_t_wfull/EN'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_t_wfull_net' to pin 'io_t_wfull/DIN'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating cell 'io_b_rrst_n' in design 'fifo1_sram'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Disconnecting net 'rrst_n' from pin 'rptr_empty/rrst_n'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Disconnecting net 'rrst_n' from pin 'sync_w2r/rrst_n'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'rrst_n' to pin 'io_b_rrst_n/PADIO'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating net 'io_b_rrst_n_net' in design 'fifo1_sram'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_b_rrst_n_net' to pin 'rptr_empty/rrst_n'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_b_rrst_n_net' to pin 'sync_w2r/rrst_n'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net '*Logic1*' to pin 'io_b_rrst_n/R_EN'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_b_rrst_n_net' to pin 'io_b_rrst_n/DOUT'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating cell 'io_b_rclk' in design 'fifo1_sram'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Disconnecting net 'rclk' from pin 'rptr_empty/rclk'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Disconnecting net 'rclk' from pin 'fifomem/rclk'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Disconnecting net 'rclk' from pin 'sync_w2r/rclk'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'rclk' to pin 'io_b_rclk/PADIO'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating net 'io_b_rclk_net' in design 'fifo1_sram'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_b_rclk_net' to pin 'rptr_empty/rclk'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_b_rclk_net' to pin 'fifomem/rclk'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_b_rclk_net' to pin 'sync_w2r/rclk'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net '*Logic1*' to pin 'io_b_rclk/R_EN'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_b_rclk_net' to pin 'io_b_rclk/DOUT'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating cell 'io_b_rinc' in design 'fifo1_sram'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Disconnecting net 'rinc' from pin 'rptr_empty/rinc'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'rinc' to pin 'io_b_rinc/PADIO'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating net 'io_b_rinc_net' in design 'fifo1_sram'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_b_rinc_net' to pin 'rptr_empty/rinc'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net '*Logic1*' to pin 'io_b_rinc/R_EN'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_b_rinc_net' to pin 'io_b_rinc/DOUT'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating cell 'io_b_wrst_n' in design 'fifo1_sram'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Disconnecting net 'wrst_n' from pin 'wptr_full/wrst_n'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Disconnecting net 'wrst_n' from pin 'sync_r2w/wrst_n'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Disconnecting net 'wrst_n' from pin 'I_0/A'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'wrst_n' to pin 'io_b_wrst_n/PADIO'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating net 'io_b_wrst_n_net' in design 'fifo1_sram'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_b_wrst_n_net' to pin 'wptr_full/wrst_n'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_b_wrst_n_net' to pin 'sync_r2w/wrst_n'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_b_wrst_n_net' to pin 'I_0/A'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net '*Logic1*' to pin 'io_b_wrst_n/R_EN'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_b_wrst_n_net' to pin 'io_b_wrst_n/DOUT'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating cell 'io_b_wclk2x' in design 'fifo1_sram'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Disconnecting net 'wclk2x' from pin 'wdata_reg[0]/clocked_on'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Disconnecting net 'wclk2x' from pin 'wdata_reg[1]/clocked_on'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Disconnecting net 'wclk2x' from pin 'wdata_reg[2]/clocked_on'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Disconnecting net 'wclk2x' from pin 'wdata_reg[3]/clocked_on'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Disconnecting net 'wclk2x' from pin 'wdata_reg[4]/clocked_on'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Disconnecting net 'wclk2x' from pin 'wdata_reg[5]/clocked_on'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Disconnecting net 'wclk2x' from pin 'wdata_reg[6]/clocked_on'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Disconnecting net 'wclk2x' from pin 'wdata_reg[7]/clocked_on'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'wclk2x' to pin 'io_b_wclk2x/PADIO'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating net 'io_b_wclk2x_net' in design 'fifo1_sram'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_b_wclk2x_net' to pin 'wdata_reg[0]/clocked_on'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_b_wclk2x_net' to pin 'wdata_reg[1]/clocked_on'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_b_wclk2x_net' to pin 'wdata_reg[2]/clocked_on'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_b_wclk2x_net' to pin 'wdata_reg[3]/clocked_on'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_b_wclk2x_net' to pin 'wdata_reg[4]/clocked_on'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_b_wclk2x_net' to pin 'wdata_reg[5]/clocked_on'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_b_wclk2x_net' to pin 'wdata_reg[6]/clocked_on'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_b_wclk2x_net' to pin 'wdata_reg[7]/clocked_on'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net '*Logic1*' to pin 'io_b_wclk2x/R_EN'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_b_wclk2x_net' to pin 'io_b_wclk2x/DOUT'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating cell 'io_b_wclk' in design 'fifo1_sram'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Disconnecting net 'wclk' from pin 'wptr_full/wclk'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Disconnecting net 'wclk' from pin 'fifomem/wclk'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Disconnecting net 'wclk' from pin 'sync_r2w/wclk'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'wclk' to pin 'io_b_wclk/PADIO'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating net 'io_b_wclk_net' in design 'fifo1_sram'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_b_wclk_net' to pin 'wptr_full/wclk'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_b_wclk_net' to pin 'fifomem/wclk'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_b_wclk_net' to pin 'sync_r2w/wclk'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net '*Logic1*' to pin 'io_b_wclk/R_EN'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_b_wclk_net' to pin 'io_b_wclk/DOUT'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating cell 'io_b_winc' in design 'fifo1_sram'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Disconnecting net 'winc' from pin 'wptr_full/winc'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Disconnecting net 'winc' from pin 'fifomem/wclken'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'winc' to pin 'io_b_winc/PADIO'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Creating net 'io_b_winc_net' in design 'fifo1_sram'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_b_winc_net' to pin 'wptr_full/winc'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_b_winc_net' to pin 'fifomem/wclken'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net '*Logic1*' to pin 'io_b_winc/R_EN'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Connecting net 'io_b_winc_net' to pin 'io_b_winc/DOUT'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: The specified replacement character (_) is conflicting with the specified allowed or restricted character.   (UCN-4)
+if { [info exists synopsys_program_name ] && ($synopsys_program_name == "icc2_shell") } {
+    puts " Creating ICC2 MCMM "
+    create_mode func
+    create_corner slow
+    create_scenario -mode func -corner slow -name func_slow
+    current_scenario func_slow
+    set_operating_conditions ss0p75v125c
+    read_parasitic_tech -tlup $tlu_dir/saed32nm_1p9m_Cmax.tluplus -layermap $tlu_dir/saed32nm_tf_itf_tluplus.map -name Cmax
+    read_parasitic_tech -tlup $tlu_dir/saed32nm_1p9m_Cmin.tluplus -layermap $tlu_dir/saed32nm_tf_itf_tluplus.map -name Cmin
+    set_parasitic_parameters -early_spec Cmax -early_temperature 125
+    set_parasitic_parameters -late_spec Cmax -late_temperature 125
+    #set_parasitic_parameters -early_spec 1p9m_Cmax -early_temperature 125 -corner default
+    #set_parasitic_parameters -late_spec 1p9m_Cmax -late_temperature 125 -corner default
+
+    #set_scenario_status  default -active false
+    set_scenario_status func_slow -active true -hold true -setup true
+}
+set wclk_period 2.0
+2.0
+set rclk_period 2.0
+2.0
+set wclk2x_period [ expr $wclk_period / 2 ]
+1.0
+create_clock -name "wclk" -period $wclk_period  wclk
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+1
+create_clock -name "rclk" -period $rclk_period rclk
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+1
+#Add the new clock.  Make it 1/2 the wclk period since it is called wclk2x
+create_clock -name "wclk2x" -period $wclk2x_period wclk2x
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+1
+set_false_path -from [get_clocks wclk ] -to [get_clocks rclk]
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+1
+set_false_path -from [get_clocks rclk ] -to [ get_clocks wclk]
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+1
+# Add input/output delays in relation to related clocks
+# Can tell the related clock by doing report_timing -group INPUTS  or -group OUTPUTS after using group_path
+# External delay should be some percentage of clock period.
+# Tune/relax if violating; most concerned about internal paths.
+# I like set_driving_cell to a std cell from the library.  set_drive works to.
+# set_load
+#group_path -name INTERNAL -from [all_clocks] -to [all_clocks ]
+group_path -name INPUTS -from [ get_ports -filter "direction==in&&full_name!~*clk*" ]
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+1
+group_path -name OUTPUTS -to [ get_ports -filter "direction==out" ]
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+1
+Current design is 'fifo1_sram'.
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Information: Performing power optimization. (PWR-850)
+Analyzing: "/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p95v125c.db"
+Library analysis succeeded.
+Information: Choosing a test methodology will restrict the optimization of sequential cells. (UIO-12)
+Information: Evaluating DesignWare library utilization. (UISN-27)
+
+============================================================================
+| DesignWare Building Block Library  |         Version         | Available |
+============================================================================
+| Basic DW Building Blocks           | Q-2019.12-DWBB_201912.3 |     *     |
+| Licensed DW Building Blocks        | Q-2019.12-DWBB_201912.3 |     *     |
+============================================================================
+
+Information: Sequential output inversion is enabled.  SVF file must be used for formal verification. (OPT-1208)
+
+Information: There are 71 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
+
+  Simplifying Design 'fifo1_sram'
+
+Error: Compile has abnormally terminated.  (OPT-100)

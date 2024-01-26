@@ -1,0 +1,3 @@
+# Make sure to exprt top=simple_adder
+# source ../scripts/run_tb_fe.sh
+# source ../scripts/run_tb_be_dc.sh

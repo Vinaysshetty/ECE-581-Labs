@@ -1,0 +1,98 @@
+Warning: Design 'fifo1_sram' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+ 
+****************************************
+check_design summary:
+Version:     Q-2019.12-SP3
+Date:        Mon Jan 22 01:25:07 2024
+****************************************
+
+                   Name                                            Total
+--------------------------------------------------------------------------------
+Inputs/Outputs                                                     26
+    Multiply driven inputs (LINT-6)                                25
+    Unconnected ports (LINT-28)                                     1
+
+Cells                                                               1
+    Connected to power or ground (LINT-32)                          1
+
+Nets                                                                2
+    Multiply driven net with constant driver (LINT-54)              2
+
+Tristate                                                           43
+    A tristate bus has a non tri-state driver (LINT-34)            43
+--------------------------------------------------------------------------------
+
+Warning: In design 'fifomem_DATASIZE8_ADDRSIZE10', input port 'wdata[7]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'fifomem_DATASIZE8_ADDRSIZE10', input port 'wdata[6]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'fifomem_DATASIZE8_ADDRSIZE10', input port 'wdata[5]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'fifomem_DATASIZE8_ADDRSIZE10', input port 'wdata[4]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'fifomem_DATASIZE8_ADDRSIZE10', input port 'wdata[3]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'fifomem_DATASIZE8_ADDRSIZE10', input port 'wdata[2]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'fifomem_DATASIZE8_ADDRSIZE10', input port 'wdata[1]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'fifomem_DATASIZE8_ADDRSIZE10', input port 'wdata[0]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'fifomem_DATASIZE8_ADDRSIZE10', input port 'waddr[6]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'fifomem_DATASIZE8_ADDRSIZE10', input port 'waddr[5]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'fifomem_DATASIZE8_ADDRSIZE10', input port 'waddr[4]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'fifomem_DATASIZE8_ADDRSIZE10', input port 'waddr[3]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'fifomem_DATASIZE8_ADDRSIZE10', input port 'waddr[2]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'fifomem_DATASIZE8_ADDRSIZE10', input port 'waddr[1]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'fifomem_DATASIZE8_ADDRSIZE10', input port 'waddr[0]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'fifomem_DATASIZE8_ADDRSIZE10', input port 'raddr[6]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'fifomem_DATASIZE8_ADDRSIZE10', input port 'raddr[5]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'fifomem_DATASIZE8_ADDRSIZE10', input port 'raddr[4]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'fifomem_DATASIZE8_ADDRSIZE10', input port 'raddr[3]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'fifomem_DATASIZE8_ADDRSIZE10', input port 'raddr[2]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'fifomem_DATASIZE8_ADDRSIZE10', input port 'raddr[1]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'fifomem_DATASIZE8_ADDRSIZE10', input port 'raddr[0]' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'fifomem_DATASIZE8_ADDRSIZE10', input port 'wclken' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'fifomem_DATASIZE8_ADDRSIZE10', input port 'wclk' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'fifomem_DATASIZE8_ADDRSIZE10', input port 'rclk' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'fifomem_DATASIZE8_ADDRSIZE10', port 'wfull' is not connected to any nets. (LINT-28)
+Warning: In design 'fifo1_sram', a pin on submodule 'fifomem' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'wfull' is connected to logic 0. 
+Warning: In design 'fifo1_sram', three-state bus 'io_b_winc_net' has non three-state driver 'io_b_winc/DOUT'. (LINT-34)
+Warning: In design 'fifo1_sram', three-state bus 'io_b_wclk_net' has non three-state driver 'io_b_wclk/DOUT'. (LINT-34)
+Warning: In design 'fifo1_sram', three-state bus 'io_b_rclk_net' has non three-state driver 'io_b_rclk/DOUT'. (LINT-34)
+Warning: In design 'fifo1_sram', three-state bus 'raddr[0]' has non three-state driver 'rptr_empty/rbin_reg_0_/Q'. (LINT-34)
+Warning: In design 'fifo1_sram', three-state bus 'raddr[1]' has non three-state driver 'rptr_empty/rbin_reg_1_/Q'. (LINT-34)
+Warning: In design 'fifo1_sram', three-state bus 'raddr[2]' has non three-state driver 'rptr_empty/rbin_reg_2_/Q'. (LINT-34)
+Warning: In design 'fifo1_sram', three-state bus 'raddr[3]' has non three-state driver 'rptr_empty/rbin_reg_3_/Q'. (LINT-34)
+Warning: In design 'fifo1_sram', three-state bus 'raddr[4]' has non three-state driver 'rptr_empty/rbin_reg_4_/Q'. (LINT-34)
+Warning: In design 'fifo1_sram', three-state bus 'raddr[5]' has non three-state driver 'rptr_empty/rbin_reg_5_/Q'. (LINT-34)
+Warning: In design 'fifo1_sram', three-state bus 'raddr[6]' has non three-state driver 'rptr_empty/rbin_reg_6_/Q'. (LINT-34)
+Warning: In design 'fifo1_sram', three-state bus 'waddr[0]' has non three-state driver 'wptr_full/wbin_reg_0_/Q'. (LINT-34)
+Warning: In design 'fifo1_sram', three-state bus 'waddr[1]' has non three-state driver 'wptr_full/wbin_reg_1_/Q'. (LINT-34)
+Warning: In design 'fifo1_sram', three-state bus 'waddr[2]' has non three-state driver 'wptr_full/wbin_reg_2_/Q'. (LINT-34)
+Warning: In design 'fifo1_sram', three-state bus 'waddr[3]' has non three-state driver 'wptr_full/wbin_reg_3_/Q'. (LINT-34)
+Warning: In design 'fifo1_sram', three-state bus 'waddr[4]' has non three-state driver 'wptr_full/wbin_reg_4_/Q'. (LINT-34)
+Warning: In design 'fifo1_sram', three-state bus 'waddr[5]' has non three-state driver 'wptr_full/wbin_reg_5_/Q'. (LINT-34)
+Warning: In design 'fifo1_sram', three-state bus 'waddr[6]' has non three-state driver 'wptr_full/wbin_reg_6_/Q'. (LINT-34)
+Warning: In design 'fifo1_sram', three-state bus 'wdata[0]' has non three-state driver 'wdata_reg_0_/Q'. (LINT-34)
+Warning: In design 'fifo1_sram', three-state bus 'wdata[1]' has non three-state driver 'wdata_reg_1_/Q'. (LINT-34)
+Warning: In design 'fifo1_sram', three-state bus 'wdata[2]' has non three-state driver 'wdata_reg_2_/Q'. (LINT-34)
+Warning: In design 'fifo1_sram', three-state bus 'wdata[3]' has non three-state driver 'wdata_reg_3_/Q'. (LINT-34)
+Warning: In design 'fifo1_sram', three-state bus 'wdata[4]' has non three-state driver 'wdata_reg_4_/Q'. (LINT-34)
+Warning: In design 'fifo1_sram', three-state bus 'wdata[5]' has non three-state driver 'wdata_reg_5_/Q'. (LINT-34)
+Warning: In design 'fifo1_sram', three-state bus 'wdata[6]' has non three-state driver 'wdata_reg_6_/Q'. (LINT-34)
+Warning: In design 'fifo1_sram', three-state bus 'wdata[7]' has non three-state driver 'wdata_reg_7_/Q'. (LINT-34)
+Warning: In design 'fifo1_sram', three-state bus 'fifomem/N10' has non three-state driver 'fifomem/C20/Y'. (LINT-34)
+Warning: In design 'fifo1_sram', three-state bus 'fifomem/N12' has non three-state driver 'fifomem/C24/Y'. (LINT-34)
+Warning: In design 'fifo1_sram', three-state bus 'fifomem/N14' has non three-state driver 'fifomem/C29/Y'. (LINT-34)
+Warning: In design 'fifo1_sram', three-state bus 'fifomem/N16' has non three-state driver 'fifomem/C34/Y'. (LINT-34)
+Warning: In design 'fifo1_sram', three-state bus 'fifomem/N27' has non three-state driver 'fifomem/C85/Y'. (LINT-34)
+Warning: In design 'fifo1_sram', three-state bus 'fifomem/N29' has non three-state driver 'fifomem/C89/Y'. (LINT-34)
+Warning: In design 'fifo1_sram', three-state bus 'fifomem/N31' has non three-state driver 'fifomem/C94/Y'. (LINT-34)
+Warning: In design 'fifo1_sram', three-state bus 'fifomem/N33' has non three-state driver 'fifomem/C98/Y'. (LINT-34)
+Warning: In design 'fifo1_sram', three-state bus 'fifomem/N35' has non three-state driver 'fifomem/C103/Y'. (LINT-34)
+Warning: In design 'fifo1_sram', three-state bus 'fifomem/N37' has non three-state driver 'fifomem/C108/Y'. (LINT-34)
+Warning: In design 'fifo1_sram', three-state bus 'fifomem/N6' has non three-state driver 'fifomem/C11/Y'. (LINT-34)
+Warning: In design 'fifo1_sram', three-state bus 'fifomem/N8' has non three-state driver 'fifomem/C15/Y'. (LINT-34)
+Warning: In design 'fifo1_sram', three-state bus 'fifomem/wr_cs_n[0]' has non three-state driver 'fifomem/U19/Y'. (LINT-34)
+Warning: In design 'fifo1_sram', three-state bus 'fifomem/wr_cs_n[7]' has non three-state driver 'fifomem/U20/Y'. (LINT-34)
+Warning: In design 'fifo1_sram', three-state bus 'fifomem/rd_cs_n[0]' has non three-state driver 'fifomem/U21/Y'. (LINT-34)
+Warning: In design 'fifo1_sram', three-state bus 'fifomem/rd_cs_n[7]' has non three-state driver 'fifomem/U22/Y'. (LINT-34)
+Warning: In design 'fifo1_sram', three-state bus 'fifomem/n_Logic0_' has non three-state driver 'fifomem/U2/**logic_0**'. (LINT-34)
+Warning: In design 'fifo1_sram', three-state bus 'fifomem/n_Logic1_' has non three-state driver 'fifomem/U1/**logic_1**'. (LINT-34)
+Warning: In design 'fifo1_sram', multiply-driven net 'fifomem/n_Logic0_' is driven by constant 0. (LINT-54)
+Warning: In design 'fifo1_sram', multiply-driven net 'fifomem/n_Logic1_' is driven by constant 1. (LINT-54)
+1

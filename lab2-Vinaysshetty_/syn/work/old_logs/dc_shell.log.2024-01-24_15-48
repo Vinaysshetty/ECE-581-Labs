@@ -1,0 +1,17 @@
+setting auto_restore_mw_cel_lib_setup true
+Initializing gui preferences from file  /u/vinays/.synopsys_dv_prefs.tcl
+dc_shell> set top_design fifo1_sramb
+fifo1_sramb
+dc_shell> 
+dc_shell> 
+dc_shell> 
+dc_shell> 
+dc_shell> exit
+
+Memory usage for this session 54 Mbytes.
+Memory usage for this session including child processes 54 Mbytes.
+CPU usage for this session 3 seconds ( 0.00 hours ).
+Elapsed time for this session 181 seconds ( 0.05 hours ).
+
+Thank you...
+
